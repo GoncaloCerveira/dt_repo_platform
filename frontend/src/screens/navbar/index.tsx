@@ -75,12 +75,11 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
                   {isHomePage ? renderLinks() : null}
                 </div>
                 
-                {/* MENU DE PROJETOS (DESKTOP) */}
                 <div className="relative">
                   <button
                     onMouseEnter={() => setIsProjectsOpen(true)}
                     onClick={() => setIsProjectsOpen(!isProjectsOpen)}
-                    className="flex items-center gap-2 rounded-md bg-secondary-500 px-10 py-2 font-bold hover:bg-primary-500 hover:text-white transition duration-200"
+                    className="flex text-white items-center gap-2 rounded-md bg-gray-900 px-10 py-2 font-bold hover:bg-primary-500 hover:text-white transition duration-200"
                   >
                     Projetos
                     <ChevronDownIcon className={`h-4 w-4 transition-transform ${isProjectsOpen ? "rotate-180" : ""}`} />
@@ -118,7 +117,7 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
         </div>
       </div>
 
-      {/* MOBILE MENU MODAL */}
+      {/* MOBILE MENU */}
       {!isAboveMediumScreens && isMenuToggled && (
         <div className="fixed right-0 bottom-0 z-40 h-full w-[300px] bg-primary-100 drop-shadow-xl">
           <div className="flex justify-end p-12">
