@@ -6,9 +6,7 @@ import Logo_MMP from "@/assets/Logo_MMP.png";
 import Logo_PatrimonioCultural from "@/assets/Logo_PatrimonioCultural.png";
 import Logo_RepublicaPortuguesaCultura from "@/assets/Logo_RepublicaPortuguesaCultura.png";
 import BackgroundImage from "@/assets/background.jpg";
-import AnchorLink from "react-anchor-link-smooth-scroll";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 type Props = {
   setSelectedPage: (value: SelectedPage) => void;

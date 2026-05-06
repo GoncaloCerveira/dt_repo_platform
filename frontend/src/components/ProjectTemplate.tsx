@@ -48,7 +48,6 @@ const ProjectDetail = ({
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  /* Pause videos when slide changes */
   useEffect(() => {
     const videos = document.querySelectorAll("video");
     videos.forEach((video) => {
@@ -72,7 +71,7 @@ const ProjectDetail = ({
         setSelectedPage={() => {}}
       />
 
-      <main className="pt-24 pb-20 mt-12">
+      <main className="pt-24 pb-20">
         <div className="max-w-6xl mx-auto px-6">
           
           {/* HEADER */}
