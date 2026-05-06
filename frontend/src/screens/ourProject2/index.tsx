@@ -238,6 +238,7 @@ const OurProjectSection = ({ setSelectedPage }: Props) => {
       <motion.div
         className="mx-auto w-5/6"
         onViewportEnter={() => setSelectedPage(SelectedPage.OurProject)}
+        viewport={{ amount: 0.2, margin: "-10% 0px -60% 0px" }}
       >
         {/* HEADER */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 border-b border-gray-300 pb-8">
@@ -280,7 +281,7 @@ const OurProjectSection = ({ setSelectedPage }: Props) => {
 
         {/* REPOs LIST */}
         <motion.div
-          className="flex flex-col mb-16"
+          className="flex flex-col mb-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}

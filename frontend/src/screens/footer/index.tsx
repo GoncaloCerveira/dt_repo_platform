@@ -1,4 +1,4 @@
-import Logo from "@/assets/Logo_navbar.png";
+import ICON from "@/assets/digitaltwins_icone.png";
 import NOVA from "@/assets/NOVA.png";
 
 const Footer = () => {
@@ -35,7 +35,7 @@ const Footer = () => {
           <img alt="nova-fct" src={NOVA} className="w-44 h-auto object-contain" />
         </div>
         <div className="mt-8 basis-1/6 md:mt-0 flex justify-center">
-          <img alt="logo" src={Logo} className="w-40 h-auto object-contain" />
+          <img alt="logo" src={ICON} className="w-40 h-auto object-contain" />
         </div>
       </div>
 

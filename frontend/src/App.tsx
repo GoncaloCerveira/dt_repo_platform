@@ -5,7 +5,7 @@ import { store } from "./store";
 import { SelectedPage } from "@/components/types";
 import Navbar from "@/screens/navbar";
 import Home from "@/screens/home";
-import OurProjectSection from "@/screens/ourProject2";
+import OurProjectSection from "@/screens/ourProject2"; 
 import Footer from "@/screens/footer";
 import SantaClara from "@/screens/santa_clara";
 import Segmentation from "@/screens/segmentation";
@@ -20,17 +20,39 @@ const ScrollToTop = () => {
   return null;
 };
 
+/* APP MAIN */
 function AppMain() {
-  const [selectedPage, setSelectedPage] = useState<SelectedPage>(
-    SelectedPage.Home
-  );
+  const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.Home);
+  const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY === 0) {
+        setIsTopOfPage(true);
         setSelectedPage(SelectedPage.Home);
+      } else {
+        setIsTopOfPage(false);
       }
+
+      const triggerLine = window.scrollY + 300;
+
+      const sections = [
+        { id: "home", value: SelectedPage.Home },
+        { id: "ourproject", value: SelectedPage.OurProject },
+      ];
+
+      sections.forEach((section) => {
+        const element = document.getElementById(section.id);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          // Se a linha de gatilho estiver dentro dos limites desta secção
+          if (triggerLine >= offsetTop && triggerLine < offsetTop + offsetHeight) {
+            setSelectedPage(section.value);
+          }
+        }
+      });
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -49,53 +71,23 @@ function AppMain() {
 }
 
 const PageWrapper = ({ children }: { children: React.ReactNode }) => (
-  <div className="appdemo bg-gray-20">
+  <div className="app bg-gray-20">
     <Navbar 
       selectedPage={SelectedPage.ModelDemo} 
-      setSelectedPage={() => {}} // Função vazia para páginas estáticas
+      setSelectedPage={() => {}} 
     />
-    {children}
+    <div className="pt-20">
+      {children}
+    </div>
     <Footer />
   </div>
 );
 
-const SantaClara_page = () => (
-  <PageWrapper>
-    <SantaClara />
-  </PageWrapper>
-);
+const SantaClaraPage = () => <PageWrapper><SantaClara /></PageWrapper>;
+const SegmentationPage = () => <PageWrapper><Segmentation /></PageWrapper>;
 
-const Azulejo_page = () => (
-  <PageWrapper>
-    <Segmentation />
-  </PageWrapper>
-);
-
-const GrutaEscoural_page = () => (
-  <PageWrapper>
-    <Segmentation />
-  </PageWrapper>
-);
-
-const HBIMSearch_page = () => (
-  <PageWrapper>
-    <Segmentation />
-  </PageWrapper>
-);
-
-const HBIMSegmentation_page = () => (
-  <PageWrapper>
-    <Segmentation />
-  </PageWrapper>
-);
-
-const MilreuAPP_page = () => (
-  <PageWrapper>
-    <Segmentation />
-  </PageWrapper>
-);
-
-function AppWithRouter() {
+/* ROUTING */
+function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
@@ -103,16 +95,19 @@ function AppWithRouter() {
         
         <Routes>
           <Route path="/" element={<AppMain />} />
-          <Route path="/santa-clara" element={<SantaClara_page />} />
-          <Route path="/azulejo" element={<Azulejo_page />} />
-          <Route path="/gruta-escoural" element={<GrutaEscoural_page />} />
-          <Route path="/hbim-pesquisa" element={<HBIMSearch_page />} />
-          <Route path="/hbim-segmentacao" element={<HBIMSegmentation_page />} />
-          <Route path="/app-milreu" element={<MilreuAPP_page />} />
+          <Route path="/santa-clara" element={<SantaClaraPage />} />
+          <Route path="/azulejo" element={<SegmentationPage />} />
+          <Route path="/gruta-escoural" element={<SegmentationPage />} />
+          <Route path="/hbim-pesquisa" element={<SegmentationPage />} />
+          <Route path="/hbim-segmentacao" element={<SegmentationPage />} />
+          <Route path="/app-milreu" element={<SegmentationPage />} />
+
+          {/* Fallback */}
+          <Route path="*" element={<AppMain />} />
         </Routes>
       </BrowserRouter>
     </Provider>
   );
 }
 
-export default AppWithRouter;
+export default App;
