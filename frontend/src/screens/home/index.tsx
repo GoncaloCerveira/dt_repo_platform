@@ -6,6 +6,7 @@ import MMP from "@/assets/logotipos/Museus_monumentos_250px.png";
 import PRR from "@/assets/logotipos/prr_L250px.png";
 import Republica from "@/assets/logotipos/Republica_L250px.png";
 import EU from "@/assets/logotipos/EU_L250px.png";
+import ARTE from "@/assets/arte.png";
 import BackgroundImage from "@/assets/background.jpg";
 import { motion } from "framer-motion";
 
@@ -21,6 +22,7 @@ const Home = ({ setSelectedPage }: Props) => {
     { src: NOVA, alt: "NOVA FCT" },
     { src: PCultural, alt: "Património Cultural" },
     { src: MMP, alt: "Museus e Monumentos de Portugal" },
+    { src: ARTE, alt: "ARTE" },
     { src: PRR, alt: "PRR" },
     { src: Republica, alt: "República Portuguesa" },
     { src: EU, alt: "União Europeia" },

@@ -41,7 +41,7 @@ const projects: ProjectItem[] = [
   {
     icon: <BuildingLibraryIcon className="h-6 w-6" />,
     title: "Simulador Santa Clara",
-    description: "Texto para repor, so texto para ver como e que fica a demo. Muito texto vai para a pagina dedicada",
+    description: "Simulação interativa em Unity para visualização e análise comparativa de cheias históricas no Mosteiro de Santa Clara-a-Velha.",
     link: "/santa-clara",
     tag: "Experiências Imersivas",
     accent: "from-blue-500 to-cyan-400",
@@ -50,7 +50,7 @@ const projects: ProjectItem[] = [
   {
     icon: <PhotoIcon className="h-6 w-6" />,
     title: "AR e VR azulejo",
-    description: "Texto para repor, so texto para ver como e que fica a demo. Muito texto vai para a pagina dedicada",
+    description: "Plataformas interativas com AR para reconhecimento de monumentos e VR para exploração imersiva de ambientes históricos através de portais.",
     link: "/azulejo",
     tag: "XR Imersivo",
     accent: "from-indigo-500 to-purple-500",
@@ -91,9 +91,7 @@ const projects: ProjectItem[] = [
       "Investigação focada na criação de um motor de busca semântico que permite consultar elementos construtivos através de linguagem natural (NLP).",
       "Integração de bases de dados de conservação e restauro diretamente no ambiente BIM."
     ],
-    externalLinks: [
-      { label: "Paper de Investigação", url: "#", type: "doc" }
-    ],
+    link: "/app-milreu",
     tag: "Experiências Imersivas",
     accent: "from-violet-500 to-fuchsia-500",
     status: "Em Desenvolvimento"
@@ -312,12 +310,18 @@ const OurProjectSection = ({ setSelectedPage }: Props) => {
               <CommandLineIcon className="h-6 w-6 text-gray-600" />
             </div>
             <div>
-              <p className="font-bold text-gray-900">Acesso ao Código Fonte</p>
-              <p className="text-sm text-gray-500">Todos os repositórios técnicos estão disponíveis via documentação individual.</p>
+              <p className="font-bold text-gray-900">Acesso ao Código/Modelos/Documentação</p>
+              <p className="text-sm text-gray-500">Todos os repositórios técnicos de GitHub estão disponíveis via documentação individual.</p>
             </div>
           </div>
           <button className="w-full md:w-auto px-6 py-3 bg-gray-900 text-white rounded-xl font-bold text-sm hover:bg-gray-800 transition-colors">
-            Ver Todos no GitHub
+            <a
+              href="https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="md:w-auto px-6 py-3 bg-gray-900 text-white rounded-xl font-bold text-sm hover:bg-gray-800 transition-colors text-center"
+            ></a>
+            Ver Todos no OneDrive
           </button>
         </motion.div>
       </motion.div>

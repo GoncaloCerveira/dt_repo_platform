@@ -1,33 +1,32 @@
 import ProjectDetail from "@/components/ProjectTemplate";
 import { SelectedPage } from "@/components/types";
-import ImgSeg from "@/assets/segmentation.png";
-import HBIM from "@/assets/hbim.jpg";
-import HBIM_vid from "@/assets/hbim.mp4";
+import MIL1 from "@/assets/Milreu/Milreu01.png";
+import MIL2 from "@/assets/Milreu/Milreu02.png";
+import MIL3 from "@/assets/Milreu/Milreu03.png";
+import MIL4 from "@/assets/Milreu/Milreu3d.png";
+import MIL1_vid from "@/assets/Milreu/Milreu.mp4";
 
-const Segmentation = () => {
+const Milreu = () => {
   return (
     <ProjectDetail 
-      title="Segmentação para HBIMs"
-      subtitle="Integração Semântica e Enriquecimento"
+      title="Rescontrução Ruínas Romanas de Milreu"
+      subtitle="Experiências Imersivas"
       media={[
-        { url: ImgSeg, type: "image" },
-        { url: HBIM, type: "image" },
-        { url: HBIM_vid, type: "video" },
+        { url: MIL1, type: "image" },
+        { url: MIL2, type: "image" },
+        { url: MIL3, type: "image" },
+        { url: MIL4, type: "image" },
+        { url: MIL1_vid, type: "video" },
       ]}
       description={[
-        "Esta pipeline foca-se na automação da captura de dados através da abordagem 'Scan-to-BIM'. O processo inicia-se com a Segmentação 2D,onde utilizamos o modelo SAM3 (Segment Anything Model) assistido por prompts de classes. Para melhorar a precisão, integrámos um LLM Multimodal que filtra ruído e melhora a inferência de materiais, permitindo identificar artefactos específicos com base no acervo visual do museu.",
-        "Na segunda fase, ocorre a Projeção de Rótulos para a Nuvem de Pontos. Através dos parâmetros intrínsecos e extrínsecos da câmara, projetamos os rótulos das máscaras 2D diretamente nos pontos 3D. A consistência semântica da nuvem é garantida por um processo de fusão multi-vista baseado em 'majority voting', que resolve discrepâncias entre diferentes perspetivas fotográficas.",
-        "Finalmente, procedemos à Geração do Modelo HBIM (Heritage Building Information Modeling). A nuvem de pontos segmentada é limpa e simplificada para otimização de performance, agrupando classes em formas geométricas fundamentais. O resultado é um Digital Twin rigoroso em formato BIM, que inclui relações espaciais complexas (IFCRelations) e metadados métricos precisos para a gestão do edíficio."
+        "A reconstrução de Milreu parte da recolha documental de referências históricas e arqueológicas para o levantamento do espaço. O projeto pretende a construção de vários espaços das Ruínas Romanas de Milreu (RRM), tanto no exterior como no interior. Isto, com o objetivo de aprimorar a experiência dos visitantes proporcionando uma experiência que permita uma melhor exploração do espaço, maior envolvência do público e, também, uma mediação museológica que permita valorizar ainda mais o seu valor histórico, artístico e cultural.", 
+        "Para o efeito, realizam-se as reconstruções tridimensionais através do Blender, uma aplicação open source, que permite a criação dos modelos 3D, atribuição de texturas e criação de animações. O programa facilita, também, a importação de modelos tridimensionais de objetos que foram digitalizados no projeto Património 360º e que integraram as RRM, bem como, a exportação de imagens renderizadas para infografias e criação de materiais audiovisuais.",
+        "Para além das imagens disponíveis, é possível consultar o modelo tridimensional no Blender. Deverá ser instalada a versão mais recente do programa e abrir o documento em anexo."
       ]}
       links={[
         { 
-          label: "Repositório Principal (Pipeline e Documentação)", 
-          url: "https://github.com/GoncaloCerveira/Pipeline-of-the-project-DT4SST-CH.PT", 
-          type: "web" 
-        },
-        { 
-          label: "Scripts de Teste e Projeções", 
-          url: "https://github.com/GoncaloCerveira/DT4SST-CH.Projections", 
+          label: "Acesso ao modelo (.blend)", 
+          url: "https://unlpt-my.sharepoint.com/shared?listurl=https%3A%2F%2Funlpt%2Dmy%2Esharepoint%2Ecom%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FMilreu&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", 
           type: "web" 
         }
       ]}
@@ -37,4 +36,4 @@ const Segmentation = () => {
   );
 };
 
-export default Segmentation;
+export default Milreu;
