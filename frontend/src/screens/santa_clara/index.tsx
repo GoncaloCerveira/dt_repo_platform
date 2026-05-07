@@ -2,7 +2,7 @@ import ProjectDetail from "@/components/ProjectTemplate";
 import { SelectedPage } from "@/components/types";
 import SimSantaClara1 from "@/assets/sim_santa_clara_1.png";
 import SimSantaClara2 from "@/assets/sim_santa_clara_2.png";
-import VideoSantaClara from "@/assets/sim_santa_clara.mp4";
+import VideoSantaClara from "@/assets/sim_santa_clara_video.mp4";
 
 const SantaClara = () => {
   return (
