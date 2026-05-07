@@ -21,7 +21,7 @@ import VR3 from "@/assets/azulejo/VR3.png";
 import VR4 from "@/assets/azulejo/VR4.png";
 import VR5 from "@/assets/azulejo/Video_VR.mp4";
 
-type ExperienceType = "VR" | "AR";
+type ExperienceType = "AR" | "VR";
 
 const PROJECT_DATA = {
   VR: {
@@ -32,9 +32,11 @@ const PROJECT_DATA = {
       "O projeto usa também o meta sdk para fazer a integração com os oculus meta quest 3S, usando tecnologia como o teleporte com gestos de mão ou comandos para locomover-se no ambiente."
     ],
     media: [
-      { url: AR1, type: "image" as const },
-      { url: AR2, type: "image" as const },
-      { url: AR3, type: "video" as const }
+      { url: VR1, type: "image" as const },
+      { url: VR2, type: "image" as const },
+      { url: VR3, type: "image" as const },
+      { url: VR4, type: "image" as const },
+      { url: VR5, type: "video" as const }
     ],
     links: [
       { label: "Código do Projeto/Documentação", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDjh_gRS9xySLWNWG4p9AmKAW41kJ8kchKHleiuQvcn4fk?e=nI3YaZ", type: "web" as const },
@@ -48,11 +50,9 @@ const PROJECT_DATA = {
       "O projeto contém 3 scenes: \nImageTracking - Tirada da documentação do AR Foundation, tem um exemplo prático de como funciona o image tracking,\nMNAz - Scene principal onde está feito o reconhecimento de imagens do panorama de Lisboa,\nSampleScene - Scene de teste"
     ],
     media: [
-      { url: VR1, type: "image" as const },
-      { url: VR2, type: "image" as const },
-      { url: VR3, type: "image" as const },
-      { url: VR4, type: "image" as const },
-      { url: VR5, type: "video" as const }
+      { url: AR1, type: "image" as const },
+      { url: AR2, type: "image" as const },
+      { url: AR3, type: "video" as const }
     ],
     links: [
       { label: "Código do Projeto/Documentação", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAmLL52-wiLSLFzpfu9pLrYAYd4pDHFHRb-x08hgAuwBZQ?e=j4GDLS", type: "web" as const },
@@ -91,7 +91,7 @@ const AzulejoDetailFull = ({ setSelectedPage }: { setSelectedPage: (v: SelectedP
                 Experiências Imersivas para Turismo
               </p>
               <div className="inline-flex p-1 bg-white rounded-2xl border border-gray-200 shadow-sm mt-4">
-                {(["VR", "AR"] as ExperienceType[]).map((tab) => (
+                {(["AR", "VR"] as ExperienceType[]).map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
