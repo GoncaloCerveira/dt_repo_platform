@@ -10,6 +10,7 @@ import Footer from "@/screens/footer";
 import SantaClara from "@/screens/santa_clara";
 import Segmentation from "@/screens/segmentation";
 import AzulejoProjectPage from "@/screens/ourProjects2_multi"
+import SearchPage from "@/screens/search";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -103,7 +104,7 @@ function App() {
           <Route path="/santa-clara" element={<SantaClaraPage />} />
           <Route path="/azulejo" element={<AzulejoPage />} />
           <Route path="/gruta-escoural" element={<SegmentationPage />} />
-          <Route path="/hbim-pesquisa" element={<SegmentationPage />} />
+          <Route path="/hbim-pesquisa" element={<SearchPage />} />
           <Route path="/hbim-segmentacao" element={<SegmentationPage />} />
           <Route path="/app-milreu" element={<SegmentationPage />} />
 

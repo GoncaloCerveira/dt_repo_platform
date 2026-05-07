@@ -11,6 +11,13 @@ export default defineConfig({
 
   server: {
     host: true,
+    watch: {
+      usePolling: true,
+      interval: 150,
+    },
+    hmr: {
+      overlay: true,
+    },
     allowedHosts: [
       "gonalocerveira.tail947ed2.ts.net"
     ]

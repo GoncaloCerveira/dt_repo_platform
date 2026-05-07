@@ -1,33 +1,28 @@
 import ProjectDetail from "@/components/ProjectTemplate";
 import { SelectedPage } from "@/components/types";
-import ImgSeg from "@/assets/segmentation.png";
-import HBIM from "@/assets/hbim.jpg";
-import HBIM_vid from "@/assets/hbim.mp4";
+import SimSantaClara1 from "@/assets/sim_santa_clara_1.png";
+import SimSantaClara2 from "@/assets/sim_santa_clara_2.png";
+import VideoSantaClara from "@/assets/sim_santa_clara.mp4";
 
 const SantaClara = () => {
   return (
     <ProjectDetail 
-      title="Segmentação para HBIMs"
-      subtitle="Integração Semântica e Enriquecimento"
+      title="Mosteiro de Santa Clara-a-Velha"
+      subtitle="Simulação de cheias"
       media={[
-        { url: ImgSeg, type: "image" },
-        { url: HBIM, type: "image" },
-        { url: HBIM_vid, type: "video" },
+        { url: SimSantaClara1, type: "image" },
+        { url: SimSantaClara2, type: "image" },
+        { url: VideoSantaClara, type: "video" }
       ]}
       description={[
-        "Esta pipeline foca-se na automação da captura de dados através da abordagem 'Scan-to-BIM'. O processo inicia-se com a Segmentação 2D,onde utilizamos o modelo SAM3 (Segment Anything Model) assistido por prompts de classes. Para melhorar a precisão, integrámos um LLM Multimodal que filtra ruído e melhora a inferência de materiais, permitindo identificar artefactos específicos com base no acervo visual do museu.",
-        "Na segunda fase, ocorre a Projeção de Rótulos para a Nuvem de Pontos. Através dos parâmetros intrínsecos e extrínsecos da câmara, projetamos os rótulos das máscaras 2D diretamente nos pontos 3D. A consistência semântica da nuvem é garantida por um processo de fusão multi-vista baseado em 'majority voting', que resolve discrepâncias entre diferentes perspetivas fotográficas.",
-        "Finalmente, procedemos à Geração do Modelo HBIM (Heritage Building Information Modeling). A nuvem de pontos segmentada é limpa e simplificada para otimização de performance, agrupando classes em formas geométricas fundamentais. O resultado é um Digital Twin rigoroso em formato BIM, que inclui relações espaciais complexas (IFCRelations) e metadados métricos precisos para a gestão do edíficio."
+        "Simulação Unity para visualizar, explorar e demonstrar como diferentes cheias históricas inundaram o Mosteiro de Santa Clara-a-Velha. Permite ver o nível da água para anos específicos e comparar eventos ao longo do tempo.",
+        "A simulação mostra uma cena 3D com a superfície de água que sobe e baixa de acordo com o ano; painel de controlo com botões para escolher anos, descrição do evento e um slider para ajustar o nível de água dentro do intervalo daquele ano.",
+        "É possível escolher um ano clicando no botão do ano no menu ou premindo teclas numéricas (1..9 e 0 para o 10.º). O slider ajusta  o nível de água e a cena atualiza em tempo real.",
       ]}
       links={[
         { 
-          label: "Repositório Principal (Pipeline e Documentação)", 
-          url: "https://github.com/GoncaloCerveira/Pipeline-of-the-project-DT4SST-CH.PT", 
-          type: "web" 
-        },
-        { 
-          label: "Scripts de Teste e Projeções", 
-          url: "https://github.com/GoncaloCerveira/DT4SST-CH.Projections", 
+          label: "Drive com Projeto", 
+          url: "https://unlpt-my.sharepoint.com/:u:/g/personal/mgv_fct_unl_pt/IQD5PEop_6r4QIi9H8l5JxjwAdK_jiLRsybCVhg_iQreOeU?e=n79rSw", 
           type: "web" 
         }
       ]}

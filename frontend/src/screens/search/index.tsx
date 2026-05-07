@@ -1,33 +1,26 @@
 import ProjectDetail from "@/components/ProjectTemplate";
 import { SelectedPage } from "@/components/types";
-import ImgSeg from "@/assets/segmentation.png";
-import HBIM from "@/assets/hbim.jpg";
-import HBIM_vid from "@/assets/hbim.mp4";
+import ImgSearchChat1 from "@/assets/search_chat_1.png";
+import ImgSearchChat2 from "@/assets/search_chat_2.png";
 
-const Segmentation = () => {
+const Search = () => {
   return (
     <ProjectDetail 
-      title="Segmentação para HBIMs"
-      subtitle="Integração Semântica e Enriquecimento"
+      title="Pesquisa para HBIMs"
+      subtitle="Extração de Informação HBIM e Consulta Conversacional"
       media={[
-        { url: ImgSeg, type: "image" },
-        { url: HBIM, type: "image" },
-        { url: HBIM_vid, type: "video" },
+        { url: ImgSearchChat1, type: "image" },
+        { url: ImgSearchChat2, type: "image" },
       ]}
       description={[
-        "Esta pipeline foca-se na automação da captura de dados através da abordagem 'Scan-to-BIM'. O processo inicia-se com a Segmentação 2D,onde utilizamos o modelo SAM3 (Segment Anything Model) assistido por prompts de classes. Para melhorar a precisão, integrámos um LLM Multimodal que filtra ruído e melhora a inferência de materiais, permitindo identificar artefactos específicos com base no acervo visual do museu.",
-        "Na segunda fase, ocorre a Projeção de Rótulos para a Nuvem de Pontos. Através dos parâmetros intrínsecos e extrínsecos da câmara, projetamos os rótulos das máscaras 2D diretamente nos pontos 3D. A consistência semântica da nuvem é garantida por um processo de fusão multi-vista baseado em 'majority voting', que resolve discrepâncias entre diferentes perspetivas fotográficas.",
-        "Finalmente, procedemos à Geração do Modelo HBIM (Heritage Building Information Modeling). A nuvem de pontos segmentada é limpa e simplificada para otimização de performance, agrupando classes em formas geométricas fundamentais. O resultado é um Digital Twin rigoroso em formato BIM, que inclui relações espaciais complexas (IFCRelations) e metadados métricos precisos para a gestão do edíficio."
+        "Este projeto é uma ferramenta para consultar e explorar modelos digitais de edifícios através de uma interface conversacional. Em vez de obrigar o utilizador a navegar manualmente por ficheiros BIM/HBIM complexos, a aplicação permite fazer perguntas em linguagem natural sobre os elementos do modelo, como paredes, escadas, materiais, pisos, classificações ou quantidades.",
+        "A solução transforma a informação técnica do modelo num formato pesquisável e depois disponibiliza-a através de um assistente. O utilizador pode, por exemplo, pedir listas de elementos, fazer perguntas sobre características específicas, obter contagens por tipo de elemento ou material, e pedir mais detalhes sobre um resultado encontrado.",
+        "No geral, o projeto procura tornar a informação BIM mais acessível, rápida de consultar e útil para análise. É especialmente relevante para contextos de arquitetura, engenharia, património construído e gestão de edifícios, onde existe muita informação técnica associada aos modelos, mas nem sempre é fácil encontrá-la ou interpretá-la diretamente."
       ]}
       links={[
         { 
           label: "Repositório Principal (Pipeline e Documentação)", 
-          url: "https://github.com/GoncaloCerveira/Pipeline-of-the-project-DT4SST-CH.PT", 
-          type: "web" 
-        },
-        { 
-          label: "Scripts de Teste e Projeções", 
-          url: "https://github.com/GoncaloCerveira/DT4SST-CH.Projections", 
+          url: "https://github.com/tjfernandes/DT4SST-CH.BIM_extraction_and_search", 
           type: "web" 
         }
       ]}
@@ -37,4 +30,4 @@ const Segmentation = () => {
   );
 };
 
-export default Segmentation;
+export default Search;
