@@ -9,6 +9,7 @@ import OurProjectSection from "@/screens/ourProject2";
 import Footer from "@/screens/footer";
 import SantaClara from "@/screens/santa_clara";
 import Segmentation from "@/screens/segmentation";
+import AzulejoProjectPage from "@/screens/ourProjects2_multi"
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -45,7 +46,6 @@ function AppMain() {
         const element = document.getElementById(section.id);
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          // Se a linha de gatilho estiver dentro dos limites desta secção
           if (triggerLine >= offsetTop && triggerLine < offsetTop + offsetHeight) {
             setSelectedPage(section.value);
           }
@@ -85,6 +85,11 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
 
 const SantaClaraPage = () => <PageWrapper><SantaClara /></PageWrapper>;
 const SegmentationPage = () => <PageWrapper><Segmentation /></PageWrapper>;
+const AzulejoPage = ({ setSelectedPage }: { setSelectedPage?: (value: any) => void }) => (
+  <PageWrapper>
+    <AzulejoProjectPage setSelectedPage={setSelectedPage || (() => {})} />
+  </PageWrapper>
+);
 
 /* ROUTING */
 function App() {
@@ -96,7 +101,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AppMain />} />
           <Route path="/santa-clara" element={<SantaClaraPage />} />
-          <Route path="/azulejo" element={<SegmentationPage />} />
+          <Route path="/azulejo" element={<AzulejoPage />} />
           <Route path="/gruta-escoural" element={<SegmentationPage />} />
           <Route path="/hbim-pesquisa" element={<SegmentationPage />} />
           <Route path="/hbim-segmentacao" element={<SegmentationPage />} />
