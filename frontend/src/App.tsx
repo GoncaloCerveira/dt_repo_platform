@@ -10,7 +10,7 @@ import Footer from "@/screens/footer";
 import SantaClara from "@/screens/santa_clara";
 import Segmentation from "@/screens/segmentation";
 import AzulejoProjectPage from "@/screens/ourProjects2_multi"
-import SearchPage from "@/screens/search";
+import SearchPage2 from "@/screens/search";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -85,12 +85,15 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
 );
 
 const SantaClaraPage = () => <PageWrapper><SantaClara /></PageWrapper>;
-const SegmentationPage = () => <PageWrapper><Segmentation /></PageWrapper>;
 const AzulejoPage = ({ setSelectedPage }: { setSelectedPage?: (value: any) => void }) => (
   <PageWrapper>
     <AzulejoProjectPage setSelectedPage={setSelectedPage || (() => {})} />
   </PageWrapper>
 );
+const GrutaEscouralPage = () => <PageWrapper><Segmentation /></PageWrapper>;
+const SearchPage = () => <PageWrapper><SearchPage2 /></PageWrapper>;
+const SegmentationPage = () => <PageWrapper><Segmentation /></PageWrapper>;
+const MireuPage = () => <PageWrapper><Segmentation /></PageWrapper>;
 
 /* ROUTING */
 function App() {
