@@ -21,7 +21,7 @@ import VR3 from "@/assets/azulejo/VR3.png";
 import VR4 from "@/assets/azulejo/VR4.png";
 import VR5 from "@/assets/azulejo/Video_VR.mp4";
 
-type ExperienceType = "AR" | "VR";
+type ExperienceType = "VR" | "AR";
 
 const PROJECT_DATA = {
   VR: {
@@ -91,7 +91,7 @@ const AzulejoDetailFull = ({ setSelectedPage }: { setSelectedPage: (v: SelectedP
                 Experiências Imersivas para Turismo
               </p>
               <div className="inline-flex p-1 bg-white rounded-2xl border border-gray-200 shadow-sm mt-4">
-                {(["AR", "VR"] as ExperienceType[]).map((tab) => (
+                {(["VR", "AR"] as ExperienceType[]).map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
