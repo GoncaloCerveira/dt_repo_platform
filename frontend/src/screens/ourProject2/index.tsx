@@ -234,7 +234,7 @@ type Props = {
 
 const OurProjectSection = ({ setSelectedPage }: Props) => {
   return (
-    <section id="ourproject" className="mx-auto bg-gray-20 min-h-screen py-12">
+    <section id="ourproject" className="mx-auto bg-gray-20 py-12">
       <motion.div
         className="mx-auto w-5/6"
         onViewportEnter={() => setSelectedPage(SelectedPage.OurProject)}
@@ -305,7 +305,7 @@ const OurProjectSection = ({ setSelectedPage }: Props) => {
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          className="mt-12 p-6 border-2 border-dashed border-gray-300 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6"
+          className="mt-12 p-6 mb-10 border-2 border-dashed border-gray-300 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div className="flex items-center gap-4">
             <div className="bg-gray-100 p-3 rounded-full">
