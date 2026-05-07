@@ -45,7 +45,7 @@ const projects: ProjectItem[] = [
     link: "/santa-clara",
     tag: "Experiências Imersivas",
     accent: "from-blue-500 to-cyan-400",
-    status: "Finalizado"
+    status: "Em Desenvolvimento"
   },
   {
     icon: <PhotoIcon className="h-6 w-6" />,
