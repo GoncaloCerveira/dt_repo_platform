@@ -12,6 +12,7 @@ import Segmentation from "@/screens/segmentation";
 import AzulejoProjectPage from "@/screens/ourProjects2_multi"
 import SearchPage2 from "@/screens/search";
 import Milreu from "@/screens/milreu";
+import Escoural from "./screens/gruta_escoural";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -91,7 +92,7 @@ const AzulejoPage = ({ setSelectedPage }: { setSelectedPage?: (value: any) => vo
     <AzulejoProjectPage setSelectedPage={setSelectedPage || (() => {})} />
   </PageWrapper>
 );
-const GrutaEscouralPage = () => <PageWrapper><Segmentation /></PageWrapper>;
+const GrutaEscouralPage = () => <PageWrapper><Escoural /></PageWrapper>;
 const SearchPage = () => <PageWrapper><SearchPage2 /></PageWrapper>;
 const SegmentationPage = () => <PageWrapper><Segmentation /></PageWrapper>;
 const MireuPage = () => <PageWrapper><Milreu /></PageWrapper>;
@@ -107,7 +108,7 @@ function App() {
           <Route path="/" element={<AppMain />} />
           <Route path="/santa-clara" element={<SantaClaraPage />} />
           <Route path="/azulejo" element={<AzulejoPage />} />
-          <Route path="/gruta-escoural" element={<SegmentationPage />} />
+          <Route path="/gruta-escoural" element={<GrutaEscouralPage />} />
           <Route path="/hbim-pesquisa" element={<SearchPage />} />
           <Route path="/hbim-segmentacao" element={<SegmentationPage />} />
           <Route path="/app-milreu" element={<MireuPage />} />

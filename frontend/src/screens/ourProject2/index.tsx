@@ -59,7 +59,7 @@ const projects: ProjectItem[] = [
    {
     icon: <CloudIcon className="h-6 w-6" />,
     title: "Navegação gruta do escoural",
-    description: "Texto para repor, so texto para ver como e que fica a demo. Muito texto vai para a pagina dedicada",
+    description: "Visualização da Gruta do Escoural baseada em captação 3D, navegável em tempo real.",
     link: "/gruta-escoural",
     tag: "Experiências Imersivas",
     accent: "from-emerald-500 to-teal-500",
@@ -86,11 +86,7 @@ const projects: ProjectItem[] = [
   {
     icon: <DevicePhoneMobileIcon className="h-6 w-6" />,
     title: "Aplicação Milreu",
-    description: "Texto para repor, so texto para ver como e que fica a demo. Muito texto vai para a pagina dedicada",
-    detailedDescription: [
-      "Investigação focada na criação de um motor de busca semântico que permite consultar elementos construtivos através de linguagem natural (NLP).",
-      "Integração de bases de dados de conservação e restauro diretamente no ambiente BIM."
-    ],
+    description: "Reconstrução virtual das Ruínas Romanas de Milreu em 3D, desenvolvida no Blender a partir de referências históricas e arqueológicas.",
     link: "/app-milreu",
     tag: "Experiências Imersivas",
     accent: "from-violet-500 to-fuchsia-500",
@@ -314,15 +310,14 @@ const OurProjectSection = ({ setSelectedPage }: Props) => {
               <p className="text-sm text-gray-500">Todos os repositórios técnicos de GitHub estão disponíveis via documentação individual.</p>
             </div>
           </div>
-          <button className="w-full md:w-auto px-6 py-3 bg-gray-900 text-white rounded-xl font-bold text-sm hover:bg-gray-800 transition-colors">
-            <a
-              href="https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="md:w-auto px-6 py-3 bg-gray-900 text-white rounded-xl font-bold text-sm hover:bg-gray-800 transition-colors text-center"
-            ></a>
+          <a
+            href="https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block w-full md:w-auto px-6 py-3 bg-gray-900 text-white rounded-xl font-bold text-sm hover:bg-gray-800 transition-colors text-center"
+          >
             Ver Todos no OneDrive
-          </button>
+          </a>
         </motion.div>
       </motion.div>
     </section>
