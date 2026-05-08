@@ -22,7 +22,7 @@ const Escoural = () => {
       links={[
         { 
           label: "Scripts de Teste e Projeções", 
-          url: "", 
+          url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FGE%20%2D%20Gruta%20do%20Escoural&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", 
           type: "web" 
         }
       ]}
