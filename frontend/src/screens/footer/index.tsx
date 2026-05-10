@@ -27,7 +27,17 @@ const Footer = () => {
             <ul className="space-y-2 text-xs">
               <li>
                 <a href="https://www.fct.unl.pt/" target="_blank" rel="noreferrer" className="hover:underline opacity-80 hover:opacity-100 transition-opacity">
-                  FCT NOVA
+                  NOVA FCT
+                </a>
+              </li>
+              <li>
+                <a href="https://www.fcsh.unl.pt/" target="_blank" rel="noreferrer" className="hover:underline opacity-80 hover:opacity-100 transition-opacity">
+                  NOVA FCSH
+                </a>
+              </li>
+              <li>
+                <a href="https://www.uevora.pt/" target="_blank" rel="noreferrer" className="hover:underline opacity-80 hover:opacity-100 transition-opacity">
+                  Universidade de Évora
                 </a>
               </li>
               <li>
@@ -37,7 +47,12 @@ const Footer = () => {
               </li>
               <li>
                 <a href="https://www.museusemonumentos.pt/pt" target="_blank" rel="noreferrer" className="hover:underline opacity-80 hover:opacity-100 transition-opacity">
-                  Museus e Monumentos
+                  Museus e Monumentos de Portugal
+                </a>
+              </li>
+              <li>
+                <a href="https://www.patrimoniocultural.gov.pt/" target="_blank" rel="noreferrer" className="hover:underline opacity-80 hover:opacity-100 transition-opacity">
+                  Património Cultural
                 </a>
               </li>
             </ul>
@@ -51,31 +66,10 @@ const Footer = () => {
                 <span className="truncate">dtwins.ch@fct.unl.pt</span>
               </li>
               <li className="flex items-center gap-2 opacity-80">
-                <PhoneIcon className="h-4 w-4 shrink-0" />
-                <span>(+351)  210 102 057</span>
-              </li>
-              <li className="flex items-center gap-2 opacity-80">
                 <MapPinIcon className="h-4 w-4 shrink-0" />
                 <span>Palácio Flor da Murta, 2770-186 Paço de Arcos, Portugal</span>
               </li>
             </ul>
-          </div>
-
-          <div className="flex flex-col gap-3 md:items-end">
-            <h4 className="font-bold text-xs uppercase tracking-widest mb-1 text-white">Parcerias</h4>
-            <div className="flex items-center gap-3 bg-white/20 p-2 rounded-lg backdrop-blur-sm">
-              <img 
-                alt="nova-fct" 
-                src={NOVA} 
-                className="h-7 w-auto object-contain" 
-              />
-              <div className="h-5 w-px bg-white/30" />
-              <img 
-                alt="logo-icon" 
-                src={ICON} 
-                className="h-7 w-auto object-contain" 
-              />
-            </div>
           </div>
         </div>
 

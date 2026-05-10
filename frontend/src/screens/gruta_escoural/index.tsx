@@ -8,8 +8,8 @@ import GRUTA4 from "@/assets/escoural/GE - Gruta do Escoural - Preview 2026.05.0
 const Escoural = () => {
   return (
     <ProjectDetail 
-      title="Segmentação para HBIMs"
-      subtitle="Integração Semântica e Enriquecimento"
+      title="Visita em realidade virtual à Gruta do Escoural"
+      subtitle="Experiências Imersivas"
       media={[
         { url: GRUTA1, type: "image" },
         { url: GRUTA2, type: "image" },
@@ -21,7 +21,7 @@ const Escoural = () => {
       ]}
       links={[
         { 
-          label: "Scripts de Teste e Projeções", 
+          label: "Modelo e aplicação da Visita Virtual", 
           url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FGE%20%2D%20Gruta%20do%20Escoural&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", 
           type: "web" 
         }

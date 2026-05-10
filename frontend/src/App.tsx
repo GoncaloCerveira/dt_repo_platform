@@ -13,6 +13,8 @@ import AzulejoProjectPage from "@/screens/ourProjects2_multi"
 import SearchPage2 from "@/screens/search";
 import Milreu from "@/screens/milreu";
 import Escoural from "./screens/gruta_escoural";
+import Deployment from "./screens/deployment";
+import Firmware from "./screens/firmaware";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -96,6 +98,8 @@ const GrutaEscouralPage = () => <PageWrapper><Escoural /></PageWrapper>;
 const SearchPage = () => <PageWrapper><SearchPage2 /></PageWrapper>;
 const SegmentationPage = () => <PageWrapper><Segmentation /></PageWrapper>;
 const MireuPage = () => <PageWrapper><Milreu /></PageWrapper>;
+const PlatformPage = () => <PageWrapper><Deployment /></PageWrapper>;
+const FirmwarePage = () => <PageWrapper><Firmware /></PageWrapper>;
 
 /* ROUTING */
 function App() {
@@ -112,6 +116,8 @@ function App() {
           <Route path="/hbim-pesquisa" element={<SearchPage />} />
           <Route path="/hbim-segmentacao" element={<SegmentationPage />} />
           <Route path="/app-milreu" element={<MireuPage />} />
+          <Route path="/plataforma_iot" element={<PlatformPage />} />
+          <Route path="/firmware_iot" element={<FirmwarePage />} />
 
           {/* Fallback */}
           <Route path="*" element={<AppMain />} />

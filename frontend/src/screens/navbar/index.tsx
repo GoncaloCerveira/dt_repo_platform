@@ -18,7 +18,9 @@ const projectsList = [
   { name: "Gruta do Escoural", path: "/gruta-escoural" },
   { name: "Pesquisa HBIM", path: "/hbim-pesquisa" },
   { name: "Segmentação HBIM", path: "/hbim-segmentacao" },
-  { name: "App Milreu", path: "/app-milreu" },
+  { name: "Reconstrução Milreu", path: "/app-milreu" },
+  { name: "Plataforma Sensores", path: "/plataforma_iot" },
+  { name: "Firmware Sensores", path: "/firmware_iot" },
 ];
 
 const Navbar = ({ selectedPage, setSelectedPage }: Props) => {

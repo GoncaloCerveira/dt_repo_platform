@@ -16,7 +16,9 @@ import {
   ChevronRightIcon,
   ChevronDownIcon,
   LinkIcon,
-  CodeBracketSquareIcon
+  CodeBracketSquareIcon,
+  CpuChipIcon,
+  GlobeAltIcon
 } from "@heroicons/react/24/outline";
 
 type ProjectLink = {
@@ -40,7 +42,7 @@ type ProjectItem = {
 const projects: ProjectItem[] = [
   {
     icon: <BuildingLibraryIcon className="h-6 w-6" />,
-    title: "Simulador Santa Clara",
+    title: "Simulador do Mosteiro de Santa Clara-a-Velha",
     description: "Simulação interativa em Unity para visualização e análise comparativa de cheias históricas no Mosteiro de Santa Clara-a-Velha.",
     link: "/santa-clara",
     tag: "Experiências Imersivas",
@@ -49,7 +51,7 @@ const projects: ProjectItem[] = [
   },
   {
     icon: <PhotoIcon className="h-6 w-6" />,
-    title: "AR e VR azulejo",
+    title: "Aplicações AR e VR para o Museu do Azulejo",
     description: "Plataformas interativas com AR para reconhecimento de monumentos e VR para exploração imersiva de ambientes históricos através de portais.",
     link: "/azulejo",
     tag: "XR Imersivo",
@@ -57,8 +59,8 @@ const projects: ProjectItem[] = [
     status: "Em Desenvolvimento"
   },
    {
-    icon: <CloudIcon className="h-6 w-6" />,
-    title: "Navegação gruta do escoural",
+    icon: <GlobeAltIcon className="h-6 w-6" />,
+    title: "Visita em realidade virtual à Gruta do Escoural",
     description: "Visualização da Gruta do Escoural baseada em captação 3D, navegável em tempo real.",
     link: "/gruta-escoural",
     tag: "Experiências Imersivas",
@@ -76,7 +78,7 @@ const projects: ProjectItem[] = [
   },
   {
     icon: <Square3Stack3DIcon className="h-6 w-6" />,
-    title: "HBIM Segmentação",
+    title: "Segmentação de modelos 3D para HBIM",
     description: "Pipeline de segmentação automática de elementos arquitetónicos em nuvens de pontos 3D.",
     link: "/hbim-segmentacao",
     tag: "Processamento de Dados",
@@ -85,13 +87,31 @@ const projects: ProjectItem[] = [
   },
   {
     icon: <DevicePhoneMobileIcon className="h-6 w-6" />,
-    title: "Aplicação Milreu",
+  title: "Reconstrução virtual das Ruínas Romanas de Milreu",
     description: "Reconstrução virtual das Ruínas Romanas de Milreu em 3D, desenvolvida no Blender a partir de referências históricas e arqueológicas.",
     link: "/app-milreu",
     tag: "Experiências Imersivas",
     accent: "from-violet-500 to-fuchsia-500",
     status: "Em Desenvolvimento"
-  }
+  },
+  {
+  icon: <CloudIcon className="h-6 w-6" />,
+  title: "Plataforma de Monitorização Ambiental para preservação Cultural",
+  description: "Plataforma cloud para monitorização ambiental de património cultural, integrando dashboards em tempo real, IoT, MQTT e análise preditiva com IA.",
+  link: "/plataforma_iot",
+  tag: "Plataforma IoT",
+  accent: "from-sky-500 to-blue-600",
+  status: "Em Desenvolvimento"
+},
+{
+  icon: <CpuChipIcon className="h-6 w-6" />,
+  title: "Firmware para a Plataforma de Monitorização",
+  description: "Infraestrutura firmware para sensores STM32WB55 e gateways ESP32-S3 com suporte OTA, BLE, MQTT e gestão remota de dispositivos IoT.",
+  link: "/firmware_iot",
+  tag: "Firmware & Sensores",
+   accent: "from-lime-500 to-green-600",
+  status: "Em Desenvolvimento"
+}
 ];
 
 const ProjectRow = ({ item }: { item: ProjectItem }) => {
@@ -250,7 +270,7 @@ const OurProjectSection = ({ setSelectedPage }: Props) => {
             <div className="mb-3 flex items-center gap-2 text-primary-500">
               <CommandLineIcon className="h-6 w-6" />
               <p className="text-xs font-bold uppercase tracking-widest">
-                Sistema de Reposotórios
+                Sistema de Repositórios
               </p>
             </div>
             <HText>CENTRO DE DOCUMENTAÇÃO</HText>
