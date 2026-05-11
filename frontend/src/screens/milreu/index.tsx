@@ -25,9 +25,14 @@ const Milreu = () => {
       ]}
       links={[
         { 
-          label: "Acesso ao modelo (.blend)", 
+          label: "Acesso ao modelo de reconstrução (.blend)", 
           url: "https://unlpt-my.sharepoint.com/shared?listurl=https%3A%2F%2Funlpt%2Dmy%2Esharepoint%2Ecom%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FMilreu&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", 
           type: "web" 
+        },
+        { 
+          label: "Aplicação de realidade aumentada das Ruínas Romanas de Milreu", 
+          url: "https://unlpt-my.sharepoint.com/shared?listurl=https%3A%2F%2Funlpt%2Dmy%2Esharepoint%2Ecom%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FAplica%C3%A7%C3%A3o%20AR%20%2D%20Ru%C3%ADnas%20Romanas%20de%20Milreu&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", 
+          type: "external" 
         }
       ]}
       setSelectedPage={function (value: SelectedPage): void {

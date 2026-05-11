@@ -15,6 +15,7 @@ import Milreu from "@/screens/milreu";
 import Escoural from "./screens/gruta_escoural";
 import Deployment from "./screens/deployment";
 import Firmware from "./screens/firmaware";
+import VisitorFlow from "./screens/visitors_flow";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -100,6 +101,7 @@ const SegmentationPage = () => <PageWrapper><Segmentation /></PageWrapper>;
 const MireuPage = () => <PageWrapper><Milreu /></PageWrapper>;
 const PlatformPage = () => <PageWrapper><Deployment /></PageWrapper>;
 const FirmwarePage = () => <PageWrapper><Firmware /></PageWrapper>;
+const VisitorPage = () => <PageWrapper><VisitorFlow /></PageWrapper>;
 
 /* ROUTING */
 function App() {
@@ -118,6 +120,7 @@ function App() {
           <Route path="/app-milreu" element={<MireuPage />} />
           <Route path="/plataforma_iot" element={<PlatformPage />} />
           <Route path="/firmware_iot" element={<FirmwarePage />} />
+          <Route path="/fluxo_visitantes" element={<VisitorPage />} />
 
           {/* Fallback */}
           <Route path="*" element={<AppMain />} />

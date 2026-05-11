@@ -30,8 +30,8 @@ type ProjectProps = {
   title: string;
   subtitle: string;
   description: string[];
-  media: MediaItem[];
-  links: ProjectLink[];
+  media?: MediaItem[]; // Tornado opcional para maior segurança
+  links?: ProjectLink[]; // Tornado opcional para maior segurança
   setSelectedPage: (value: SelectedPage) => void;
 };
 
@@ -41,20 +41,23 @@ const ProjectDetail = ({
   title,
   subtitle,
   description,
-  media,
-  links,
+  media = [], // Valor padrão vazio
+  links = [], // Valor padrão vazio
   setSelectedPage,
 }: ProjectProps) => {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Efeito para resetar vídeos quando a mídia muda
   useEffect(() => {
+    if (media.length === 0) return;
+
     const videos = document.querySelectorAll("video");
     videos.forEach((video) => {
       video.pause();
       video.currentTime = 0;
     });
-  }, [currentIndex]);
+  }, [currentIndex, media.length]);
 
   const nextMedia = () =>
     setCurrentIndex((prev) => (prev + 1) % media.length);
@@ -62,7 +65,8 @@ const ProjectDetail = ({
   const prevMedia = () =>
     setCurrentIndex((prev) => (prev - 1 + media.length) % media.length);
 
-  const current = media[currentIndex];
+  // Item de mídia atual (apenas se existir mídia)
+  const current = media.length > 0 ? media[currentIndex] : null;
 
   return (
     <div className="min-h-screen bg-gray-20">
@@ -102,95 +106,99 @@ const ProjectDetail = ({
             </motion.button>
           </div>
 
-          {/* MEDIA SLIDER */}
-          <div className="relative mb-9 group">
-            <div className="relative w-full aspect-[23/9] overflow-hidden rounded-3xl shadow-x1">
-              
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentIndex}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="w-full h-full relative"
-                >
-                  {/* BACKGROUND */}
-                  {current.type === "image" ? (
-                    <img
-                      src={current.url}
-                      className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-40"
-                    />
-                  ) : (
-                    <video
-                      src={current.url}
-                      autoPlay
-                      muted
-                      loop
-                      className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-40"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-black/40" />
-
-                  {/* FOREGROUND */}
-                  <div className="relative z-10 w-full h-full flex items-center justify-center p-4">
+          {/* MEDIA SLIDER - Só aparece se houver mídia */}
+          {media.length > 0 && current && (
+            <div className="relative mb-9 group">
+              <div className="relative w-full aspect-[23/9] overflow-hidden rounded-3xl shadow-xl">
+                
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentIndex}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="w-full h-full relative"
+                  >
+                    {/* BACKGROUND BLUR EFFECT */}
                     {current.type === "image" ? (
                       <img
                         src={current.url}
-                        alt="project media"
-                        className="max-w-full max-h-full object-contain rounded-xl shadow-2xl"
+                        alt=""
+                        className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-40"
                       />
                     ) : (
                       <video
                         src={current.url}
-                        controls
-                        className="max-w-full max-h-full object-contain rounded-xl shadow-2xl"
+                        autoPlay
+                        muted
+                        loop
+                        className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-40"
                       />
                     )}
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+                    <div className="absolute inset-0 bg-black/40" />
 
-              {/* NAV BUTTONS */}
-              {media.length > 1 && (
-                <>
-                  <button
-                    onClick={prevMedia}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all hover:scale-110 opacity-0 group-hover:opacity-100 z-20"
-                  >
-                    <ChevronLeftIcon className="h-6 w-6 text-gray-900" />
-                  </button>
+                    {/* MAIN CONTENT */}
+                    <div className="relative z-10 w-full h-full flex items-center justify-center p-4">
+                      {current.type === "image" ? (
+                        <img
+                          src={current.url}
+                          alt="project media"
+                          className="max-w-full max-h-full object-contain rounded-xl shadow-2xl"
+                        />
+                      ) : (
+                        <video
+                          src={current.url}
+                          controls
+                          className="max-w-full max-h-full object-contain rounded-xl shadow-2xl"
+                        />
+                      )}
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
 
-                  <button
-                    onClick={nextMedia}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all hover:scale-110 opacity-0 group-hover:opacity-100 z-20"
-                  >
-                    <ChevronRightIcon className="h-6 w-6 text-gray-900" />
-                  </button>
+                {/* CONTROLS - Só aparecem se houver mais de uma mídia */}
+                {media.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevMedia}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all hover:scale-110 opacity-0 group-hover:opacity-100 z-20"
+                    >
+                      <ChevronLeftIcon className="h-6 w-6 text-gray-900" />
+                    </button>
 
-                  {/* DOTS */}
-                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20">
-                    {media.map((_, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setCurrentIndex(idx)}
-                        className={`h-2 transition-all rounded-full ${
-                          idx === currentIndex
-                            ? "w-8 bg-white shadow-md"
-                            : "w-2 bg-white/40 hover:bg-white/60"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </>
-              )}
+                    <button
+                      onClick={nextMedia}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all hover:scale-110 opacity-0 group-hover:opacity-100 z-20"
+                    >
+                      <ChevronRightIcon className="h-6 w-6 text-gray-900" />
+                    </button>
+
+                    {/* PAGINATION DOTS */}
+                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+                      {media.map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setCurrentIndex(idx)}
+                          className={`h-2 transition-all rounded-full ${
+                            idx === currentIndex
+                              ? "w-8 bg-white shadow-md"
+                              : "w-2 bg-white/40 hover:bg-white/60"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
-          </div>
+          )}
 
-          {/* CONTENT */}
+          {/* CONTENT GRID */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             
-            <div className="lg:col-span-2 space-y-8">
+            {/* TEXT DESCRIPTION */}
+            <div className={`space-y-8 ${links.length === 0 ? "lg:col-span-3" : "lg:col-span-2"}`}>
               <div className="inline-flex items-center gap-3">
                 <div className="h-1 w-10 bg-primary-500 rounded-full" />
                 <h3 className="text-2xl font-bold text-gray-800">
@@ -207,36 +215,39 @@ const ProjectDetail = ({
               </div>
             </div>
 
-            <aside className="lg:sticky lg:top-32">
-              <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
-                <h3 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-                  <LinkIcon className="h-6 w-6 text-primary-500" />
-                  Documentação/Links Adicionais
-                </h3>
+            {/* SIDEBAR LINKS - Só aparece se houver links */}
+            {links.length > 0 && (
+              <aside className="lg:sticky lg:top-32">
+                <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                  <h3 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-3">
+                    <LinkIcon className="h-6 w-6 text-primary-500" />
+                    Documentação/Links
+                  </h3>
 
-                <div className="flex flex-col gap-4">
-                  {links.map((link, idx) => (
-                    <a
-                      key={idx}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 hover:bg-primary-500 hover:text-white transition-all duration-300 group"
-                    >
-                      <div className="p-2 rounded-xl bg-white text-primary-600 group-hover:bg-primary-400 group-hover:text-white transition-colors">
-                        {link.type === "document" && <DocumentTextIcon className="h-6 w-6" />}
-                        {link.type === "external" && <ArrowTopRightOnSquareIcon className="h-6 w-6" />}
-                        {link.type === "web" && <GlobeAltIcon className="h-6 w-6" />}
-                      </div>
+                  <div className="flex flex-col gap-4">
+                    {links.map((link, idx) => (
+                      <a
+                        key={idx}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 hover:bg-primary-500 hover:text-white transition-all duration-300 group"
+                      >
+                        <div className="p-2 rounded-xl bg-white text-primary-600 group-hover:bg-primary-400 group-hover:text-white transition-colors">
+                          {link.type === "document" && <DocumentTextIcon className="h-6 w-6" />}
+                          {link.type === "external" && <ArrowTopRightOnSquareIcon className="h-6 w-6" />}
+                          {link.type === "web" && <GlobeAltIcon className="h-6 w-6" />}
+                        </div>
 
-                      <span className="font-bold text-sm tracking-wide">
-                        {link.label}
-                      </span>
-                    </a>
-                  ))}
+                        <span className="font-bold text-sm tracking-wide">
+                          {link.label}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </aside>
+              </aside>
+            )}
 
           </div>
         </div>

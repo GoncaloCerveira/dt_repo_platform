@@ -21,6 +21,7 @@ const projectsList = [
   { name: "Reconstrução Milreu", path: "/app-milreu" },
   { name: "Plataforma Sensores", path: "/plataforma_iot" },
   { name: "Firmware Sensores", path: "/firmware_iot" },
+  { name: "Fluxo de Visitantes - Jerónimos", path: "/fluxo_visitantes" },
 ];
 
 const Navbar = ({ selectedPage, setSelectedPage }: Props) => {

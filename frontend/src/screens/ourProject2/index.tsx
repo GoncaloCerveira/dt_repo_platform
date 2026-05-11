@@ -18,7 +18,8 @@ import {
   LinkIcon,
   CodeBracketSquareIcon,
   CpuChipIcon,
-  GlobeAltIcon
+  GlobeAltIcon,
+  UsersIcon
 } from "@heroicons/react/24/outline";
 
 type ProjectLink = {
@@ -111,7 +112,16 @@ const projects: ProjectItem[] = [
   tag: "Firmware & Sensores",
    accent: "from-lime-500 to-green-600",
   status: "Em Desenvolvimento"
-}
+},
+{
+  icon: <UsersIcon className="h-6 w-6" />,
+  title: "Monitorização de Fluxo e Ocupação - Jerónimos",
+  description: "Sistema de contagem de visitantes e mapas de calor anónimos utilizando sensores ToF e mmWave com arquitetura IoT distribuída (STM32/ESP32).",
+  link: "/fluxo_visitantes",
+  tag: "IoT & Edge Computing",
+   accent: "from-orange-500 to-red-500",
+  status: "Em Desenvolvimento"
+},
 ];
 
 const ProjectRow = ({ item }: { item: ProjectItem }) => {
