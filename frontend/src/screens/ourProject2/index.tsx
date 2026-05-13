@@ -341,7 +341,7 @@ const OurProjectSection = ({ setSelectedPage }: Props) => {
             </div>
           </div>
           <a
-            href="https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments"
+            href=""
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block w-full md:w-auto px-6 py-3 bg-gray-900 text-white rounded-xl font-bold text-sm hover:bg-gray-800 transition-colors text-center"

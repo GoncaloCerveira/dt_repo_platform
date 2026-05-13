@@ -22,7 +22,7 @@ const Firmware = () => {
       links={[
         {
           label: "Repositório Principal (Código e Documentação)",
-          url: "https://github.com/nmc-fct/DT4SST-CH.PT/tree/main/firmware/Sources/bin_files",
+          url: "",
           type: "web",
         },
       ]}

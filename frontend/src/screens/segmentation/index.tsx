@@ -22,12 +22,12 @@ const Segmentation = () => {
       links={[
         { 
           label: "Repositório Principal (Pipeline e Documentação)", 
-          url: "https://github.com/GoncaloCerveira/Pipeline-of-the-project-DT4SST-CH.PT", 
+          url: "", 
           type: "web" 
         },
         { 
           label: "Scripts de Teste e Projeções", 
-          url: "https://github.com/GoncaloCerveira/DT4SST-CH.Projections", 
+          url: "", 
           type: "web" 
         }
       ]}

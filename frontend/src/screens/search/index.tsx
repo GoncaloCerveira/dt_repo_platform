@@ -20,7 +20,7 @@ const Search = () => {
       links={[
         { 
           label: "Repositório Principal (Pipeline e Documentação)", 
-          url: "https://github.com/tjfernandes/DT4SST-CH.BIM_extraction_and_search", 
+          url: "", 
           type: "web" 
         }
       ]}
