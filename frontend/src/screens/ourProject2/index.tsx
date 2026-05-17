@@ -19,8 +19,18 @@ import {
   CodeBracketSquareIcon,
   CpuChipIcon,
   GlobeAltIcon,
-  UsersIcon
+  UsersIcon,
+  BuildingOffice2Icon,
+  CubeIcon
 } from "@heroicons/react/24/outline";
+
+import MJ from "@/assets/pilot_models/mj.jpeg";
+import MA from "@/assets/pilot_models/ma.jpg";
+import MNAZ from "@/assets/pilot_models/mnaz.jpg";
+import RRM from "@/assets/pilot_models/rrm.jpg";
+import GE from "@/assets/pilot_models/gruta_do_escoural.jpg";
+import MSCV from "@/assets/pilot_models/mosteiro-santa-clara-a-velha.jpg";
+import HBIM from "@/assets/pilot_models/hbim.jpg";
 
 type ProjectLink = {
   label: string;
@@ -40,7 +50,60 @@ type ProjectItem = {
   status: "Finalizado" | "Em Desenvolvimento" | "Pesquisa";
 };
 
+type PilotSite = {
+  name: string;
+  location: string;
+  url: string;
+  type: string;
+  image: string;
+};
+
 const projects: ProjectItem[] = [
+  {
+    icon: <CloudIcon className="h-6 w-6" />,
+    title: "Plataforma de Monitorização Ambiental para preservação Cultural",
+    description: "Plataforma cloud para monitorização ambiental de património cultural, integrando dashboards em tempo real, IoT, MQTT e análise preditiva com IA.",
+    link: "/plataforma_iot",
+    tag: "Plataforma IoT",
+    accent: "from-sky-500 to-blue-600",
+    status: "Em Desenvolvimento"
+  },
+  {
+    icon: <CpuChipIcon className="h-6 w-6" />,
+    title: "Firmware para a Plataforma de Monitorização",
+    description: "Infraestrutura firmware para sensores STM32WB55 e gateways ESP32-S3 com suporte OTA, BLE, MQTT e gestão remota de dispositivos IoT.",
+    link: "/firmware_iot",
+    tag: "Firmware & Sensores",
+    accent: "from-lime-500 to-green-600",
+    status: "Em Desenvolvimento"
+  },
+  {
+    icon: <UsersIcon className="h-6 w-6" />,
+    title: "Monitorização de Fluxo e Ocupação - Jerónimos",
+    description: "Sistema de contagem de visitantes e mapas de calor anónimos utilizando sensores ToF e mmWave com arquitetura IoT distribuída (STM32/ESP32).",
+    link: "/fluxo_visitantes",
+    tag: "IoT & Edge Computing",
+    accent: "from-orange-500 to-red-500",
+    status: "Em Desenvolvimento"
+  },
+  {
+    icon: <Square3Stack3DIcon className="h-6 w-6" />,
+    title: "Segmentação de modelos 3D para HBIM",
+    description: "Pipeline de segmentação automática de elementos arquitetónicos em nuvens de pontos 3D.",
+    link: "/hbim-segmentacao",
+    tag: "Processamento de Dados",
+    accent: "from-rose-500 to-pink-500",
+    status: "Em Desenvolvimento"
+  },
+  {
+    icon: <MagnifyingGlassIcon className="h-6 w-6" />,
+    title: "HBIM Pesquisa",
+    description: "Metodologias de pesquisa avançada em Heritage Building Information Modeling.",
+    link: "/hbim-pesquisa",
+    tag: "Processamento de Dados",
+    accent: "from-orange-500 to-amber-500",
+    status: "Em Desenvolvimento"
+  },
   {
     icon: <BuildingLibraryIcon className="h-6 w-6" />,
     title: "Simulador do Mosteiro de Santa Clara-a-Velha",
@@ -69,24 +132,6 @@ const projects: ProjectItem[] = [
     status: "Em Desenvolvimento"
   },
   {
-    icon: <MagnifyingGlassIcon className="h-6 w-6" />,
-    title: "HBIM Pesquisa",
-    description: "Metodologias de pesquisa avançada em Heritage Building Information Modeling.",
-    link: "/hbim-pesquisa",
-    tag: "Processamento de Dados",
-    accent: "from-orange-500 to-amber-500",
-    status: "Em Desenvolvimento"
-  },
-  {
-    icon: <Square3Stack3DIcon className="h-6 w-6" />,
-    title: "Segmentação de modelos 3D para HBIM",
-    description: "Pipeline de segmentação automática de elementos arquitetónicos em nuvens de pontos 3D.",
-    link: "/hbim-segmentacao",
-    tag: "Processamento de Dados",
-    accent: "from-rose-500 to-pink-500",
-    status: "Em Desenvolvimento"
-  },
-  {
     icon: <DevicePhoneMobileIcon className="h-6 w-6" />,
   title: "Reconstrução virtual das Ruínas Romanas de Milreu",
     description: "Reconstrução virtual das Ruínas Romanas de Milreu em 3D, desenvolvida no Blender a partir de referências históricas e arqueológicas.",
@@ -95,33 +140,6 @@ const projects: ProjectItem[] = [
     accent: "from-violet-500 to-fuchsia-500",
     status: "Em Desenvolvimento"
   },
-  {
-  icon: <CloudIcon className="h-6 w-6" />,
-  title: "Plataforma de Monitorização Ambiental para preservação Cultural",
-  description: "Plataforma cloud para monitorização ambiental de património cultural, integrando dashboards em tempo real, IoT, MQTT e análise preditiva com IA.",
-  link: "/plataforma_iot",
-  tag: "Plataforma IoT",
-  accent: "from-sky-500 to-blue-600",
-  status: "Em Desenvolvimento"
-},
-{
-  icon: <CpuChipIcon className="h-6 w-6" />,
-  title: "Firmware para a Plataforma de Monitorização",
-  description: "Infraestrutura firmware para sensores STM32WB55 e gateways ESP32-S3 com suporte OTA, BLE, MQTT e gestão remota de dispositivos IoT.",
-  link: "/firmware_iot",
-  tag: "Firmware & Sensores",
-   accent: "from-lime-500 to-green-600",
-  status: "Em Desenvolvimento"
-},
-{
-  icon: <UsersIcon className="h-6 w-6" />,
-  title: "Monitorização de Fluxo e Ocupação - Jerónimos",
-  description: "Sistema de contagem de visitantes e mapas de calor anónimos utilizando sensores ToF e mmWave com arquitetura IoT distribuída (STM32/ESP32).",
-  link: "/fluxo_visitantes",
-  tag: "IoT & Edge Computing",
-   accent: "from-orange-500 to-red-500",
-  status: "Em Desenvolvimento"
-},
 ];
 
 const ProjectRow = ({ item }: { item: ProjectItem }) => {
@@ -250,6 +268,152 @@ const ProjectRow = ({ item }: { item: ProjectItem }) => {
   );
 };
 
+const pilotSites: PilotSite[] = [
+  {
+    name: "Mosteiro dos Jerónimos", location: "Lisboa", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FMJ&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelos & Mesh",
+    image: MJ
+  },
+  {
+    name: "Mosteiro de Alcobaça", location: "Alcobaça", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FMA&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelos & Mesh",
+    image: MA
+  },
+  {
+    name: "Museu Nacional do Azulejo", location: "Lisboa", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FMNAz&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelos & Mesh",
+    image: MNAZ
+  },
+  {
+    name: "Ruínas Romanas de Milreu", location: "Faro", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FRRM&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelos & Mesh",
+    image: RRM
+  },
+  {
+    name: "Gruta do Escoural", location: "Alentejo", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FGE&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelo Completo",
+    image: GE
+  },
+  {
+    name: "Santa Clara-a-Velha (Modelo)", location: "Coimbra", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FMSCV&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelo Completo",
+    image: MSCV
+  },
+  {
+    name: "Santa Clara-a-Velha (HBIM)", location: "Coimbra", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FHBIM%20Santa%20Clara&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "HBIM Data",
+    image: HBIM
+  },
+];
+
+const PilotModelSlider = () => {
+  return (
+    <div className="group mt-20 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl">
+      {/* HEADER */}
+      <div className="relative overflow-hidden border-b border-[#77945D]/20 bg-gradient-to-r from-[#77945D] via-[#88a36f] to-[#77945D] p-8">
+        {/* glow accents */}
+        <div className="absolute top-0 right-0 h-52 w-52 rounded-full bg-white/10 blur-3xl" />
+        <div className="absolute bottom-0 left-0 h-32 w-32 rounded-full bg-black/10 blur-2xl" />
+
+        <div className="relative flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+          {/* LEFT */}
+          <div>
+            <div className="mb-3 flex items-center gap-2 text-white/90">
+              <CubeIcon className="h-5 w-5" />
+              <span className="text-[10px] font-black uppercase tracking-[0.3em]">
+                Digital Twin Showcase
+              </span>
+            </div>
+
+            <h3 className="text-3xl font-black tracking-tight text-white">
+              Sítios-Piloto: Modelos 3D & HBIM
+            </h3>
+
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/80">
+              Levantamentos geométricos, malhas tridimensionais e dados HBIM
+              produzidos para preservação, análise e exploração digital do
+              património cultural.
+            </p>
+          </div>
+
+          {/* RIGHT */}
+          <div className="flex items-center gap-6 rounded-xl border border-white/20 bg-white/10 px-5 py-4 backdrop-blur-md">
+            <div className="text-center">
+              <p className="text-2xl font-black text-white">
+                {pilotSites.length}
+              </p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">
+                Assets
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* SLIDER */}
+      <div className="relative bg-[#fafafa]">
+        <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto p-8 no-scrollbar">
+          {pilotSites.map((site, idx) => (
+            <motion.a
+              key={idx}
+              href={site.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.25 }}
+              className="group/card relative flex-shrink-0 snap-center"
+            >
+              <div className="relative aspect-[3/4] w-72 overflow-hidden rounded-2xl shadow-md transition-all duration-300 group-hover/card:shadow-xl">
+                {/* IMAGE */}
+                <img
+                  src={site.image}
+                  alt={site.name}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover/card:scale-105"
+                />
+
+                {/* overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/10" />
+                <div className="absolute inset-0 bg-[#77945D]/10 opacity-0 transition-opacity duration-500 group-hover/card:opacity-100" />
+
+                {/* TOP */}
+                <div className="absolute left-0 right-0 top-0 flex items-start justify-between p-6">
+                  <div className="rounded-xl border border-white/20 bg-white/10 p-3 backdrop-blur-md">
+                    <Square3Stack3DIcon className="h-6 w-6 text-white" />
+                  </div>
+
+                  <div className="rounded-full border border-white/20 bg-black/20 p-2 backdrop-blur-sm">
+                    <ArrowTopRightOnSquareIcon className="h-4 w-4 text-white" />
+                  </div>
+                </div>
+
+                {/* CONTENT */}
+                <div className="absolute bottom-0 left-0 right-0 p-7">
+                  <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[9px] font-black uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+                    {site.type}
+                  </span>
+
+                  <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.25em] text-white/60">
+                    {site.location}
+                  </p>
+
+                  <h4 className="mt-2 text-2xl font-black leading-tight text-white">
+                    {site.name}
+                  </h4>
+
+                  <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-5">
+                    <span className="text-[10px] font-black uppercase tracking-[0.25em] text-white/60 transition-colors duration-300 group-hover/card:text-white">
+                      Explorar Modelo
+                    </span>
+
+                    <div className="flex items-center gap-2 text-white">
+                      <span className="text-xs font-bold">Open</span>
+
+                      <ChevronRightIcon className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-1" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.a>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 /* ================= MAIN COMPONENT ================= */
 
 type Props = {
@@ -325,6 +489,8 @@ const OurProjectSection = ({ setSelectedPage }: Props) => {
           </div>
         </motion.div>
 
+        <PilotModelSlider />
+
         {/* FOOTER GITHUB */}
         <motion.div 
           initial={{ opacity: 0 }}
@@ -341,12 +507,12 @@ const OurProjectSection = ({ setSelectedPage }: Props) => {
             </div>
           </div>
           <a
-            href=""
+            href="https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block w-full md:w-auto px-6 py-3 bg-gray-900 text-white rounded-xl font-bold text-sm hover:bg-gray-800 transition-colors text-center"
           >
-            Ver Todos no OneDrive
+            Ver Todos os Projetos no OneDrive
           </a>
         </motion.div>
       </motion.div>

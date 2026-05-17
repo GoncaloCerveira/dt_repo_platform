@@ -30,8 +30,8 @@ type ProjectProps = {
   title: string;
   subtitle: string;
   description: string[];
-  media?: MediaItem[]; // Tornado opcional para maior segurança
-  links?: ProjectLink[]; // Tornado opcional para maior segurança
+  media?: MediaItem[]; 
+  links?: ProjectLink[]; 
   setSelectedPage: (value: SelectedPage) => void;
 };
 
@@ -41,14 +41,13 @@ const ProjectDetail = ({
   title,
   subtitle,
   description,
-  media = [], // Valor padrão vazio
-  links = [], // Valor padrão vazio
+  media = [],
+  links = [], 
   setSelectedPage,
 }: ProjectProps) => {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Efeito para resetar vídeos quando a mídia muda
   useEffect(() => {
     if (media.length === 0) return;
 
@@ -65,7 +64,7 @@ const ProjectDetail = ({
   const prevMedia = () =>
     setCurrentIndex((prev) => (prev - 1 + media.length) % media.length);
 
-  // Item de mídia atual (apenas se existir mídia)
+  // MEDIA CONTENT
   const current = media.length > 0 ? media[currentIndex] : null;
 
   return (
@@ -106,7 +105,7 @@ const ProjectDetail = ({
             </motion.button>
           </div>
 
-          {/* MEDIA SLIDER - Só aparece se houver mídia */}
+          {/* MEDIA SLIDER */}
           {media.length > 0 && current && (
             <div className="relative mb-9 group">
               <div className="relative w-full aspect-[23/9] overflow-hidden rounded-3xl shadow-xl">
@@ -215,7 +214,7 @@ const ProjectDetail = ({
               </div>
             </div>
 
-            {/* SIDEBAR LINKS - Só aparece se houver links */}
+            {/* SIDEBAR LINKS */}
             {links.length > 0 && (
               <aside className="lg:sticky lg:top-32">
                 <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">

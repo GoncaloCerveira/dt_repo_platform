@@ -1,6 +1,7 @@
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { SelectedPage } from "@/components/types";
 import NOVA from "@/assets/NOVA.png";
+import UEVORA from "@/assets/logotipos/UEvora cor.png"
 import PCultural from "@/assets/logotipos/PCultural_L250px.png"
 import MMP from "@/assets/logotipos/Museus_monumentos_250px.png";
 import PRR from "@/assets/logotipos/prr_L250px.png";
@@ -20,6 +21,7 @@ const Home = ({ setSelectedPage }: Props) => {
   // Lista de parceiros para mapeamento limpo
   const partners = [
     { src: NOVA, alt: "NOVA FCT" },
+    {src: UEVORA, alt:"UEVORA"},
     { src: PCultural, alt: "Património Cultural" },
     { src: MMP, alt: "Museus e Monumentos de Portugal" },
     { src: ARTE, alt: "ARTE" },

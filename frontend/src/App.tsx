@@ -16,6 +16,7 @@ import Escoural from "./screens/gruta_escoural";
 import Deployment from "./screens/deployment";
 import Firmware from "./screens/firmaware";
 import VisitorFlow from "./screens/visitors_flow";
+import Models3D from "./screens/3d_models";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -102,6 +103,7 @@ const MireuPage = () => <PageWrapper><Milreu /></PageWrapper>;
 const PlatformPage = () => <PageWrapper><Deployment /></PageWrapper>;
 const FirmwarePage = () => <PageWrapper><Firmware /></PageWrapper>;
 const VisitorPage = () => <PageWrapper><VisitorFlow /></PageWrapper>;
+const ModelsPage = () => <PageWrapper><Models3D /></PageWrapper>;
 
 /* ROUTING */
 function App() {

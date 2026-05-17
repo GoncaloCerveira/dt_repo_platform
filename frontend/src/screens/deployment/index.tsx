@@ -24,7 +24,7 @@ const Deployment = () => {
       links={[
         {
           label: "Repositório GitHub (Código e Documentação)",
-          url: "",
+          url: "https://github.com/nmc-fct/DT4SST-CH.PT/tree/main/deployment/data01-main",
           type: "web",
         },
       ]}
