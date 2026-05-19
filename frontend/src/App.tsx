@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+// 1. Swap BrowserRouter for HashRouter in your imports
+import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import { SelectedPage } from "@/components/types";
@@ -17,6 +18,10 @@ import Deployment from "./screens/deployment";
 import Firmware from "./screens/firmaware";
 import VisitorFlow from "./screens/visitors_flow";
 import Models3D from "./screens/3d_models";
+
+// Authentication Imports
+import Login from "@/screens/login_page";
+import { ProtectedRoute } from "@/store/ProtectedRoute";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -109,25 +114,32 @@ const ModelsPage = () => <PageWrapper><Models3D /></PageWrapper>;
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      {/* 2. Replace BrowserRouter with HashRouter */}
+      <HashRouter>
         <ScrollToTop />
         
         <Routes>
-          <Route path="/" element={<AppMain />} />
-          <Route path="/santa-clara" element={<SantaClaraPage />} />
-          <Route path="/azulejo" element={<AzulejoPage />} />
-          <Route path="/gruta-escoural" element={<GrutaEscouralPage />} />
-          <Route path="/hbim-pesquisa" element={<SearchPage />} />
-          <Route path="/hbim-segmentacao" element={<SegmentationPage />} />
-          <Route path="/app-milreu" element={<MireuPage />} />
-          <Route path="/plataforma_iot" element={<PlatformPage />} />
-          <Route path="/firmware_iot" element={<FirmwarePage />} />
-          <Route path="/fluxo_visitantes" element={<VisitorPage />} />
+          {/* Public Route */}
+          <Route path="/login" element={<Login />} />
 
-          {/* Fallback */}
+          {/* All Protected Routes wrapped together */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/" element={<AppMain />} />
+            <Route path="/santa-clara" element={<SantaClaraPage />} />
+            <Route path="/azulejo" element={<AzulejoPage />} />
+            <Route path="/gruta-escoural" element={<GrutaEscouralPage />} />
+            <Route path="/hbim-pesquisa" element={<SearchPage />} />
+            <Route path="/hbim-segmentacao" element={<SegmentationPage />} />
+            <Route path="/app-milreu" element={<MireuPage />} />
+            <Route path="/plataforma_iot" element={<PlatformPage />} />
+            <Route path="/firmware_iot" element={<FirmwarePage />} />
+            <Route path="/fluxo_visitantes" element={<VisitorPage />} />
+          </Route>
+
+          {/* Safe Fallback outside of protected wrapper */}
           <Route path="*" element={<AppMain />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   );
 }
