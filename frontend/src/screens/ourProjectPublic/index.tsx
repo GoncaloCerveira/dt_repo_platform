@@ -32,7 +32,7 @@ const boards = [
     image: MNAZ,
     title: "Museu Nacional do Azulejo",
     description: "O Museu Nacional do Azulejo, em Lisboa, é um dos mais importantes museus de Portugal, pela sua colecção singular, dedicada ao azulejo.",
-    link: "",
+    link: "/azulejo",
     tag: "Piloto 02",
     accent: "from-indigo-500 to-purple-500"
   },
@@ -41,7 +41,7 @@ const boards = [
     image: MA,
     title: "Real Mosteiro de Santa Maria de Alcobaça",
     description: "É a primeira obra plenamente gótica erguida em solo português, tendo sido começada a sua construção em 1178 pelos monges da Ordem de Cister.",
-    link: "",
+    link: "/alcobaca",
     tag: "Piloto 03",
     accent: "from-emerald-500 to-teal-500"
   },
@@ -50,7 +50,7 @@ const boards = [
     image: RRM,
     title: "Ruínas Romanas de Milreu",
     description: "As Ruínas romanas de Milreu ou Ruínas de Estói são um importante conjunto arqueológico em Estói, no município de Faro, em Portugal.",
-    link: "",
+    link: "/ruinas_milreu",
     tag: "Piloto 04",
     accent: "from-orange-500 to-amber-500"
   },
@@ -59,7 +59,7 @@ const boards = [
     image: MJ,
     title: "Mosteiro dos Jerónimos",
     description: "Situa-se na freguesia de Belém, na cidade e concelho de Lisboa.",
-    link: "/hbim-segmentacao",
+    link: "/mosteiro_jeronimos",
     tag: "Piloto 05",
     accent: "from-rose-500 to-pink-500"
   },
@@ -68,7 +68,7 @@ const boards = [
     image: GE,
     title: "Gruta do Escoural",
     description: "Está classificada como Monumento Nacional desde 1963.",
-    link: "",
+    link: "/gruta_escoural",
     tag: "Piloto 06",
     accent: "from-violet-500 to-fuchsia-500"
   }

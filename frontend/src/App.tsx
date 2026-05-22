@@ -16,7 +16,6 @@ import Escoural from "./screens/gruta_escoural";
 import Deployment from "./screens/deployment";
 import Firmware from "./screens/firmaware";
 import VisitorFlow from "./screens/visitors_flow";
-import Models3D from "./screens/3d_models";
 import Model from "./screens/model";
 
 // Authentication Imports
@@ -26,6 +25,12 @@ import { ProtectedRoute } from "@/store/ProtectedRoute";
 // Public Pages
 import NavbarPublic from "./screens/navbar_public";
 import OurProjectSectionPublic from "./screens/ourProjectPublic";
+import SantaClaraPub from "./screens/pilotPublicPages/indexSantaPublic";
+import AzuelejoPublicPub from "./screens/pilotPublicPages/indexAzulejoPublic";
+import AlcobacaPublicPub from "./screens/pilotPublicPages/indexAlcobacaPublic";
+import RuinasPublicPub from "./screens/pilotPublicPages/indexRuinasPublic";
+import MosteiroPublicPub from "./screens/pilotPublicPages/indexMosteiroPublic";
+import GrutaPublicPub from "./screens/pilotPublicPages/indexGrutaPublic";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -70,7 +75,25 @@ function PublicLanding() {
   );
 }
 
-const SantaClaraPublic = () => <PageWrapper><SantaClara /></PageWrapper>;
+const PageWrapperPublic = ({ children }: { children: React.ReactNode }) => (
+  <div className="app bg-gray-20">
+    <NavbarPublic 
+      selectedPage={SelectedPage.ModelDemo} 
+      setSelectedPage={() => {}} 
+    />
+    <div className="pt-20">
+      {children}
+    </div>
+    <Footer />
+  </div>
+);
+
+const SantaClaraPublic = () => <PageWrapperPublic><SantaClaraPub /></PageWrapperPublic>;
+const AzulejoPublic = () => <PageWrapperPublic><AzuelejoPublicPub /></PageWrapperPublic>;
+const AlcobacaPublic = () => <PageWrapperPublic><AlcobacaPublicPub /></PageWrapperPublic>;
+const RuinasPublic = () => <PageWrapperPublic><RuinasPublicPub /></PageWrapperPublic>;
+const MosteiroPublic = () => <PageWrapperPublic><MosteiroPublicPub /></PageWrapperPublic>;
+const GrutaPublic = () => <PageWrapperPublic><GrutaPublicPub /></PageWrapperPublic>;
 
 /* APP MAIN (Repository Page) */
 function AppMain() {
@@ -160,6 +183,11 @@ function App() {
           <Route path="/" element={<PublicLanding />} />
           <Route path="/login" element={<Login />} />
           <Route path="/santa-clara" element={<SantaClaraPublic />} />
+          <Route path="/azulejo" element={<AzulejoPublic />} />
+          <Route path="/alcobaca" element={<AlcobacaPublic />} />
+          <Route path="/ruinas_milreu" element={<RuinasPublic />} />
+          <Route path="/mosteiro_jeronimos" element={<MosteiroPublic />} />
+          <Route path="/gruta_escoural" element={<GrutaPublic />} />
 
           {/* PROTECTED REPOSITORY ROUTES */}
           <Route element={<ProtectedRoute />}>
