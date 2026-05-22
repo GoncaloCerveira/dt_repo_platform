@@ -86,7 +86,7 @@ const Board = ({
         </div>
 
         <p className="mb-3 flex-grow text-xs text-gray-500 leading-relaxed line-clamp-3">
-          {description}
+          {/* description */}
         </p>
 
         {/* Action Button */}

@@ -23,7 +23,7 @@ const boards = [
     image: MSCV,
     title: "Mosteiro de Santa Clara-a-Velha",
     description: "Representa um momento de experimentação do estilo gótico no país.",
-    link: "",
+    link: "/santa-clara",
     tag: "Piloto 01",
     accent: "from-blue-500 to-cyan-400"
   },

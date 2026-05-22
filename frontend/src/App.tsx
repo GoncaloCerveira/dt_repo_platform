@@ -70,6 +70,8 @@ function PublicLanding() {
   );
 }
 
+const SantaClaraPublic = () => <PageWrapper><SantaClara /></PageWrapper>;
+
 /* APP MAIN (Repository Page) */
 function AppMain() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.Home);
@@ -157,6 +159,7 @@ function App() {
           {/* PUBLIC ROUTES (Not Safe) */}
           <Route path="/" element={<PublicLanding />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/santa-clara" element={<SantaClaraPublic />} />
 
           {/* PROTECTED REPOSITORY ROUTES */}
           <Route element={<ProtectedRoute />}>
