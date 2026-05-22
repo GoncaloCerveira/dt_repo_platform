@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-// 1. Swap BrowserRouter for HashRouter in your imports
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import { SelectedPage } from "@/components/types";
 import Navbar from "@/screens/navbar";
 import Home from "@/screens/home";
-import OurProjectSection from "@/screens/ourProject2"; 
+import OurProjectSection from "@/screens/ourProject"; 
 import Footer from "@/screens/footer";
 import SantaClara from "@/screens/santa_clara";
 import Segmentation from "@/screens/segmentation";
@@ -18,10 +17,15 @@ import Deployment from "./screens/deployment";
 import Firmware from "./screens/firmaware";
 import VisitorFlow from "./screens/visitors_flow";
 import Models3D from "./screens/3d_models";
+import Model from "./screens/model";
 
 // Authentication Imports
 import Login from "@/screens/login_page";
 import { ProtectedRoute } from "@/store/ProtectedRoute";
+
+// Public Pages
+import NavbarPublic from "./screens/navbar_public";
+import OurProjectSectionPublic from "./screens/ourProjectPublic";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -33,7 +37,40 @@ const ScrollToTop = () => {
   return null;
 };
 
-/* APP MAIN */
+/* PUBLIC LANDING */
+function PublicLanding() {
+  const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.Home);
+  const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        setIsTopOfPage(true);
+        setSelectedPage(SelectedPage.Home);
+      } else {
+        setIsTopOfPage(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div className="app bg-gray-20">
+      <NavbarPublic
+        selectedPage={selectedPage}
+        setSelectedPage={setSelectedPage}
+      />
+      <Home setSelectedPage={setSelectedPage} />
+      <Model setSelectedPage={setSelectedPage}/>
+      <OurProjectSectionPublic setSelectedPage={setSelectedPage}/>
+      <Footer />
+    </div>
+  );
+}
+
+/* APP MAIN (Repository Page) */
 function AppMain() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.Home);
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
@@ -108,36 +145,36 @@ const MireuPage = () => <PageWrapper><Milreu /></PageWrapper>;
 const PlatformPage = () => <PageWrapper><Deployment /></PageWrapper>;
 const FirmwarePage = () => <PageWrapper><Firmware /></PageWrapper>;
 const VisitorPage = () => <PageWrapper><VisitorFlow /></PageWrapper>;
-const ModelsPage = () => <PageWrapper><Models3D /></PageWrapper>;
 
-/* ROUTING */
+/* ROUTING CONFIGURATION */
 function App() {
   return (
     <Provider store={store}>
-      {/* 2. Replace BrowserRouter with HashRouter */}
       <HashRouter>
         <ScrollToTop />
         
         <Routes>
-          {/* Public Route */}
+          {/* PUBLIC ROUTES (Not Safe) */}
+          <Route path="/" element={<PublicLanding />} />
           <Route path="/login" element={<Login />} />
 
-          {/* All Protected Routes wrapped together */}
+          {/* PROTECTED REPOSITORY ROUTES */}
           <Route element={<ProtectedRoute />}>
-            <Route path="/" element={<AppMain />} />
-            <Route path="/santa-clara" element={<SantaClaraPage />} />
-            <Route path="/azulejo" element={<AzulejoPage />} />
-            <Route path="/gruta-escoural" element={<GrutaEscouralPage />} />
-            <Route path="/hbim-pesquisa" element={<SearchPage />} />
-            <Route path="/hbim-segmentacao" element={<SegmentationPage />} />
-            <Route path="/app-milreu" element={<MireuPage />} />
-            <Route path="/plataforma_iot" element={<PlatformPage />} />
-            <Route path="/firmware_iot" element={<FirmwarePage />} />
-            <Route path="/fluxo_visitantes" element={<VisitorPage />} />
+            <Route path="/repository" element={<AppMain />} />
+            
+            <Route path="/repository/santa-clara" element={<SantaClaraPage />} />
+            <Route path="/repository/azulejo" element={<AzulejoPage />} />
+            <Route path="/repository/gruta-escoural" element={<GrutaEscouralPage />} />
+            <Route path="/repository/hbim-pesquisa" element={<SearchPage />} />
+            <Route path="/repository/hbim-segmentacao" element={<SegmentationPage />} />
+            <Route path="/repository/app-milreu" element={<MireuPage />} />
+            <Route path="/repository/plataforma_iot" element={<PlatformPage />} />
+            <Route path="/repository/firmware_iot" element={<FirmwarePage />} />
+            <Route path="/repository/fluxo_visitantes" element={<VisitorPage />} />
           </Route>
 
-          {/* Safe Fallback outside of protected wrapper */}
-          <Route path="*" element={<AppMain />} />
+          {/* SAFE FALLBACK */}
+          <Route path="*" element={<PublicLanding />} />
         </Routes>
       </HashRouter>
     </Provider>

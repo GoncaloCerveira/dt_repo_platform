@@ -13,15 +13,15 @@ type Props = {
 };
 
 const projectsList = [
-  { name: "Santa Clara-a-Velha", path: "/santa-clara" },
-  { name: "Museu Nacional do Azulejo", path: "/azulejo" },
-  { name: "Gruta do Escoural", path: "/gruta-escoural" },
-  { name: "Pesquisa HBIM", path: "/hbim-pesquisa" },
-  { name: "Segmentação HBIM", path: "/hbim-segmentacao" },
-  { name: "Reconstrução Milreu", path: "/app-milreu" },
-  { name: "Plataforma Sensores", path: "/plataforma_iot" },
-  { name: "Firmware Sensores", path: "/firmware_iot" },
-  { name: "Fluxo de Visitantes - Jerónimos", path: "/fluxo_visitantes" },
+  { name: "Santa Clara-a-Velha", path: "/repository/santa-clara" },
+  { name: "Museu Nacional do Azulejo", path: "/repository/azulejo" },
+  { name: "Gruta do Escoural", path: "/repository/gruta-escoural" },
+  { name: "Pesquisa HBIM", path: "/repository/hbim-pesquisa" },
+  { name: "Segmentação HBIM", path: "/repository/hbim-segmentacao" },
+  { name: "Reconstrução Milreu", path: "/repository/app-milreu" },
+  { name: "Plataforma Sensores", path: "/repository/plataforma_iot" },
+  { name: "Firmware Sensores", path: "/repository/firmware_iot" },
+  { name: "Fluxo de Visitantes - Jerónimos", path: "/repository/fluxo_visitantes" },
 ];
 
 const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
@@ -32,7 +32,7 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  const isHomePage = location.pathname === "/";
+  const isHomePage = location.pathname === "/repository";
 
   const navbarBackground = "bg-primary-100 drop-shadow";
 

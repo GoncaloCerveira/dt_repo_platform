@@ -1,6 +1,12 @@
 import ActionButton from "@/components/ActionButton";
 import NOVA from "@/assets/NOVA.png";
-import CAMPUS from "@/assets/campusfct.png"
+import CAMPUS from "@/assets/campusfct.png";
+import EVORA from "@/assets/logo_vertical_branco.png";
+import CAMPUSEV from "@/assets/campus_evora.jpg";
+import IP from "@/assets/Logo_PatrimonioCultural.png";
+import CAMPUSIP from "@/assets/DSC_1026_Most-Salzedas-scaled.jpg";
+import MMP from "@/assets/Logo_MMP.png";
+import CAMPUSMMP from "@/assets/Museus-e-monumentos.jpg";
 import HText from "@/components/HText";
 import { SelectedPage } from "@/components/types";
 import { UserGroupIcon } from "@heroicons/react/24/solid";
@@ -58,9 +64,9 @@ const PartnerCard = ({ img, bgImg, name, isCoordinator }: PartnerCardProps) => (
 
 const partners = [
   { img: NOVA, bgImg: CAMPUS, name: "Universidade Nova de Lisboa" },
-  { img: NOVA, bgImg: CAMPUS, name: "Universidade de Évora" },
-  { img: NOVA, bgImg: CAMPUS, name: "Património Cultural, I.P." },
-  { img: NOVA, bgImg: CAMPUS, name: "Museus e Monumentos<br />de Portugal, E.P.E."},
+  { img: EVORA, bgImg: CAMPUSEV, name: "Universidade de Évora" },
+  { img: IP, bgImg: CAMPUSIP, name: "Património Cultural, I.P." },
+  { img: MMP, bgImg: CAMPUSMMP, name: "Museus e Monumentos<br />de Portugal, E.P.E."},
 ];
 
 const container = {
@@ -76,7 +82,7 @@ type Props = {
 
 const Model = ({ setSelectedPage }: Props) => {
   return (
-    <section id="model" className="w-full bg-gray-20 pt-12 md:pt-14">
+    <section id="ourproject" className="w-full bg-gray-20 pt-12 md:pt-14">
       <motion.div
         className="mx-auto w-5/6 pb-24 md:pb-20"
         onViewportEnter={() => setSelectedPage(SelectedPage.Model)}
