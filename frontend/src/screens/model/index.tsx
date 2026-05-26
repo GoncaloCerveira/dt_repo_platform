@@ -1,5 +1,5 @@
 import ActionButton from "@/components/ActionButton";
-import NOVA from "@/assets/NOVA.png";
+import NOVAWHITE from "@/assets/NOVA_WHITE.png";
 import CAMPUS from "@/assets/campusfct.png";
 import EVORA from "@/assets/logo_vertical_branco.png";
 import CAMPUSEV from "@/assets/campus_evora.jpg";
@@ -63,7 +63,7 @@ const PartnerCard = ({ img, bgImg, name, isCoordinator }: PartnerCardProps) => (
 );
 
 const partners = [
-  { img: NOVA, bgImg: CAMPUS, name: "Universidade Nova de Lisboa" },
+  { img: NOVAWHITE, bgImg: CAMPUS, name: "Universidade Nova de Lisboa" },
   { img: EVORA, bgImg: CAMPUSEV, name: "Universidade de Évora" },
   { img: IP, bgImg: CAMPUSIP, name: "Património Cultural, I.P." },
   { img: MMP, bgImg: CAMPUSMMP, name: "Museus e Monumentos<br />de Portugal, E.P.E."},
