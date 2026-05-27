@@ -187,19 +187,19 @@ const FirmwarePage = () => <PageWrapper><Firmware /></PageWrapper>;
 const VisitorPage = () => <PageWrapper><VisitorFlow /></PageWrapper>;
 
 {/* PUBLIC ROUTES for Technology */}
-const SantaClaraPagePub = () => <PageWrapper><SantaClaraTech /></PageWrapper>;
+const SantaClaraPagePub = () => <PageWrapperPublic><SantaClaraTech /></PageWrapperPublic>;
 const AzulejoPagePub = ({ setSelectedPage }: { setSelectedPage?: (value: any) => void }) => (
-  <PageWrapper>
+  <PageWrapperPublic>
     <AzulejoDetailFullTech setSelectedPage={setSelectedPage || (() => {})} />
-  </PageWrapper>
+  </PageWrapperPublic>
 );
-const GrutaEscouralPagePub = () => <PageWrapper><EscouralTech /></PageWrapper>;
-const SearchPagePub = () => <PageWrapper><SearchTech /></PageWrapper>;
-const SegmentationPagePub = () => <PageWrapper><SegmentationTech /></PageWrapper>;
-const MireuPagePub = () => <PageWrapper><MilreuTech /></PageWrapper>;
-const PlatformPagePub = () => <PageWrapper><DeploymentTech /></PageWrapper>;
-const FirmwarePagePub = () => <PageWrapper><FirmwareTech /></PageWrapper>;
-const VisitorPagePub = () => <PageWrapper><VisitorFlowTech /></PageWrapper>;
+const GrutaEscouralPagePub = () => <PageWrapperPublic><EscouralTech /></PageWrapperPublic>;
+const SearchPagePub = () => <PageWrapperPublic><SearchTech /></PageWrapperPublic>;
+const SegmentationPagePub = () => <PageWrapperPublic><SegmentationTech /></PageWrapperPublic>;
+const MireuPagePub = () => <PageWrapperPublic><MilreuTech /></PageWrapperPublic>;
+const PlatformPagePub = () => <PageWrapperPublic><DeploymentTech /></PageWrapperPublic>;
+const FirmwarePagePub = () => <PageWrapperPublic><FirmwareTech /></PageWrapperPublic>;
+const VisitorPagePub = () => <PageWrapperPublic><VisitorFlowTech /></PageWrapperPublic>;
 
 /* ROUTING CONFIGURATION */
 function App() {

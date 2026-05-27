@@ -57,11 +57,6 @@ const ProjectDetailPublic = ({
 
   return (
     <div className="min-h-full bg-gray-20">
-      <Navbar
-        selectedPage={SelectedPage.OurProject}
-        setSelectedPage={() => {}}
-      />
-
       <main className="pt-24 pb-20">
         <div className="max-w-6xl mx-auto px-6">
           

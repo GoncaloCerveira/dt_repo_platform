@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import Navbar from "@/screens/navbar";
 import { SelectedPage } from "@/components/types";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
@@ -73,8 +72,6 @@ const AzulejoDetailFullTech = ({ setSelectedPage }: { setSelectedPage: (v: Selec
 
   return (
     <div className="min-h-full bg-gray-20">
-      <Navbar selectedPage={SelectedPage.OurProject} setSelectedPage={setSelectedPage} />
-
       <main className="pt-24 pb-20">
         <div className="max-w-6xl mx-auto px-6">
           
