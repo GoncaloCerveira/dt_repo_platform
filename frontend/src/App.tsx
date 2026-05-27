@@ -32,6 +32,7 @@ import AlcobacaPublicPub from "./screens/pilotPublicPages/indexAlcobacaPublic";
 import RuinasPublicPub from "./screens/pilotPublicPages/indexRuinasPublic";
 import MosteiroPublicPub from "./screens/pilotPublicPages/indexMosteiroPublic";
 import GrutaPublicPub from "./screens/pilotPublicPages/indexGrutaPublic";
+import LocationsCatalog from "./screens/locations_page";
 
 // Public Pages Technology
 import DeploymentTech from "@/screens/app_tecnhology/tech_deployment";
@@ -107,6 +108,22 @@ const AlcobacaPublic = () => <PageWrapperPublic><AlcobacaPublicPub /></PageWrapp
 const RuinasPublic = () => <PageWrapperPublic><RuinasPublicPub /></PageWrapperPublic>;
 const MosteiroPublic = () => <PageWrapperPublic><MosteiroPublicPub /></PageWrapperPublic>;
 const GrutaPublic = () => <PageWrapperPublic><GrutaPublicPub /></PageWrapperPublic>;
+const LocationsCatalogPage = () => <PageWrapperPublic><LocationsCatalog /></PageWrapperPublic>;
+
+{/* PUBLIC ROUTES for Technology */}
+const SantaClaraPagePub = () => <PageWrapperPublic><SantaClaraTech /></PageWrapperPublic>;
+const AzulejoPagePub = ({ setSelectedPage }: { setSelectedPage?: (value: any) => void }) => (
+  <PageWrapperPublic>
+    <AzulejoDetailFullTech setSelectedPage={setSelectedPage || (() => {})} />
+  </PageWrapperPublic>
+);
+const GrutaEscouralPagePub = () => <PageWrapperPublic><EscouralTech /></PageWrapperPublic>;
+const SearchPagePub = () => <PageWrapperPublic><SearchTech /></PageWrapperPublic>;
+const SegmentationPagePub = () => <PageWrapperPublic><SegmentationTech /></PageWrapperPublic>;
+const MireuPagePub = () => <PageWrapperPublic><MilreuTech /></PageWrapperPublic>;
+const PlatformPagePub = () => <PageWrapperPublic><DeploymentTech /></PageWrapperPublic>;
+const FirmwarePagePub = () => <PageWrapperPublic><FirmwareTech /></PageWrapperPublic>;
+const VisitorPagePub = () => <PageWrapperPublic><VisitorFlowTech /></PageWrapperPublic>;
 
 /* APP MAIN (Repository Page) */
 function AppMain() {
@@ -186,21 +203,6 @@ const PlatformPage = () => <PageWrapper><Deployment /></PageWrapper>;
 const FirmwarePage = () => <PageWrapper><Firmware /></PageWrapper>;
 const VisitorPage = () => <PageWrapper><VisitorFlow /></PageWrapper>;
 
-{/* PUBLIC ROUTES for Technology */}
-const SantaClaraPagePub = () => <PageWrapperPublic><SantaClaraTech /></PageWrapperPublic>;
-const AzulejoPagePub = ({ setSelectedPage }: { setSelectedPage?: (value: any) => void }) => (
-  <PageWrapperPublic>
-    <AzulejoDetailFullTech setSelectedPage={setSelectedPage || (() => {})} />
-  </PageWrapperPublic>
-);
-const GrutaEscouralPagePub = () => <PageWrapperPublic><EscouralTech /></PageWrapperPublic>;
-const SearchPagePub = () => <PageWrapperPublic><SearchTech /></PageWrapperPublic>;
-const SegmentationPagePub = () => <PageWrapperPublic><SegmentationTech /></PageWrapperPublic>;
-const MireuPagePub = () => <PageWrapperPublic><MilreuTech /></PageWrapperPublic>;
-const PlatformPagePub = () => <PageWrapperPublic><DeploymentTech /></PageWrapperPublic>;
-const FirmwarePagePub = () => <PageWrapperPublic><FirmwareTech /></PageWrapperPublic>;
-const VisitorPagePub = () => <PageWrapperPublic><VisitorFlowTech /></PageWrapperPublic>;
-
 /* ROUTING CONFIGURATION */
 function App() {
   return (
@@ -218,6 +220,7 @@ function App() {
           <Route path="/ruinas_milreu" element={<RuinasPublic />} />
           <Route path="/mosteiro_jeronimos" element={<MosteiroPublic />} />
           <Route path="/gruta_escoural" element={<GrutaPublic />} />
+          <Route path="/outros-sitios" element={<LocationsCatalogPage />} />
           <Route path="/tech-santa-clara" element={<SantaClaraPagePub />} />
           <Route path="/tech-azulejo" element={<AzulejoPagePub />} />
           <Route path="/tech-gruta-escoural" element={<GrutaEscouralPagePub />} />
