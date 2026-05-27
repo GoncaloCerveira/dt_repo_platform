@@ -102,7 +102,7 @@ const Model = ({ setSelectedPage }: Props) => {
           <div className="mb-3 flex items-center gap-2">
             <span className="h-px w-6 bg-primary-500" />
             <p className="text-xs font-bold uppercase tracking-widest text-primary-500">
-               O DESAFIO DO TERRITÓRIO INTELIGENTE
+               O DESAFIO DO TERRITÓRIOS INTELIGENTEs
             </p>
           </div>
           <HText>O Projeto</HText>

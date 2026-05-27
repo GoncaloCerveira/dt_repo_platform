@@ -19,90 +19,46 @@ export type LocationData = {
 };
 
 const locationsList: LocationData[] = [
-  {
-    id: "torre-belem-1",
-    name: "Torre de Belém",
-    image: TRB,
-    description: "A Torre de Belém é um dos monumentos mais expressivos da cidade de Lisboa. Localizada na margem direita do rio Tejo, é uma obra de referência do estilo manuelino.",
-    website: "https://www.patrimoniocultural.gov.pt",
-  },
-  {
-    id: "castelo-s-jorge-1",
-    name: "Castelo de São Jorge",
-    image: TR2,
-    description: "O Castelo de S. Jorge ergue-se na colina mais alta de Lisboa, oferecendo uma das vistas mais deslumbrantes sobre a cidade e o rio Tejo. Um local repleto de história desde o tempo dos mouros.",
-    website: "https://castelodesaojorge.pt",
-  },
-  {
-    id: "palacio-pena-1",
-    name: "Palácio Nacional da Pena",
-    image: TRB,
-    description: "O Palácio Nacional da Pena, localizado na serra de Sintra, representa uma das principais expressões do Romantismo arquitetónico do século XIX no mundo, sendo Património Mundial da UNESCO.",
-    website: "https://www.parquesdesintra.pt",
-  },
-  {
-    id: "convento-cristo-1",
-    name: "Convento de Cristo",
-    image: TR2,
-    description: "O Convento de Cristo, em Tomar, pertenceu à Ordem dos Templários. Constitui um dos mais importantes conjuntos monumentais de Portugal, misturando estilos românico, gótico, manuelino e renascentista.",
-    website: "http://www.conventocristo.gov.pt",
-  },
-  {
-    id: "torre-belem-2",
-    name: "Torre de Belém",
-    image: TRB,
-    description: "A Torre de Belém é um dos monumentos mais expressivos da cidade de Lisboa. Localizada na margem direita do rio Tejo, é uma obra de referência do estilo manuelino.",
-    website: "https://www.patrimoniocultural.gov.pt",
-  },
-  {
-    id: "castelo-s-jorge-2",
-    name: "Castelo de São Jorge",
-    image: TR2,
-    description: "O Castelo de S. Jorge ergue-se na colina mais alta de Lisboa, oferecendo uma das vistas mais deslumbrantes sobre a cidade e o rio Tejo. Um local repleto de história desde o tempo dos mouros.",
-    website: "https://castelodesaojorge.pt",
-  },
-  {
-    id: "palacio-pena-2",
-    name: "Palácio Nacional da Pena",
-    image: TRB,
-    description: "O Palácio Nacional da Pena, localizado na serra de Sintra, representa uma das principais expressões do Romantismo arquitetónico do século XIX no mundo, sendo Património Mundial da UNESCO.",
-    website: "https://www.parquesdesintra.pt",
-  },
-  {
-    id: "convento-cristo-2",
-    name: "Convento de Cristo",
-    image: TR2,
-    description: "O Convento de Cristo, em Tomar, pertenceu à Ordem dos Templários. Constitui um dos mais importantes conjuntos monumentais de Portugal, misturando estilos românico, gótico, manuelino e renascentista.",
-    website: "http://www.conventocristo.gov.pt",
-  },
-  {
-    id: "torre-belem-3",
-    name: "Torre de Belém",
-    image: TRB,
-    description: "A Torre de Belém é um dos monumentos mais expressivos da cidade de Lisboa. Localizada na margem direita do rio Tejo, é uma obra de referência do estilo manuelino.",
-    website: "https://www.patrimoniocultural.gov.pt",
-  },
-  {
-    id: "castelo-s-jorge-3",
-    name: "Castelo de São Jorge",
-    image: TR2,
-    description: "O Castelo de S. Jorge ergue-se na colina mais alta de Lisboa, oferecendo uma das vistas mais deslumbrantes sobre a cidade e o rio Tejo. Um local repleto de história desde o tempo dos mouros.",
-    website: "https://castelodesaojorge.pt",
-  },
-  {
-    id: "palacio-pena-3",
-    name: "Palácio Nacional da Pena",
-    image: TRB,
-    description: "O Palácio Nacional da Pena, localizado na serra de Sintra, representa uma das principais expressões do Romantismo arquitetónico do século XIX no mundo, sendo Património Mundial da UNESCO.",
-    website: "https://www.parquesdesintra.pt",
-  },
-  {
-    id: "convento-cristo-3",
-    name: "Convento de Cristo",
-    image: TR2,
-    description: "O Convento de Cristo, em Tomar, pertenceu à Ordem dos Templários. Constitui um dos mais importantes conjuntos monumentais de Portugal, misturando estilos românico, gótico, manuelino e renascentista.",
-    website: "http://www.conventocristo.gov.pt",
-  }
+  { id: "casa-corpo-santo", name: "Casa do Corpo Santo", image: TRB, description: "", website: "https://museus.mun-setubal.pt/10351/casadocorposanto" },
+  { id: "casa-museu-anastacio-goncalves", name: "Casa Museu Dr. Anastácio Gonçalves", image: TR2, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/casa-museu-dr-anastacio-goncalves" },
+  { id: "castelo-elvas", name: "Castelo de Elvas", image: TRB, description: "", website: "https://cm-elvas.pt/descobrir/patrimonio/militar/castelo/" },
+  { id: "castelo-guimaraes", name: "Castelo de Guimarães", image: TR2, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/castelo-de-guimaraes" },
+  { id: "castelo-viana-alentejo", name: "Castelo de Viana do Alentejo", image: TRB, description: "", website: "https://culturaportugal.gov.pt/pt/conhecer/local/_drcalentejo/castelo-de-viana-do-alentejo/" },
+  { id: "citania-santa-luzia", name: "Citânia de Santa Luzia", image: TR2, description: "", website: "https://www.culturaportugal.gov.pt/pt/conhecer/local/_drcnorte/citania-de-santa-luzia/" },
+  { id: "convento-cristo", name: "Convento de Cristo", image: TRB, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/convento-de-cristo" },
+  { id: "convento-jesus", name: "Convento de Jesus", image: TR2, description: "", website: "https://museus.mun-setubal.pt/10348/conventodejesus" },
+  { id: "convento-s-salvador-vilar-frades", name: "Convento de S. Salvador de Vilar de Frades", image: TRB, description: "", website: "https://www.mosteirosanorte.gov.pt/convento-de-vilar-de-frades/" },
+  { id: "convento-sao-bento-castris", name: "Convento de São Bento de Cástris", image: TR2, description: "", website: "https://www.cm-evora.pt/locais/convento-de-s-bento-de-castris/" },
+  { id: "estacao-arqueologica-freixo", name: "Estação Arqueológica do Freixo - Tongóbriga", image: TRB, description: "", website: "https://www.tongobriga.gov.pt/" },
+  { id: "igreja-sao-miguel-castelo", name: "Igreja de São Miguel do Castelo", image: TR2, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/igreja-de-sao-miguel-do-castelo" },
+  { id: "mosteiro-sta-maria-pombeiro", name: "Mosteiro de Sta. Maria de Pombeiro", image: TRB, description: "", website: "https://www.rotadoromanico.com/pt/monumentos/mosteiro-de-santa-maria-de-pombeiro/" },
+  { id: "mosteiro-jeronimos", name: "Mosteiro dos Jerónimos", image: TR2, description: "Obra-prima da arquitetura portuguesa, o Real Mosteiro de Santa Maria de Belém, designado comumente por Mosteiro dos Jerónimos, por ter sido destinado à Ordem de São Jerónimo, está classificado como Monumento Nacional desde 1907 e foi inscrito na Lista do Património Mundial da UNESCO em 1983. A igreja, com serviço religioso e horário para visitas patrimoniais, e o claustro, secularizado no século XIX, formam o conjunto patrimonial mais visitado do país.", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/mosteiro-dos-jeronimos-e-capela-de-sao-jeronimo" },
+  { id: "mosteiro-sao-martinho-tibaes", name: "Mosteiro São Martinho de Tibães", image: TRB, description: "", website: "https://www.mosteirodetibaes.gov.pt/" },
+  { id: "museu-arte-popular", name: "Museu Arte Popular", image: TR2, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-de-arte-popular" },
+  { id: "museu-alberto-sampaio", name: "Museu de Alberto Sampaio", image: TRB, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-de-alberto-sampaio" },
+  { id: "museu-arqueologia-diogo-sousa", name: "Museu de Arqueologia D. Diogo de Sousa", image: TR2, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-de-arqueologia-d-diogo-de-sousa" },
+  { id: "museu-arqueologia-etnografia-setubal", name: "Museu de Arqueologia e Etnografia do Distrito de Setúbal", image: TRB, description: "", website: "https://maeds.amrs.pt/" },
+  { id: "museu-biscainhos", name: "Museu dos Biscainhos", image: TR2, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-dos-biscainhos" },
+  { id: "museu-jose-malhoa", name: "Museu José Malhoa", image: TRB, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-jose-malhoa" },
+  { id: "museu-nacional-resistencia-liberdade", name: "Museu Nacional da Resistência e Liberdade", image: TR2, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-nacional-resistencia-e-liberdade" },
+  { id: "museu-nacional-arte-antiga", name: "Museu Nacional de Arte Antiga", image: TRB, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-nacional-de-arte-antiga" },
+  { id: "museu-nacional-azulejo", name: "Museu Nacional do Azulejo", image: TR2, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-nacional-do-azulejo" },
+  { id: "museu-nacional-teatro-danca", name: "Museu Nacional do Teatro e da Dança", image: TRB, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-nacional-do-teatro-e-da-danca" },
+  { id: "museu-nacional-traje", name: "Museu Nacional do Traje", image: TR2, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-nacional-do-traje" },
+  { id: "museu-nacional-coches", name: "Museu Nacional dos Coches", image: TRB, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-nacional-dos-coches" },
+  { id: "museu-nacional-etnologia", name: "Museu Nacional Etnologia", image: TR2, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-de-etnologia" },
+  { id: "museu-nacional-frei-manuel-cenaculo", name: "Museu Nacional Frei Manuel do Cenáculo", image: TRB, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-nacional-frei-manuel-do-cenaculo-e-igreja-de-nossa-senhora-das-merces" },
+  { id: "paco-duques-braganca", name: "Paço dos Duques de Bragança", image: TR2, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/paco-dos-duques" },
+  { id: "ruinas-casa-rua-burgos", name: "Ruínas da Casa na Rua de Burgos", image: TRB, description: "", website: "http://www.monumentos.gov.pt/site/app_pagesuser/SIPA.aspx?id=10987" },
+  { id: "se-braga", name: "Sé de Braga", image: TR2, description: "", website: "https://www.se-braga.pt/" },
+  { id: "se-evora", name: "Sé de Évora", image: TRB, description: "", website: "https://www.evoracathedral.com/" },
+  { id: "se-portalegre", name: "Sé de Portalegre", image: TR2, description: "", website: "https://imovel.patrimoniocultural.gov.pt/detalhes.php?code=70707" },
+  { id: "se-porto", name: "Sé do Porto", image: TRB, description: "", website: "https://www.diocese-porto.pt/catedral-do-porto/" },
+  { id: "sitio-arqueologico-castro-cola", name: "Sítio Arqueológico de Castro de Cola", image: TR2, description: "", website: "https://roteirosarqueologicosdoalentejo.uevora.pt/castro-da-cola/" },
+  { id: "sitio-arqueologico-mirobriga", name: "Sítio Arqueológico de Miróbriga", image: TRB, description: "", website: "https://culturaportugal.gov.pt/pt/conhecer/local/_drcalentejo/sitio-arqueologico-de-mirobriga/" },
+  { id: "sitio-arqueologico-sao-cucufate", name: "Sítio Arqueológico de São Cucufate", image: TR2, description: "", website: "https://culturaportugal.gov.pt/pt/conhecer/local/_drcalentejo/sitio-arqueologico-de-sao-cucufate/" },
+  { id: "sitio-arqueologico-torre-palma", name: "Sítio Arqueológico de Torre de Palma", image: TRB, description: "", website: "https://culturaportugal.gov.pt/pt/conhecer/local/_drcalentejo/villa-romana-de-torre-de-palma/" },
+  { id: "torre-castelo-evoramonte", name: "Torre do Castelo de Evoramonte", image: TR2, description: "", website: "https://culturaportugal.gov.pt/pt/conhecer/local/_drcalentejo/torrepaco-do-castelo-de-evoramonte/" }
 ];
 
 const LocationsCatalog = () => {
@@ -145,10 +101,12 @@ const LocationsCatalog = () => {
     <section id="all-locations" className="mx-auto bg-gray-20 min-h-screen py-20">
       <div className="mx-auto w-5/6">
         
-        {/* HEADER & SEARCH AREA */}
-        <div className="mb-12 flex flex-col items-start text-left">
+        {/* HEADER & CONTROLS ROW */}
+        <div className="mb-12 flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6 text-left">
+          
+          {/* Left Text Block */}
           <motion.div
-            className="md:w-3/5"
+            className="w-full lg:w-1/2"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
@@ -161,38 +119,49 @@ const LocationsCatalog = () => {
             <div className="mb-3 flex items-center gap-2">
               <span className="h-px w-6 bg-primary-500" />
               <p className="text-xs font-bold uppercase tracking-widest text-primary-500">
-                Território Inteligente
+                Territórios Inteligentes
               </p>
             </div>
-            <HText>TODOS OS LOCAIS MAPEADOS</HText>
+            <HText>TODOS OS GÉMEOS DIGITAIS</HText>
             <p className="mt-6 text-lg text-gray-800 leading-relaxed">
               Explore a nossa rede completa de património. Clique em qualquer um dos locais abaixo para descobrir mais informações, detalhes históricos e visitar o website oficial.
             </p>
           </motion.div>
 
-          {/* SEARCH BAR - Now under the text section */}
+          {/* Right Action Block: Search Bar on the Right, Count to the Right of it */}
           <motion.div 
-            className="mt-8 relative w-full max-w-md"
+            className="flex flex-row items-center gap-4 w-full lg:w-auto justify-start lg:justify-end"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <MagnifyingGlassIcon className="h-5 w-5 text-gray-400" />
+            {/* Search input field */}
+            <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <MagnifyingGlassIcon className="h-5 w-5 text-gray-400" />
+              </div>
+              <input
+                type="text"
+                placeholder="Pesquisar por nome ou detalhe..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+              />
             </div>
-            <input
-              type="text"
-              placeholder="Pesquisar por nome ou detalhe..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-            />
+
+            {/* Counter Badge to the right of Search */}
+            <div className="whitespace-nowrap bg-white px-4 py-3 border border-gray-200 rounded-xl shadow-sm text-gray-700 font-medium text-sm sm:text-base">
+              <span className="text-xl font-bold text-primary-500 mr-1.5">
+                {filteredLocations.length}
+              </span>
+              Locais Encontrados
+            </div>
           </motion.div>
         </div>
 
-        {/* MAIN GRID */}
+        {/* MAIN GRID - Configured to be 4 columns from md breakpoint and up */}
         {filteredLocations.length > 0 ? (
-          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             <AnimatePresence>
               {filteredLocations.map((location) => (
                 <motion.div
@@ -216,10 +185,10 @@ const LocationsCatalog = () => {
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                   </div>
                   <div className="p-5 flex-grow flex items-center justify-between">
-                    <h3 className="font-bold text-gray-900 text-lg line-clamp-2">
+                    <h3 className="font-bold text-gray-900 text-base line-clamp-2 leading-snug">
                       {location.name}
                     </h3>
-                    <ArrowTopRightOnSquareIcon className="h-5 w-5 text-primary-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ArrowTopRightOnSquareIcon className="h-5 w-5 text-primary-500 opacity-0 group-hover:opacity-100 transition-opacity min-w-[20px] ml-2" />
                   </div>
                 </motion.div>
               ))}
@@ -281,7 +250,7 @@ const LocationsCatalog = () => {
                   {selectedLocation.name}
                 </h2>
                 <p className="text-gray-600 text-lg leading-relaxed mb-8 flex-grow">
-                  {selectedLocation.description}
+                  {selectedLocation.description || "Descrição detalhada não disponível para este local no momento."}
                 </p>
                 <div className="mt-auto pt-6 border-t border-gray-100">
                   <a

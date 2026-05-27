@@ -172,11 +172,11 @@ const OurProjectSectionPublic = ({ setSelectedPage }: Props) => {
             className="w-full md:w-1/3 bg-white p-8 rounded-2xl border border-gray-200 shadow-md text-center hover:border-primary-500 transition-colors"
           >
             <h3 className="text-xl font-bold text-gray-900 mb-2">
-              Descubra Todos os Locais do Território Inteligente
+              Descubra Todos os Locais do Territórios Inteligentes
             </h3>
 
             <p className="text-gray-600 mb-6">
-              Explore o nosso catálogo completo de património mapeado.
+              Explore o nosso catálogo completo de gémeos digitais de monumentos e museus.
             </p>
 
             <button

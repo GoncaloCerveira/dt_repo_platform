@@ -1,5 +1,4 @@
 import ICON from "@/assets/digitaltwins_icone.png";
-import NOVA from "@/assets/NOVA.png";
 import { EnvelopeIcon, PhoneIcon, MapPinIcon} from "@heroicons/react/24/outline";
 
 const Footer = () => {
