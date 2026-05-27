@@ -18,7 +18,6 @@ type Props = {
 const Home = ({ setSelectedPage }: Props) => {
   const isAboveMediumScreens = useMediaQuery("(min-width:1060px)");
 
-  // Lista de parceiros para mapeamento limpo
   const partners = [
     { src: NOVA, alt: "NOVA FCT" },
     {src: UEVORA, alt:"UEVORA"},

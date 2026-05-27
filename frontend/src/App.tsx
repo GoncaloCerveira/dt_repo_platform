@@ -17,6 +17,7 @@ import Deployment from "./screens/deployment";
 import Firmware from "./screens/firmaware";
 import VisitorFlow from "./screens/visitors_flow";
 import Model from "./screens/model";
+import OurTecnhologySection from "@/screens/app_tecnhology";
 
 // Authentication Imports
 import Login from "@/screens/login_page";
@@ -31,6 +32,17 @@ import AlcobacaPublicPub from "./screens/pilotPublicPages/indexAlcobacaPublic";
 import RuinasPublicPub from "./screens/pilotPublicPages/indexRuinasPublic";
 import MosteiroPublicPub from "./screens/pilotPublicPages/indexMosteiroPublic";
 import GrutaPublicPub from "./screens/pilotPublicPages/indexGrutaPublic";
+
+// Public Pages Technology
+import DeploymentTech from "@/screens/app_tecnhology/tech_deployment";
+import FirmwareTech from "./screens/app_tecnhology/tech_firmware";
+import EscouralTech from "./screens/app_tecnhology/tech_gruta";
+import MilreuTech from "./screens/app_tecnhology/tech_milreu";
+import AzulejoDetailFullTech from "./screens/app_tecnhology/tech_vr_ar";
+import SantaClaraTech from "./screens/app_tecnhology/tech_santa_clara";
+import SearchTech from "./screens/app_tecnhology/tech-search";
+import SegmentationTech from "./screens/app_tecnhology/tech_segmentation";
+import VisitorFlowTech from "./screens/app_tecnhology/tech_visitors_flow";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -70,6 +82,7 @@ function PublicLanding() {
       <Home setSelectedPage={setSelectedPage} />
       <Model setSelectedPage={setSelectedPage}/>
       <OurProjectSectionPublic setSelectedPage={setSelectedPage}/>
+      <OurTecnhologySection setSelectedPage={setSelectedPage}/>
       <Footer />
     </div>
   );
@@ -145,18 +158,20 @@ function AppMain() {
 }
 
 const PageWrapper = ({ children }: { children: React.ReactNode }) => (
-  <div className="app bg-gray-20">
+  <div className="app bg-gray-20 flex flex-col min-h-screen">
     <Navbar 
       selectedPage={SelectedPage.ModelDemo} 
       setSelectedPage={() => {}} 
     />
-    <div className="pt-20">
+    <main className="flex-1 pt-20">
       {children}
-    </div>
+    </main>
+    
     <Footer />
   </div>
 );
 
+{/* PUBLIC ROUTES for Pilots */}
 const SantaClaraPage = () => <PageWrapper><SantaClara /></PageWrapper>;
 const AzulejoPage = ({ setSelectedPage }: { setSelectedPage?: (value: any) => void }) => (
   <PageWrapper>
@@ -170,6 +185,21 @@ const MireuPage = () => <PageWrapper><Milreu /></PageWrapper>;
 const PlatformPage = () => <PageWrapper><Deployment /></PageWrapper>;
 const FirmwarePage = () => <PageWrapper><Firmware /></PageWrapper>;
 const VisitorPage = () => <PageWrapper><VisitorFlow /></PageWrapper>;
+
+{/* PUBLIC ROUTES for Technology */}
+const SantaClaraPagePub = () => <PageWrapper><SantaClaraTech /></PageWrapper>;
+const AzulejoPagePub = ({ setSelectedPage }: { setSelectedPage?: (value: any) => void }) => (
+  <PageWrapper>
+    <AzulejoDetailFullTech setSelectedPage={setSelectedPage || (() => {})} />
+  </PageWrapper>
+);
+const GrutaEscouralPagePub = () => <PageWrapper><EscouralTech /></PageWrapper>;
+const SearchPagePub = () => <PageWrapper><SearchTech /></PageWrapper>;
+const SegmentationPagePub = () => <PageWrapper><SegmentationTech /></PageWrapper>;
+const MireuPagePub = () => <PageWrapper><MilreuTech /></PageWrapper>;
+const PlatformPagePub = () => <PageWrapper><DeploymentTech /></PageWrapper>;
+const FirmwarePagePub = () => <PageWrapper><FirmwareTech /></PageWrapper>;
+const VisitorPagePub = () => <PageWrapper><VisitorFlowTech /></PageWrapper>;
 
 /* ROUTING CONFIGURATION */
 function App() {
@@ -188,6 +218,15 @@ function App() {
           <Route path="/ruinas_milreu" element={<RuinasPublic />} />
           <Route path="/mosteiro_jeronimos" element={<MosteiroPublic />} />
           <Route path="/gruta_escoural" element={<GrutaPublic />} />
+          <Route path="/tech-santa-clara" element={<SantaClaraPagePub />} />
+          <Route path="/tech-azulejo" element={<AzulejoPagePub />} />
+          <Route path="/tech-gruta-escoural" element={<GrutaEscouralPagePub />} />
+          <Route path="/tech-hbim-pesquisa" element={<SearchPagePub />} />
+          <Route path="/tech-hbim-segmentacao" element={<SegmentationPagePub />} />
+          <Route path="/tech-milreu" element={<MireuPagePub />} />
+          <Route path="/tech-plataforma-iot" element={<PlatformPagePub />} />
+          <Route path="/tech-firmware-iot" element={<FirmwarePagePub />} />
+          <Route path="/tech-fluxo_visitantes" element={<VisitorPagePub />} />
 
           {/* PROTECTED REPOSITORY ROUTES */}
           <Route element={<ProtectedRoute />}>

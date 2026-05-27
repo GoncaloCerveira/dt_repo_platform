@@ -1,7 +1,5 @@
 import ProjectDetail from "@/components/ProjectTemplate";
 import { SelectedPage } from "@/components/types";
-import ImgToF from "@/assets/tof_sensor.png"; 
-import ImgHeatmap from "@/assets/mmwave_heatmap.jpg";
 
 const VisitorFlow = () => {
   return (

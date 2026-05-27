@@ -26,6 +26,11 @@ const Footer = () => {
             <h4 className="font-bold text-xs uppercase tracking-widest mb-3 text-white">Links</h4>
             <ul className="space-y-2 text-xs">
               <li>
+                <a href="https://www.unl.pt/" target="_blank" rel="noreferrer" className="hover:underline opacity-80 hover:opacity-100 transition-opacity">
+                  Universidade NOVA
+                </a>
+              </li>
+              <li>
                 <a href="https://www.fct.unl.pt/" target="_blank" rel="noreferrer" className="hover:underline opacity-80 hover:opacity-100 transition-opacity">
                   NOVA FCT
                 </a>
@@ -38,11 +43,6 @@ const Footer = () => {
               <li>
                 <a href="https://www.uevora.pt/" target="_blank" rel="noreferrer" className="hover:underline opacity-80 hover:opacity-100 transition-opacity">
                   Universidade de Évora
-                </a>
-              </li>
-              <li>
-                <a href="https://www.unl.pt/" target="_blank" rel="noreferrer" className="hover:underline opacity-80 hover:opacity-100 transition-opacity">
-                  Universidade NOVA
                 </a>
               </li>
               <li>

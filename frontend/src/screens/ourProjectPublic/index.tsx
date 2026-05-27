@@ -3,10 +3,6 @@ import { SelectedPage } from "@/components/types";
 import {
   BuildingLibraryIcon,
   PhotoIcon,
-  Square3Stack3DIcon,
-  CloudIcon,
-  MagnifyingGlassIcon,
-  DevicePhoneMobileIcon,
 } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import Board from "./Board";
@@ -88,12 +84,12 @@ type Props = {
 const OurProjectSectionPublic = ({ setSelectedPage }: Props) => {
   return (
     <section
-      id="ourproject"
+      id="ourprojectpublic"
       className="mx-auto bg-gray-20 min-h-[400px] py-20 md:pt-14"
     >
       <motion.div
         className="mx-auto w-5/6"
-        onViewportEnter={() => setSelectedPage(SelectedPage.OurProject)}
+        onViewportEnter={() => setSelectedPage(SelectedPage.OUrProjectPublic)}
       >
         {/* HEADER */}
         <motion.div
@@ -138,6 +134,7 @@ const OurProjectSectionPublic = ({ setSelectedPage }: Props) => {
           ))}
         </motion.div>
       </motion.div>
+      <div className="bg-primary-100 py-16 border-t mt-20" />
     </section>
   );
 };

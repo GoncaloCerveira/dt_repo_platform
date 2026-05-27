@@ -102,7 +102,7 @@ const Model = ({ setSelectedPage }: Props) => {
           <div className="mb-3 flex items-center gap-2">
             <span className="h-px w-6 bg-primary-500" />
             <p className="text-xs font-bold uppercase tracking-widest text-primary-500">
-               O DESAFIO DA CIDADE INTELIGENTE
+               O DESAFIO DO TERRITÓRIO INTELIGENTE
             </p>
           </div>
           <HText>O Projeto</HText>
@@ -121,7 +121,7 @@ const Model = ({ setSelectedPage }: Props) => {
           </div>
 
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-10 md:mt-8 items-stretch"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt10 md:mt-8 items-stretch"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}

@@ -13,7 +13,7 @@ type Props = {
 };
 
 const projectsList = [
-  { name: "Test", path: "/santa-clara" },
+  { name: "", path: "/santa-clara" },
 ];
 
 const NavbarPublic = ({ selectedPage, setSelectedPage }: Props) => {
@@ -50,6 +50,20 @@ const NavbarPublic = ({ selectedPage, setSelectedPage }: Props) => {
         onClick={() => setSelectedPage(SelectedPage.OurProject)}
       >
         Sobre
+      </AnchorLink>
+      <AnchorLink
+        className={`${selectedPage === SelectedPage.OUrProjectPublic ? "text-primary-500" : ""} hover:text-primary-500 transition`}
+        href={`#${SelectedPage.OUrProjectPublic}`}
+        onClick={() => setSelectedPage(SelectedPage.OUrProjectPublic)}
+      >
+        Projetos Piloto
+      </AnchorLink>
+      <AnchorLink
+        className={`${selectedPage === SelectedPage.OurTechonology ? "text-primary-500" : ""} hover:text-primary-500 transition`}
+        href={`#${SelectedPage.OurTechonology}`}
+        onClick={() => setSelectedPage(SelectedPage.OurTechonology)}
+      >
+        Tecnologia
       </AnchorLink>
     </>
   );

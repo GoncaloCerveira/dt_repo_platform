@@ -2,6 +2,8 @@ export enum SelectedPage {
   Home = "home",
   Model = "model",
   OurProject = "ourproject",
+  OUrProjectPublic = "ourprojectpublic",
+  OurTechonology = "technology",
   ModelDemo = "modelDemo",
   Santa_Clara = "santaClara",
   Azulejo = "vr_ar_azulejo",
