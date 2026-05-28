@@ -40,7 +40,6 @@ const locationsList: LocationData[] = [
   { id: "museu-arqueologia-etnografia-setubal", name: "Museu de Arqueologia e Etnografia do Distrito de Setúbal", image: TRB, description: "", website: "https://maeds.amrs.pt/" },
   { id: "museu-biscainhos", name: "Museu dos Biscainhos", image: TR2, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-dos-biscainhos" },
   { id: "museu-jose-malhoa", name: "Museu José Malhoa", image: TRB, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-jose-malhoa" },
-  { id: "museu-nacional-resistencia-liberdade", name: "Museu Nacional da Resistência e Liberdade", image: TR2, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-nacional-resistencia-e-liberdade" },
   { id: "museu-nacional-arte-antiga", name: "Museu Nacional de Arte Antiga", image: TRB, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-nacional-de-arte-antiga" },
   { id: "museu-nacional-azulejo", name: "Museu Nacional do Azulejo", image: TR2, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-nacional-do-azulejo" },
   { id: "museu-nacional-teatro-danca", name: "Museu Nacional do Teatro e da Dança", image: TRB, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-nacional-do-teatro-e-da-danca" },
@@ -53,12 +52,16 @@ const locationsList: LocationData[] = [
   { id: "se-braga", name: "Sé de Braga", image: TR2, description: "", website: "https://www.se-braga.pt/" },
   { id: "se-evora", name: "Sé de Évora", image: TRB, description: "", website: "https://www.evoracathedral.com/" },
   { id: "se-portalegre", name: "Sé de Portalegre", image: TR2, description: "", website: "https://imovel.patrimoniocultural.gov.pt/detalhes.php?code=70707" },
-  { id: "se-porto", name: "Sé do Porto", image: TRB, description: "", website: "https://www.diocese-porto.pt/catedral-do-porto/" },
   { id: "sitio-arqueologico-castro-cola", name: "Sítio Arqueológico de Castro de Cola", image: TR2, description: "", website: "https://roteirosarqueologicosdoalentejo.uevora.pt/castro-da-cola/" },
   { id: "sitio-arqueologico-mirobriga", name: "Sítio Arqueológico de Miróbriga", image: TRB, description: "", website: "https://culturaportugal.gov.pt/pt/conhecer/local/_drcalentejo/sitio-arqueologico-de-mirobriga/" },
   { id: "sitio-arqueologico-sao-cucufate", name: "Sítio Arqueológico de São Cucufate", image: TR2, description: "", website: "https://culturaportugal.gov.pt/pt/conhecer/local/_drcalentejo/sitio-arqueologico-de-sao-cucufate/" },
   { id: "sitio-arqueologico-torre-palma", name: "Sítio Arqueológico de Torre de Palma", image: TRB, description: "", website: "https://culturaportugal.gov.pt/pt/conhecer/local/_drcalentejo/villa-romana-de-torre-de-palma/" },
-  { id: "torre-castelo-evoramonte", name: "Torre do Castelo de Evoramonte", image: TR2, description: "", website: "https://culturaportugal.gov.pt/pt/conhecer/local/_drcalentejo/torrepaco-do-castelo-de-evoramonte/" }
+  { id: "torre-castelo-evoramonte", name: "Torre do Castelo de Evoramonte", image: TR2, description: "", website: "https://culturaportugal.gov.pt/pt/conhecer/local/_drcalentejo/torrepaco-do-castelo-de-evoramonte/" },
+  { id: "se-nova-coimbra", name: "Sé Nova de Coimbra", image: TR2, description: "", website: "https://www.cm-coimbra.pt/areas/visitar/conhecer-coimbra/monumentos/se-nova-colegio-de-jesus" },
+  { id: "se-velha-coimbra", name: "Sé Velha de Coimbra", image: TR2, description: "", website: "https://arciprestadocoimbraurbana.pt/visitar/se-velha-de-coimbra/ " },
+  { id: "museu-machado-castro", name: "Museu Nacional Machado de Castro", image: TR2, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-nacional-de-machado-de-castro " },
+  { id: "museu-conimbriga", name: "Museu Nacional de Conimbriga", image: TR2, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/museu-nacional-de-conimbriga " },
+  { id: "fortaleza-sagres", name: "Fortaleza de Sagres", image: TR2, description: "", website: "https://www.museusemonumentos.pt/pt/museus-e-monumentos/fortaleza-de-sagres " }
 ];
 
 const LocationsCatalog = () => {
@@ -101,10 +104,9 @@ const LocationsCatalog = () => {
     <section id="all-locations" className="mx-auto bg-gray-20 min-h-screen py-20">
       <div className="mx-auto w-5/6">
         
-        {/* HEADER & CONTROLS ROW */}
+        {/* HEADER & CONTROLS */}
         <div className="mb-12 flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6 text-left">
           
-          {/* Left Text Block */}
           <motion.div
             className="w-full lg:w-1/2"
             initial="hidden"
@@ -128,7 +130,7 @@ const LocationsCatalog = () => {
             </p>
           </motion.div>
 
-          {/* Right Action Block: Search Bar on the Right, Count to the Right of it */}
+          {/* Right Action Block */}
           <motion.div 
             className="flex flex-row items-center gap-4 w-full lg:w-auto justify-start lg:justify-end"
             initial={{ opacity: 0, y: 20 }}
@@ -149,7 +151,7 @@ const LocationsCatalog = () => {
               />
             </div>
 
-            {/* Counter Badge to the right of Search */}
+            {/* Counter Badge */}
             <div className="whitespace-nowrap bg-white px-4 py-3 border border-gray-200 rounded-xl shadow-sm text-gray-700 font-medium text-sm sm:text-base">
               <span className="text-xl font-bold text-primary-500 mr-1.5">
                 {filteredLocations.length}
@@ -159,14 +161,14 @@ const LocationsCatalog = () => {
           </motion.div>
         </div>
 
-        {/* MAIN GRID - Configured to be 4 columns from md breakpoint and up */}
+        {/* MAIN GRID */}
         {filteredLocations.length > 0 ? (
           <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             <AnimatePresence>
               {filteredLocations.map((location) => (
                 <motion.div
-                  layout // Allows smooth resorting
-                  key={location.id} // Must be unique for AnimatePresence to work!
+                  layout 
+                  key={location.id} 
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}

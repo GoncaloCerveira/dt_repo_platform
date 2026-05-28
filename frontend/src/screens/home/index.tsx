@@ -36,10 +36,10 @@ const Home = ({ setSelectedPage }: Props) => {
     >
       <div className="absolute inset-0 bg-gray-900/70 z-0" />
 
-      {/* MAIN CONTENT CONTAINER */}
+      {/* MAIN CONTENT */}
       <div className="relative z-10 flex flex-col flex-grow pt-24 md:pt-32 pb-8 w-5/6 mx-auto">
         
-        {/* TOP LOGO/ACRONYM */}
+        {/* TOP LOGO */}
         <motion.div
           initial="hidden" animate="visible" transition={{ duration: 0.5 }}
           variants={{ hidden: { opacity: 0, x: -50 }, visible: { opacity: 1, x: 0 } }}
@@ -72,10 +72,9 @@ const Home = ({ setSelectedPage }: Props) => {
         </div>
       </div>
 
-      {/* RESPONSIVE PARTNERS BAR */}
+      {/* PARTNERS BAR */}
       <div className="relative z-10 w-full bg-primary-100 py-6 border-t border-white/20 shadow-[0_-10px_30px_rgba(0,0,0,0.3)]">
         <div className="mx-auto w-5/6">
-          {/* Grid changes from 2 cols on mobile to 8 cols on desktop */}
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-4">
             {partners.map((partner, index) => (
               <motion.div
