@@ -26,7 +26,7 @@ const Footer = () => {
             <ul className="space-y-2 text-xs">
               <li>
                 <a href="https://www.unl.pt/" target="_blank" rel="noreferrer" className="hover:underline opacity-80 hover:opacity-100 transition-opacity">
-                  Universidade NOVA
+                  Universidade NOVA de Lisboa
                 </a>
               </li>
               <li>
