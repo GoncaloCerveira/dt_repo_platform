@@ -17,10 +17,11 @@ type PartnerCardProps = {
   img: string;
   bgImg?: string;
   name: string;
+  subName?: string;
   isCoordinator?: boolean;
 };
 
-const PartnerCard = ({ img, bgImg, name, isCoordinator }: PartnerCardProps) => (
+const PartnerCard = ({ img, bgImg, name, subName, isCoordinator }: PartnerCardProps) => (
   <motion.div 
     className="bg-white px-4 py-3 shadow-xl border border-gray-100 flex flex-col items-center h-full rounded-sm"
     whileHover={{ scale: 1.05, rotateZ: isCoordinator ? 0 : 2 }}
@@ -31,34 +32,32 @@ const PartnerCard = ({ img, bgImg, name, isCoordinator }: PartnerCardProps) => (
     }}
   >
     <div className="relative w-full h-auto aspect-video overflow-hidden border border-gray-100 mb-3 bg-gray-900 rounded-sm">
-      {/* Background Image */}
       {bgImg && (
         <img 
           src={bgImg} 
-          alt={`Place associated with ${name}`} 
+          alt={`Localização: ${name}`} 
           className="absolute inset-0 w-full h-full object-cover z-0" 
+          loading="lazy"
         />
       )}
-      
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black/40 z-10" />
-      
-      {/* Logo Image */}
       <div className="absolute inset-0 flex items-center justify-center p-4 z-20">
-          <img 
-            src={img} 
-            alt={name} 
-            className="w-auto h-auto max-h-[65%] max-w-[80%] object-contain drop-shadow-2xl" 
-          />
+        <img 
+          src={img} 
+          alt={`Logo ${name}`} 
+          className="w-auto h-auto max-h-[65%] max-w-[80%] object-contain drop-shadow-2xl" 
+        />
       </div>
     </div>
     
-    {/* Text Area */}
     <div className="w-full px-1 flex-grow text-center flex flex-col justify-center font-montserrat tracking-tight leading-tight">
       {isCoordinator && (
-        <p className="text-[10px] font-bold uppercase text-primary-500 mb-0.5">Coordenador</p>
+        <p className="text-[10px] font-bold uppercase text-primary-500 mb-0.5"></p>
       )}
-      <p className="text-sm font-semibold text-gray-900 line-clamp-2" dangerouslySetInnerHTML={{ __html: name }} />
+      <p className="text-sm font-semibold text-gray-900">
+        {name}
+        {subName && <span className="block font-normal mt-0.5">{subName}</span>}
+      </p>
     </div>
   </motion.div>
 );
@@ -67,14 +66,12 @@ const partners = [
   { img: NOVAWHITE, bgImg: CAMPUS, name: "Universidade Nova de Lisboa", isCoordinator: true },
   { img: EVORA, bgImg: CAMPUSEV, name: "Universidade de Évora" },
   { img: IP, bgImg: CAMPUSIP, name: "Património Cultural, I.P." },
-  { img: MMP, bgImg: CAMPUSMMP, name: "Museus e Monumentos<br />de Portugal, E.P.E."},
+  { img: MMP, bgImg: CAMPUSMMP, name: "Museus e Monumentos", subName: "de Portugal, E.P.E." },
 ];
 
 const container = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.2 },
-  },
+  visible: { transition: { staggerChildren: 0.2 } },
 };
 
 type Props = {
@@ -99,7 +96,6 @@ const Model = ({ setSelectedPage }: Props) => {
         viewport={{ once: true, amount: 0.2 }}
         variants={container}
       >
-        {/* Project Description Section */}
         <motion.div
           className="md:w-full mb-16 md:mb-18 mt-12 md:mt-2"
           variants={{
@@ -111,7 +107,7 @@ const Model = ({ setSelectedPage }: Props) => {
           <div className="mb-3 flex items-center gap-2">
             <span className="h-px w-6 bg-primary-500" />
             <p className="text-xs font-bold uppercase tracking-widest text-primary-500">
-               O DESAFIO DO TERRITÓRIOS INTELIGENTES
+              O DESAFIO DO TERRITÓRIOS INTELIGENTES
             </p>
           </div>
           <HText>O Projeto</HText>
@@ -123,7 +119,6 @@ const Model = ({ setSelectedPage }: Props) => {
           </p>
         </motion.div>
 
-        {/* Partners Section */}
         <div className="w-full">
           <div className="flex items-center gap-5 mb-8 md:mb-10 pb-5 border-b border-gray-300">
             <UserGroupIcon className="h-12 w-12 text-primary-500 flex-shrink-0" />
@@ -132,16 +127,10 @@ const Model = ({ setSelectedPage }: Props) => {
 
           <motion.div 
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-10 md:mt-8 items-stretch"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
             variants={container}
           >
             {partners.map((partner) => (
-              <PartnerCard 
-                key={partner.name} 
-                {...partner} 
-              />
+              <PartnerCard key={partner.name} {...partner} />
             ))}
           </motion.div>
 
@@ -155,6 +144,7 @@ const Model = ({ setSelectedPage }: Props) => {
           >
             <button
               onClick={handleAboutUsClick}
+              aria-label="Ver mais informações sobre a equipa do projeto"
               className="group flex items-center justify-center gap-2 w-full sm:w-auto py-3 px-8 bg-gray-900 text-white rounded-lg font-semibold hover:bg-primary-500 transition-all duration-300 shadow-md text-sm font-montserrat"
             >
               Mais Informações Sobre a Equipa
@@ -164,7 +154,6 @@ const Model = ({ setSelectedPage }: Props) => {
         </div>
       </motion.div>
 
-      {/* Bottom Divider */}
       <div className="bg-primary-100 py-16 border-t"/>
     </section>
   );

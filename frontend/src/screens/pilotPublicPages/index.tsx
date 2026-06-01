@@ -1,5 +1,9 @@
 import { motion } from "framer-motion";
 import HText from "@/components/HText";
+import { 
+  ArrowRightIcon
+} from "@heroicons/react/24/solid";
+import { useNavigate } from "react-router-dom";
 
 type PilotDetailProps = {
   title: string;
@@ -18,6 +22,7 @@ const PilotDetailPage = ({
   results,
 }: PilotDetailProps) => {
   const imageSrc = image?.src || image;
+  const navigate = useNavigate();
 
   return (
     <section className="w-full bg-gray-20 py-8 md:py-16">
@@ -29,7 +34,7 @@ const PilotDetailPage = ({
           className="space-y-8 md:space-y-12"
         >
           {/* HEADER */}
-          <div className="space-y-3">
+          <div className="space-y-6">
             {tag && (
               <div className="flex items-center gap-3">
                 <span className="h-px w-8 bg-primary-500" />
@@ -39,8 +44,22 @@ const PilotDetailPage = ({
               </div>
             )}
 
-            <div className="max-w-3xl">
-              <HText>{title}</HText>
+            {/* Flex container: Column on mobile, Row on medium screens and up */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div className="max-w-3xl">
+                <HText>{title}</HText>
+              </div>
+
+              {/* Added 'w-fit' and 'self-start' to ensure it only takes the width of its content on mobile */}
+              <motion.button
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                onClick={() => navigate("/")}
+                className="flex items-center justify-center gap-2 px-6 py-3 border border-gray-200 rounded-xl bg-white shadow-sm text-gray-700 font-bold text-sm uppercase tracking-wider hover:border-primary-500 hover:text-primary-500 hover:shadow-md transition-all duration-300 group shrink-0 w-fit self-start md:self-auto"
+              >
+                <ArrowRightIcon className="h-5 w-5 rotate-180 group-hover:translate-x-1 transition-transform" />
+                Voltar
+              </motion.button>
             </div>
           </div>
 

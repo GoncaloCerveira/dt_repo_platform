@@ -109,7 +109,9 @@ const RuinasPublic = () => <PageWrapperPublic><RuinasPublicPub /></PageWrapperPu
 const MosteiroPublic = () => <PageWrapperPublic><MosteiroPublicPub /></PageWrapperPublic>;
 const GrutaPublic = () => <PageWrapperPublic><GrutaPublicPub /></PageWrapperPublic>;
 const LocationsCatalogPage = () => <PageWrapperPublic><LocationsCatalog /></PageWrapperPublic>;
-const AboutUsPage = () => <PageWrapperPublic><LocationsCatalog /></PageWrapperPublic>;
+const AboutUsPage = () => <PageWrapperPublic><Home setSelectedPage={function (value: SelectedPage): void {
+  throw new Error("Function not implemented.");
+} } /></PageWrapperPublic>;
 
 {/* PUBLIC ROUTES for Technology */}
 const SantaClaraPagePub = () => <PageWrapperPublic><SantaClaraTech /></PageWrapperPublic>;

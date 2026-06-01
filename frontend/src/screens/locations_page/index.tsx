@@ -4,7 +4,8 @@ import {
   XMarkIcon, 
   GlobeAltIcon, 
   ArrowTopRightOnSquareIcon,
-  MagnifyingGlassIcon 
+  MagnifyingGlassIcon, 
+  ArrowRightIcon
 } from "@heroicons/react/24/solid";
 import HText from "@/components/HText";
 
@@ -55,6 +56,7 @@ import MSCV from "@/assets/pilot_models/mosteiro-santa-clara-a-velha.jpg";
 import RRM from "@/assets/pilot_models/rrm.jpg";
 import GE from "@/assets/pilot_models/gruta_do_escoural.jpg";
 import RCRB from "@/assets/locais_opt/ruinas_casa_rua_burgos.jpg";
+import { useNavigate } from "react-router-dom";
 
 export type LocationData = {
   id: string;
@@ -118,6 +120,7 @@ const LocationsCatalog = () => {
   const [selectedLocation, setSelectedLocation] = useState<LocationData | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
+  const navigate = useNavigate();
 
   // Debounce Effect for performance
   useEffect(() => {
@@ -208,6 +211,16 @@ const LocationsCatalog = () => {
               </span>
               Locais Encontrados
             </div>
+
+            <motion.button
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              onClick={() => navigate("/")}
+              className="flex items-center gap-2 px-6 py-3 border border-gray-200 rounded-xl bg-white shadow-sm text-gray-700 font-bold text-sm uppercase tracking-wider hover:border-primary-500 hover:text-primary-500 hover:shadow-md transition-all duration-300 group shrink-0 ml-auto"
+            >
+              <ArrowRightIcon className="h-5 w-5 rotate-180 group-hover:translate-x-1 transition-transform" />
+              Voltar
+            </motion.button>
           </motion.div>
         </div>
 
