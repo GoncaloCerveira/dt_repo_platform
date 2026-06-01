@@ -10,7 +10,8 @@ export enum SelectedPage {
   Gruta_Escoural = "gruta_navegação",
   HBIM_pesquisa = "hbim_pesquisa",
   HBIM_segmentacao = "hbim_segmentacao",
-  Milreu_APP = "app_milreu"
+  Milreu_APP = "app_milreu",
+  AboutUs = "sobre_nos"
 }
 
 export interface BoardType {

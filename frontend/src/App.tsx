@@ -33,6 +33,7 @@ import RuinasPublicPub from "./screens/pilotPublicPages/indexRuinasPublic";
 import MosteiroPublicPub from "./screens/pilotPublicPages/indexMosteiroPublic";
 import GrutaPublicPub from "./screens/pilotPublicPages/indexGrutaPublic";
 import LocationsCatalog from "./screens/locations_page";
+import AboutDetailed from "./screens/about/index";
 
 // Public Pages Technology
 import DeploymentTech from "@/screens/app_tecnhology/tech_deployment";
@@ -109,9 +110,7 @@ const RuinasPublic = () => <PageWrapperPublic><RuinasPublicPub /></PageWrapperPu
 const MosteiroPublic = () => <PageWrapperPublic><MosteiroPublicPub /></PageWrapperPublic>;
 const GrutaPublic = () => <PageWrapperPublic><GrutaPublicPub /></PageWrapperPublic>;
 const LocationsCatalogPage = () => <PageWrapperPublic><LocationsCatalog /></PageWrapperPublic>;
-const AboutUsPage = () => <PageWrapperPublic><Home setSelectedPage={function (value: SelectedPage): void {
-  throw new Error("Function not implemented.");
-} } /></PageWrapperPublic>;
+const AboutUsPage = () => <PageWrapperPublic><AboutDetailed setSelectedPage={function (value: SelectedPage): void {throw new Error("Function not implemented.");} } /></PageWrapperPublic>;
 
 {/* PUBLIC ROUTES for Technology */}
 const SantaClaraPagePub = () => <PageWrapperPublic><SantaClaraTech /></PageWrapperPublic>;

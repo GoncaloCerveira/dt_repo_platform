@@ -210,7 +210,7 @@ const ProjectRow = ({ item }: { item: ProjectItem }) => {
         </div>
       </div>
 
-      {/* PAINEL EXPANSÍVEL (DADOS TÉCNICOS) */}
+      {/* PAINEL EXPANSÍVEL */}
       <AnimatePresence>
         {isExpanded && !hasInternalPage && (
           <motion.div
