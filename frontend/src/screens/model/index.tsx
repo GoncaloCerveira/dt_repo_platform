@@ -9,8 +9,9 @@ import MMP from "@/assets/Logo_MMP.png";
 import CAMPUSMMP from "@/assets/Museus-e-monumentos.jpg";
 import HText from "@/components/HText";
 import { SelectedPage } from "@/components/types";
-import { UserGroupIcon } from "@heroicons/react/24/solid";
+import { UserGroupIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 type PartnerCardProps = {
   img: string;
@@ -63,7 +64,7 @@ const PartnerCard = ({ img, bgImg, name, isCoordinator }: PartnerCardProps) => (
 );
 
 const partners = [
-  { img: NOVAWHITE, bgImg: CAMPUS, name: "Universidade Nova de Lisboa" },
+  { img: NOVAWHITE, bgImg: CAMPUS, name: "Universidade Nova de Lisboa", isCoordinator: true },
   { img: EVORA, bgImg: CAMPUSEV, name: "Universidade de Évora" },
   { img: IP, bgImg: CAMPUSIP, name: "Património Cultural, I.P." },
   { img: MMP, bgImg: CAMPUSMMP, name: "Museus e Monumentos<br />de Portugal, E.P.E."},
@@ -81,6 +82,13 @@ type Props = {
 };
 
 const Model = ({ setSelectedPage }: Props) => {
+  const navigate = useNavigate();
+
+  const handleAboutUsClick = () => {
+    window.scrollTo(0, 0);
+    navigate("/sobre-nos");
+  };
+
   return (
     <section id="ourproject" className="w-full bg-gray-20 pt-12 md:pt-14">
       <motion.div
@@ -91,6 +99,7 @@ const Model = ({ setSelectedPage }: Props) => {
         viewport={{ once: true, amount: 0.2 }}
         variants={container}
       >
+        {/* Project Description Section */}
         <motion.div
           className="md:w-full mb-16 md:mb-18 mt-12 md:mt-2"
           variants={{
@@ -102,7 +111,7 @@ const Model = ({ setSelectedPage }: Props) => {
           <div className="mb-3 flex items-center gap-2">
             <span className="h-px w-6 bg-primary-500" />
             <p className="text-xs font-bold uppercase tracking-widest text-primary-500">
-               O DESAFIO DO TERRITÓRIOS INTELIGENTEs
+               O DESAFIO DO TERRITÓRIOS INTELIGENTES
             </p>
           </div>
           <HText>O Projeto</HText>
@@ -114,14 +123,15 @@ const Model = ({ setSelectedPage }: Props) => {
           </p>
         </motion.div>
 
-       <div className="w-full">
+        {/* Partners Section */}
+        <div className="w-full">
           <div className="flex items-center gap-5 mb-8 md:mb-10 pb-5 border-b border-gray-300">
             <UserGroupIcon className="h-12 w-12 text-primary-500 flex-shrink-0" />
             <HText>Quem somos</HText>
           </div>
 
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt10 md:mt-8 items-stretch"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-10 md:mt-8 items-stretch"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
@@ -134,8 +144,26 @@ const Model = ({ setSelectedPage }: Props) => {
               />
             ))}
           </motion.div>
+
+          <motion.div 
+            className="mt-12 flex justify-center md:justify-start"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 }
+            }}
+            transition={{ delay: 0.6 }}
+          >
+            <button
+              onClick={handleAboutUsClick}
+              className="group flex items-center justify-center gap-2 w-full sm:w-auto py-3 px-8 bg-gray-900 text-white rounded-lg font-semibold hover:bg-primary-500 transition-all duration-300 shadow-md text-sm font-montserrat"
+            >
+              Mais Informações Sobre a Equipa
+              <ArrowRightIcon className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </motion.div>
         </div>
       </motion.div>
+
       {/* Bottom Divider */}
       <div className="bg-primary-100 py-16 border-t"/>
     </section>

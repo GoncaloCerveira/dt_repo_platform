@@ -77,7 +77,7 @@ const PilotDetailPage = ({
                 </h3>
               </div>
 
-              {/* Grid layout that is 1 column on mobile, but adds a nice indent on desktop */}
+              {/* Grid layout that is 1 column on mobile, but adds an indent on desktop */}
               <div className="grid gap-3 md:ml-16 max-w-3xl">
                 {results.map((result, index) => (
                   <motion.div

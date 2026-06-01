@@ -109,6 +109,7 @@ const RuinasPublic = () => <PageWrapperPublic><RuinasPublicPub /></PageWrapperPu
 const MosteiroPublic = () => <PageWrapperPublic><MosteiroPublicPub /></PageWrapperPublic>;
 const GrutaPublic = () => <PageWrapperPublic><GrutaPublicPub /></PageWrapperPublic>;
 const LocationsCatalogPage = () => <PageWrapperPublic><LocationsCatalog /></PageWrapperPublic>;
+const AboutUsPage = () => <PageWrapperPublic><LocationsCatalog /></PageWrapperPublic>;
 
 {/* PUBLIC ROUTES for Technology */}
 const SantaClaraPagePub = () => <PageWrapperPublic><SantaClaraTech /></PageWrapperPublic>;
@@ -230,6 +231,7 @@ function App() {
           <Route path="/tech-plataforma-iot" element={<PlatformPagePub />} />
           <Route path="/tech-firmware-iot" element={<FirmwarePagePub />} />
           <Route path="/tech-fluxo_visitantes" element={<VisitorPagePub />} />
+          <Route path="/sobre-nos" element={<AboutUsPage />} />
 
           {/* PROTECTED REPOSITORY ROUTES */}
           <Route element={<ProtectedRoute />}>
