@@ -22,6 +22,7 @@ import OurTecnhologySection from "@/screens/app_tecnhology";
 // Authentication Imports
 import Login from "@/screens/login_page";
 import { ProtectedRoute } from "@/store/ProtectedRoute";
+import ActivateAccount from "@/screens/signup/activate_account";
 
 // Public Pages
 import NavbarPublic from "./screens/navbar_public";
@@ -233,6 +234,7 @@ function App() {
           <Route path="/tech-firmware-iot" element={<FirmwarePagePub />} />
           <Route path="/tech-fluxo_visitantes" element={<VisitorPagePub />} />
           <Route path="/sobre-nos" element={<AboutUsPage />} />
+          <Route path="/activation" element={<ActivateAccount />} />
 
           {/* PROTECTED REPOSITORY ROUTES */}
           <Route element={<ProtectedRoute />}>
