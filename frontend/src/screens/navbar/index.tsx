@@ -22,6 +22,7 @@ const projectsList = [
   { name: "Plataforma Sensores", path: "/repository/plataforma_iot" },
   { name: "Firmware Sensores", path: "/repository/firmware_iot" },
   { name: "Fluxo de Visitantes - Jerónimos", path: "/repository/fluxo_visitantes" },
+  { name: "Galeria de Modelos", path: "/repository/galeria-modelos" },
 ];
 
 const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
