@@ -31,25 +31,13 @@ const Home = ({ setSelectedPage }: Props) => {
   return (
     <section
       id="home"
-      className="relative flex flex-col justify-between min-h-[85svh] bg-cover bg-center bg-no-repeat"
+      className="relative flex flex-col justify-between min-h-[90svh] bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${BackgroundImage})` }}
     >
       <div className="absolute inset-0 bg-gray-900/70 z-0" />
 
       {/* MAIN CONTENT */}
       <div className="relative z-10 flex flex-col flex-grow pt-24 md:pt-32 pb-8 w-5/6 mx-auto">
-        
-        {/* TOP LOGO */}
-        <motion.div
-          initial="hidden" animate="visible" transition={{ duration: 0.5 }}
-          variants={{ hidden: { opacity: 0, x: -50 }, visible: { opacity: 1, x: 0 } }}
-        >
-          <div className="flex items-center gap-4 md:gap-6">
-            <img src={ICON} alt="Digital Twins Icon" className="w-10 h-10 md:w-12 md:h-12 object-contain" />
-            <h1 className="font-montserrat font-bold text-white uppercase text-3xl sm:text-4xl">DT4SST-CH</h1>
-          </div>
-        </motion.div>
-
         {/* CENTERED CONTENT */}
         <div className="flex-grow flex items-center justify-start">
           <motion.div

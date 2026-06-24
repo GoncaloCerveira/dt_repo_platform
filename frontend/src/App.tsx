@@ -46,6 +46,7 @@ import SantaClaraTech from "./screens/app_tecnhology/tech_santa_clara";
 import SearchTech from "./screens/app_tecnhology/tech-search";
 import SegmentationTech from "./screens/app_tecnhology/tech_segmentation";
 import VisitorFlowTech from "./screens/app_tecnhology/tech_visitors_flow";
+import ModelGallery from "./screens/model_gallery/";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -205,6 +206,7 @@ const MireuPage = () => <PageWrapper><Milreu /></PageWrapper>;
 const PlatformPage = () => <PageWrapper><Deployment /></PageWrapper>;
 const FirmwarePage = () => <PageWrapper><Firmware /></PageWrapper>;
 const VisitorPage = () => <PageWrapper><VisitorFlow /></PageWrapper>;
+const ModelsGalleryPage = () => <PageWrapper><ModelGallery /></PageWrapper>;
 
 /* ROUTING CONFIGURATION */
 function App() {
@@ -249,6 +251,7 @@ function App() {
             <Route path="/repository/plataforma_iot" element={<PlatformPage />} />
             <Route path="/repository/firmware_iot" element={<FirmwarePage />} />
             <Route path="/repository/fluxo_visitantes" element={<VisitorPage />} />
+            <Route path="/galeria-modelos" element={<ModelsGalleryPage />} />
           </Route>
 
           {/* SAFE FALLBACK */}

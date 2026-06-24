@@ -20,7 +20,6 @@ import {
   CpuChipIcon,
   GlobeAltIcon,
   UsersIcon,
-  BuildingOffice2Icon,
   CubeIcon
 } from "@heroicons/react/24/outline";
 
@@ -122,7 +121,7 @@ const projects: ProjectItem[] = [
     accent: "from-indigo-500 to-purple-500",
     status: "Em Desenvolvimento"
   },
-   {
+  {
     icon: <GlobeAltIcon className="h-6 w-6" />,
     title: "Visita em realidade virtual à Gruta do Escoural",
     description: "Visualização da Gruta do Escoural baseada em captação 3D, navegável em tempo real.",
@@ -133,7 +132,7 @@ const projects: ProjectItem[] = [
   },
   {
     icon: <DevicePhoneMobileIcon className="h-6 w-6" />,
-  title: "Reconstrução virtual das Ruínas Romanas de Milreu",
+    title: "Reconstrução virtual das Ruínas Romanas de Milreu",
     description: "Reconstrução virtual das Ruínas Romanas de Milreu em 3D, desenvolvida no Blender a partir de referências históricas e arqueológicas.",
     link: "/repository/app-milreu",
     tag: "Experiências Imersivas",
@@ -141,6 +140,39 @@ const projects: ProjectItem[] = [
     status: "Em Desenvolvimento"
   },
 ];
+
+const pilotSites: PilotSite[] = [
+  {
+    name: "Mosteiro dos Jerónimos", location: "Lisboa", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FMJ&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelos & Mesh",
+    image: MJ
+  },
+  {
+    name: "Mosteiro de Alcobaça", location: "Alcobaça", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FMA&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelos & Mesh",
+    image: MA
+  },
+  {
+    name: "Museu Nacional do Azulejo", location: "Lisboa", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FMNAz&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelos & Mesh",
+    image: MNAZ
+  },
+  {
+    name: "Ruínas Romanas de Milreu", location: "Faro", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FRRM&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelos & Mesh",
+    image: RRM
+  },
+  {
+    name: "Gruta do Escoural", location: "Alentejo", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FGE&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelo Completo",
+    image: GE
+  },
+  {
+    name: "Santa Clara-a-Velha (Modelo)", location: "Coimbra", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FMSCV&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelo Completo",
+    image: MSCV
+  },
+  {
+    name: "Santa Clara-a-Velha (HBIM)", location: "Coimbra", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FHBIM%20Santa%20Clara&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "HBIM Data",
+    image: HBIM
+  },
+];
+
+/* ================= SUB-COMPONENTS ================= */
 
 const ProjectRow = ({ item }: { item: ProjectItem }) => {
   const navigate = useNavigate();
@@ -169,7 +201,7 @@ const ProjectRow = ({ item }: { item: ProjectItem }) => {
                 {item.title}
               </h3>
               <span className="hidden sm:block px-2 py-0.5 text-[10px] font-bold uppercase tracking-tighter border border-gray-200 text-gray-400 rounded">
-                {hasInternalPage ? "Public" : "Public"}
+                Public
               </span>
             </div>
             <p className="text-sm text-gray-500 line-clamp-1">{item.description}</p>
@@ -268,38 +300,9 @@ const ProjectRow = ({ item }: { item: ProjectItem }) => {
   );
 };
 
-const pilotSites: PilotSite[] = [
-  {
-    name: "Mosteiro dos Jerónimos", location: "Lisboa", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FMJ&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelos & Mesh",
-    image: MJ
-  },
-  {
-    name: "Mosteiro de Alcobaça", location: "Alcobaça", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FMA&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelos & Mesh",
-    image: MA
-  },
-  {
-    name: "Museu Nacional do Azulejo", location: "Lisboa", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FMNAz&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelos & Mesh",
-    image: MNAZ
-  },
-  {
-    name: "Ruínas Romanas de Milreu", location: "Faro", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FRRM&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelos & Mesh",
-    image: RRM
-  },
-  {
-    name: "Gruta do Escoural", location: "Alentejo", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FGE&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelo Completo",
-    image: GE
-  },
-  {
-    name: "Santa Clara-a-Velha (Modelo)", location: "Coimbra", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FMSCV&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelo Completo",
-    image: MSCV
-  },
-  {
-    name: "Santa Clara-a-Velha (HBIM)", location: "Coimbra", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FHBIM%20Santa%20Clara&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "HBIM Data",
-    image: HBIM
-  },
-];
-
 const PilotModelSlider = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="group mt-20 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl">
       {/* HEADER */}
@@ -330,15 +333,25 @@ const PilotModelSlider = () => {
           </div>
 
           {/* RIGHT */}
-          <div className="flex items-center gap-6 rounded-xl border border-white/20 bg-white/10 px-5 py-4 backdrop-blur-md">
-            <div className="text-center">
-              <p className="text-2xl font-black text-white">
-                {pilotSites.length}
-              </p>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">
-                Assets
-              </p>
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <div className="flex items-center gap-6 rounded-xl border border-white/20 bg-white/10 px-10 py-2 backdrop-blur-md">
+              <div className="text-center">
+                <p className="text-2xl font-black text-white">
+                  30+
+                </p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">
+                  Modelos
+                </p>
+              </div>
             </div>
+
+            <button
+              onClick={() => navigate("/galeria-modelos")}
+              className="flex items-center gap-2 rounded-xl bg-white px-5 py-4 text-sm font-bold text-[#77945D] shadow-lg transition-transform hover:scale-105"
+            >
+              Ver Galeria Completa
+              <ArrowTopRightOnSquareIcon className="h-4 w-4" />
+            </button>
           </div>
         </div>
       </div>
@@ -400,7 +413,6 @@ const PilotModelSlider = () => {
 
                     <div className="flex items-center gap-2 text-white">
                       <span className="text-xs font-bold">Open</span>
-
                       <ChevronRightIcon className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-1" />
                     </div>
                   </div>
@@ -408,6 +420,35 @@ const PilotModelSlider = () => {
               </div>
             </motion.a>
           ))}
+
+          <motion.div
+            onClick={() => navigate("/galeria-modelos")}
+            whileHover={{ y: -6 }}
+            transition={{ duration: 0.25 }}
+            className="group/card relative flex flex-shrink-0 snap-center cursor-pointer items-center justify-center"
+          >
+            <div className="relative flex aspect-[3/4] w-72 flex-col items-center justify-center overflow-hidden rounded-2xl border-2 border-dashed border-[#77945D]/40 bg-[#77945D]/5 p-8 transition-all duration-300 group-hover/card:border-[#77945D] group-hover/card:bg-[#77945D]/10">
+              <div className="mb-4 rounded-full bg-[#77945D]/20 p-4 text-[#77945D] transition-transform duration-300 group-hover/card:scale-110">
+                <CubeIcon className="h-10 w-10" />
+              </div>
+              
+              <h4 className="text-center text-xl font-black text-gray-800">
+                Explorar Galeria Completa
+              </h4>
+              
+              <p className="mt-3 text-center text-xs font-medium leading-relaxed text-gray-500">
+                Descubra a nossa coleção completa de modelos 3D, gémeos digitais e levantamentos geométricos na galeria dedicada.
+              </p>
+              
+              <div className="mt-8 flex items-center gap-2 rounded-lg bg-[#77945D] px-5 py-3 text-white shadow-md transition-colors hover:bg-[#637d4d]">
+                <span className="text-[10px] font-bold uppercase tracking-widest">
+                  Ver Mais Modelos
+                </span>
+                <ChevronRightIcon className="h-4 w-4" />
+              </div>
+            </div>
+          </motion.div>
+
         </div>
       </div>
     </div>
@@ -507,7 +548,7 @@ const OurProjectSection = ({ setSelectedPage }: Props) => {
             </div>
           </div>
           <a
-            href="https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments"
+            href="https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgD7xRB94gRHQKceNf9VDkHDAVPLFImG0NFLkQPDxrLZWW4"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block w-full md:w-auto px-6 py-3 bg-gray-900 text-white rounded-xl font-bold text-sm hover:bg-gray-800 transition-colors text-center"

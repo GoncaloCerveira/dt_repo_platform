@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Bars3Icon, XMarkIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
 import { useLocation, useNavigate } from "react-router-dom";
 import AnchorLink from "react-anchor-link-smooth-scroll";
-import Logo_navbar from "@/assets/Logo_navbar.png";
+import Logo_navbar from "@/assets/digitaltwins_icone.png";
 import { SelectedPage } from "@/components/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { motion, AnimatePresence } from "framer-motion";
@@ -68,9 +68,23 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
         <div className={`${flexBetween} mx-auto w-5/6`}>
           <div className={`${flexBetween} w-full gap-16`}>
             
-            <button onClick={() => navigate("/")}>
-              <img alt="logo" className="w-44 h-auto object-contain cursor-pointer" src={Logo_navbar} />
-            </button>
+            <motion.button
+              onClick={() => navigate("/")}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.5 }}
+              variants={{ hidden: { opacity: 0, x: -50 }, visible: { opacity: 1, x: 0 } }}
+              className="flex items-center gap-3 md:gap-4 p-0 border-none bg-transparent cursor-pointer"
+            >
+              <img 
+                src={Logo_navbar} 
+                alt="Digital Twins Icon" 
+                className="w-8 h-8 md:w-10 md:h-10 object-contain" 
+              />
+              <span className="font-montserrat font-bold text-white uppercase text-3xl sm:text-xl whitespace-nowrap">
+                DT4SST-CH
+              </span>
+            </motion.button>
 
             {isAboveMediumScreens ? (
               <div className={`${flexBetween} w-full`}>

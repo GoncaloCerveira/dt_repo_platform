@@ -26,8 +26,8 @@ const Segmentation = () => {
           type: "web" 
         },
         { 
-          label: "Scripts de Teste e Projeções", 
-          url: "https://github.com/GoncaloCerveira/DT4SST-CH.Projections", 
+          label: "Resultados e Testes de Projeções e HBIMs", 
+          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDpx7kL6GJ0TZkiiPa4d-m_AeuOXFRYq8JYloEVXwaBt8M?e=NhxrBP", 
           type: "web" 
         }
       ]}

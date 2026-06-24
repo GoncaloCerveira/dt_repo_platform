@@ -25,6 +25,11 @@ const Firmware = () => {
           url: "https://github.com/nmc-fct/DT4SST-CH.PT/tree/main/firmware/Sources/bin_files",
           type: "web",
         },
+        {
+          label: "HW-FW-SW Development",
+          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgA6lrxKrQesR4FLLw7lnaSuAebrr8d1Zh5hRwcjXVgGVKQ?e=uMTxrv",
+          type: "external",
+        },
       ]}
       setSelectedPage={function (value: SelectedPage): void {
         throw new Error("Function implemented.");

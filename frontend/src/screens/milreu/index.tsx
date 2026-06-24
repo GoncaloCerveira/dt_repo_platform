@@ -1,9 +1,12 @@
 import ProjectDetail from "@/components/ProjectTemplate";
 import { SelectedPage } from "@/components/types";
-import MIL1 from "@/assets/Milreu/Milreu01.png";
-import MIL2 from "@/assets/Milreu/Milreu02.png";
-import MIL3 from "@/assets/Milreu/Milreu03.png";
-import MIL4 from "@/assets/Milreu/Milreu3d.png";
+import MIL1 from "@/assets/Milreu/Milreu04.jpeg";
+import MIL2 from "@/assets/Milreu/Milreu05.jpeg";
+import MIL3 from "@/assets/Milreu/Milreu06.jpeg";
+import MIL4 from "@/assets/Milreu/Milreu07.jpeg";
+import MIL5 from "@/assets/Milreu/Milreu08.jpeg";
+import MIL6 from "@/assets/Milreu/Milreu09.jpeg";
+import MIL7 from "@/assets/Milreu/Milreu3d.png";
 import MIL1_vid from "@/assets/Milreu/Milreu.mp4";
 
 const Milreu = () => {
@@ -16,6 +19,9 @@ const Milreu = () => {
         { url: MIL2, type: "image" },
         { url: MIL3, type: "image" },
         { url: MIL4, type: "image" },
+        { url: MIL5, type: "image" },
+        { url: MIL6, type: "image" },
+        { url: MIL7, type: "image" },
         { url: MIL1_vid, type: "video" },
       ]}
       description={[
@@ -26,12 +32,12 @@ const Milreu = () => {
       links={[
         { 
           label: "Acesso ao modelo de reconstrução (.blend)", 
-          url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FReconstru%C3%A7%C3%A3o%20das%20Ru%C3%ADnas%20Romanas%20de%20Milreu&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", 
+          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgCEUnsQKHf2QbvBlmCKJWqiAb0CI7RZCz5j05tqQ2z9hXA?e=rx0IUg", 
           type: "web" 
         },
         { 
           label: "Aplicação de realidade aumentada das Ruínas Romanas de Milreu", 
-          url: "https://unlpt-my.sharepoint.com/shared?listurl=https%3A%2F%2Funlpt%2Dmy%2Esharepoint%2Ecom%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FAplica%C3%A7%C3%A3o%20AR%20%2D%20Ru%C3%ADnas%20Romanas%20de%20Milreu&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", 
+          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDKfAgZ0PAaSKoLf55wNFq9AfHT1YM8cwk8hFbaoIDYD2w?e=z0zQyf", 
           type: "external" 
         }
       ]}

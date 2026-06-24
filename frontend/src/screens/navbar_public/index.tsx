@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Bars3Icon, XMarkIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import { useLocation, useNavigate } from "react-router-dom";
 import AnchorLink from "react-anchor-link-smooth-scroll";
-import Logo_navbar from "@/assets/Logo_navbar.png";
+import Logo_navbar from "@/assets/digitaltwins_icone.png";
 import { SelectedPage } from "@/components/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { motion, AnimatePresence } from "framer-motion";
@@ -13,7 +13,7 @@ type Props = {
 };
 
 const projectsList = [
-  { name: "", path: "/santa-clara" },
+  { name: "Repositório", path: "/repository" },
 ];
 
 const NavbarPublic = ({ selectedPage, setSelectedPage }: Props) => {
@@ -74,9 +74,24 @@ const NavbarPublic = ({ selectedPage, setSelectedPage }: Props) => {
         <div className={`${flexBetween} mx-auto w-5/6`}>
           <div className={`${flexBetween} w-full gap-16`}>
             
-            <button onClick={() => navigate("/")}>
-              <img alt="logo" className="w-44 h-auto object-contain cursor-pointer" src={Logo_navbar} />
-            </button>
+            {/* ANIMATED LOGO BUTTON */}
+            <motion.button
+              onClick={() => navigate("/")}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.5 }}
+              variants={{ hidden: { opacity: 0, x: -50 }, visible: { opacity: 1, x: 0 } }}
+              className="flex items-center gap-3 md:gap-4 p-0 border-none bg-transparent cursor-pointer"
+            >
+              <img 
+                src={Logo_navbar} 
+                alt="Digital Twins Icon" 
+                className="w-8 h-8 md:w-10 md:h-10 object-contain" 
+              />
+              <span className="font-montserrat font-bold text-white uppercase text-2xl sm:text-xl whitespace-nowrap">
+                DT4SST-CH
+              </span>
+            </motion.button>
 
             {isAboveMediumScreens ? (
               <div className={`${flexBetween} w-full`}>
@@ -85,7 +100,6 @@ const NavbarPublic = ({ selectedPage, setSelectedPage }: Props) => {
                 </div>
                 
                 <div className="relative">
-
                   <AnimatePresence>
                     {isProjectsOpen && (
                       <motion.div
@@ -131,7 +145,7 @@ const NavbarPublic = ({ selectedPage, setSelectedPage }: Props) => {
             {isHomePage && renderLinks()}
             
             <div className="flex flex-col gap-4">
-              <p className="text-sm uppercase tracking-widest text-gray-400">Nossos Projetos</p>
+              <p className="text-sm uppercase tracking-widest text-gray-400"></p>
               {projectsList.map((project) => (
                 <button
                   key={project.path}

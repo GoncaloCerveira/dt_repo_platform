@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { supabase } from "@/store/supabaseClient";
-import { LockClosedIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
+import { CheckCircleIcon } from "@heroicons/react/24/outline";
 
 export default function ActivateAccount() {
   const [searchParams] = useSearchParams();
@@ -15,29 +15,36 @@ export default function ActivateAccount() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  // Simple UUID regex for verification
+  const isUuid = (id: string) => 
+  /^[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-f]{4}-[0-9a-z]{12}$/i.test(id);
+
   const handleActivate = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setLoading(true);
-  setError("");
+    e.preventDefault();
+    setLoading(true);
+    setError("");
 
-  try {
-    const { error: funcError } = await supabase.functions.invoke('create-user', {
-      body: { username: nickname, password }
-    });
+    try {
+      // Trigger the Edge Function
+      const { error: funcError } = await supabase.functions.invoke('create-user', {
+        body: { username: nickname, password }
+      });
 
-    if (funcError) throw funcError;
+      if (funcError) throw funcError;
 
-    alert("Conta criada com sucesso! Já pode iniciar sessão.");
-    navigate("/login"); 
-  } catch (err: any) {
-    // Displays the error message returned by your Edge Function
-    setError("Erro ao criar conta: " + (err.message || "Tente novamente."));
-  } finally {
-    setLoading(false);
+      alert("Conta criada com sucesso! Já pode iniciar sessão.");
+      navigate("/repository"); 
+    } catch (err: any) {
+      setError("Erro ao criar conta: " + (err.message || "Tente novamente."));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Verify the ID structure exists
+  if (!userId || !isUuid(userId)) {
+    return <div className="p-10 text-center text-red-500">Link de ativação inválido ou expirado.</div>;
   }
-};
-
-  if (!userId) return <div className="p-10 text-center">Link inválido.</div>;
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">

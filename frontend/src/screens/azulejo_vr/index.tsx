@@ -22,7 +22,7 @@ const VRMNAz = () => {
       links={[
         { 
           label: "Aplicação VR (Projeto e Documentação)", 
-          url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FAplica%C3%A7%C3%B5es%20AR%20e%20VR%20para%20o%20Museu%20do%20Azulejo%2FVR%20APP%20DT&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", 
+          url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FProjectos%2FAplica%C3%A7%C3%B5es%20AR%20e%20VR%20para%20o%20Museu%20do%20Azulejo%2FVR%20APP%20DT&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", 
           type: "external" 
         }
       ]}
