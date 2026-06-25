@@ -50,7 +50,7 @@ import MNMC from "@/assets/locais_opt/MNMC.jpeg";
 import PD from "@/assets/locais_opt/PP_Ana_Albuquerque_f79080f7d5.jpg";
 import SB from "@/assets/locais_opt/SB.webp";
 import SE from "@/assets/locais_opt/SE.webp";
-import SN from "@/assets/locais_opt/sé-nova.jpg";
+import SN from "@/assets/locais_opt/sé-nova.jpg";
 import SV from "@/assets/locais_opt/hero-se-velha.jpg";
 import CCola from "@/assets/locais_opt/CCola.jpg";
 import SAM from "@/assets/locais_opt/SAM.webp";
@@ -79,14 +79,18 @@ export type LocationData = {
   id: string;
   name: string;
   image: string;
-  resources: {
+  mainFolder: ResourceState; // Main directory access option
+  resources?: {
     dados: ResourceState;
     modelos3D: ResourceState;
     demos: ResourceState;
   };
+  customSubfolders?: { // Exception handling for MNAZ style structures
+    title: string;
+    resource: ResourceState;
+  }[];
 };
 
-// Available resource filter options
 type FilterType = "DADOS" | "MODELOS" | "DEMOS";
 
 /* ================= DADOS ================= */
@@ -96,6 +100,7 @@ const locationsList: LocationData[] = [
     id: "convento-de-cristo", 
     name: "Convento de Cristo", 
     image: CC, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: true, url: "#" },
@@ -106,6 +111,7 @@ const locationsList: LocationData[] = [
     id: "casa-corpo-santo", 
     name: "Casa do Corpo Santo", 
     image: CCS, 
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/..." },
     resources: {
       dados: { available: true, url: "https://unlpt-my.sharepoint.com/..." },
       modelos3D: { available: false, url: "" },
@@ -116,6 +122,7 @@ const locationsList: LocationData[] = [
     id: "castelo-elvas", 
     name: "Castelo de Elvas", 
     image: CE, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: true, url: "#" },
@@ -126,6 +133,7 @@ const locationsList: LocationData[] = [
     id: "convento-jesus", 
     name: "Convento de Jesus", 
     image: CJ, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: false, url: "" },
       modelos3D: { available: true, url: "#" },
@@ -136,6 +144,7 @@ const locationsList: LocationData[] = [
     id: "casa-museu-anastacio-goncalves", 
     name: "Casa Museu Dr. Anastácio Gonçalves", 
     image: CMAG, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: true, url: "#" },
@@ -146,6 +155,7 @@ const locationsList: LocationData[] = [
     id: "castelo-viana-alentejo", 
     name: "Castelo de Viana do Alentejo", 
     image: CVA, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -156,6 +166,7 @@ const locationsList: LocationData[] = [
     id: "convento-de-sao-bento-de-castris", 
     name: "Convento de São Bento de Cástris", 
     image: CBC, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -166,6 +177,7 @@ const locationsList: LocationData[] = [
     id: "gruta-do-escoural", 
     name: "Gruta do Escoural", 
     image: GE, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -176,6 +188,7 @@ const locationsList: LocationData[] = [
     id: "mosteiro-de-alcobaca", 
     name: "Mosteiro de Alcobaça", 
     image: MA, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -186,6 +199,7 @@ const locationsList: LocationData[] = [
     id: "museu-de-arqueologia-e-etnografia-do-distrito-de-setubal", 
     name: "Museu de Arqueologia e Etnografia do Distrito de Setúbal", 
     image: MAEDS, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -196,6 +210,7 @@ const locationsList: LocationData[] = [
     id: "museu-arte-popular", 
     name: "Museu Arte Popular", 
     image: MAP, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -206,6 +221,7 @@ const locationsList: LocationData[] = [
     id: "museu-nacional-grao-vasco", 
     name: "Museu Nacional Grão Vasco", 
     image: MNGV, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -216,6 +232,7 @@ const locationsList: LocationData[] = [
     id: "mosteiro-dos-jeronimos", 
     name: "Mosteiro dos Jerónimos", 
     image: MJ, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -226,6 +243,7 @@ const locationsList: LocationData[] = [
     id: "museu-nacional-arte-antiga", 
     name: "Museu Nacional de Arte Antiga", 
     image: MNAA, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -236,16 +254,19 @@ const locationsList: LocationData[] = [
     id: "museu-nacional-azueljo", 
     name: "Museu Nacional do Azulejo", 
     image: MNAZ, 
-    resources: {
-      dados: { available: true, url: "#" },
-      modelos3D: { available: false, url: "" },
-      demos: { available: false, url: "" }
-    }
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/MNAZ_Root" },
+    customSubfolders: [
+      { title: "Claustro Maior", resource: { available: true, url: "#" } },
+      { title: "Igreja da Madre de Deus", resource: { available: true, url: "#" } },
+      { title: "Capela de Santo António", resource: { available: true, url: "#" } },
+      { title: "Sala da Caça", resource: { available: false, url: "" } }
+    ]
   },
   { 
     id: "museu-nacional-conimbriga", 
     name: "Museu Nacional de Conimbriga", 
     image: MNC, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -256,6 +277,7 @@ const locationsList: LocationData[] = [
     id: "museu-nacional-etnologia", 
     name: "Museu Nacional de Etnologia", 
     image: MNE, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -266,6 +288,7 @@ const locationsList: LocationData[] = [
     id: "museu-nacional-etnologia-conimbriga", 
     name: "Museu Nacional de Etnologia de Conimbriga", 
     image: CVA, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -276,6 +299,7 @@ const locationsList: LocationData[] = [
     id: "museu-nacional-frei-manuel-cenaculo", 
     name: "Museu Nacional Frei Manuel do Cenáculo", 
     image: MNFM, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -286,6 +310,7 @@ const locationsList: LocationData[] = [
     id: "museu-nacional-resistencia-liberdade", 
     name: "Museu Nacional Resistência e Liberdade", 
     image: MNRL, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -296,6 +321,7 @@ const locationsList: LocationData[] = [
     id: "museu-nacional-traje", 
     name: "Museu Nacional do Traje", 
     image: MNdT, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -306,6 +332,7 @@ const locationsList: LocationData[] = [
     id: "museu-nacional-teatro-danca", 
     name: "Museu Nacional do Teatro e da Dança", 
     image: MNTD, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -316,6 +343,7 @@ const locationsList: LocationData[] = [
     id: "mosteiro-santa-clara-velha", 
     name: "Mosteiro de Santa Clara-a-Velha", 
     image: MSCV, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -326,6 +354,7 @@ const locationsList: LocationData[] = [
     id: "panteao-nacional", 
     name: "Panteão Nacional", 
     image: PN, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -336,6 +365,7 @@ const locationsList: LocationData[] = [
     id: "ruinas-casa-rua-burgos", 
     name: "Ruínas da Casa na Rua de Burgos", 
     image: RCRB, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -346,6 +376,7 @@ const locationsList: LocationData[] = [
     id: "ruinas-romanas-milreu", 
     name: "Ruínas Romanas de Milreu", 
     image: RRM, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -356,6 +387,7 @@ const locationsList: LocationData[] = [
     id: "sitio-arqueologico-sao-cucufate", 
     name: "Sítio Arqueológico de São Cucufate", 
     image: SASC, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -366,6 +398,7 @@ const locationsList: LocationData[] = [
     id: "sitio-arqueologico-torre-palma", 
     name: "Sítio Arqueológico de Torre de Palma", 
     image: VRRP, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -376,6 +409,7 @@ const locationsList: LocationData[] = [
     id: "se-braga", 
     name: "Sé de Braga", 
     image: SB, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -386,6 +420,7 @@ const locationsList: LocationData[] = [
     id: "se-evora", 
     name: "Sé de Évora", 
     image: SE, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -396,6 +431,7 @@ const locationsList: LocationData[] = [
     id: "se-lisboa", 
     name: "Sé de Lisboa", 
     image: SL, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -406,6 +442,7 @@ const locationsList: LocationData[] = [
     id: "se-portalegre", 
     name: "Sé de Portalegre", 
     image: SP, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -416,6 +453,7 @@ const locationsList: LocationData[] = [
     id: "torre-castelo-evoramonte", 
     name: "Torre do Castelo de Evoramonte", 
     image: TPCE, 
+    mainFolder: { available: true, url: "#" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -430,13 +468,10 @@ const ModelCatalog = () => {
   const [selectedLocation, setSelectedLocation] = useState<LocationData | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
-  
-  // Track multiple active filters simultaneously using an array
   const [activeFilters, setActiveFilters] = useState<FilterType[]>([]);
   
   const navigate = useNavigate();
 
-  // Debounce Effect
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedSearch(searchTerm);
@@ -448,29 +483,26 @@ const ModelCatalog = () => {
     return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   };
 
-  // Toggle individual filter tags in and out of the array
   const handleFilterToggle = (filter: FilterType) => {
     setActiveFilters((prev) =>
       prev.includes(filter)
-        ? prev.filter((f) => f !== filter) // Remove if already active
-        : [...prev, filter]               // Add if not active
+        ? prev.filter((f) => f !== filter)
+        : [...prev, filter]
     );
   };
 
-  // Clear all filters to reset back to "Todos"
   const clearAllFilters = () => {
     setActiveFilters([]);
   };
 
-  // Advanced Filtering (Matches search text AND satisfies ALL selected folders)
   const filteredLocations = [...locationsList]
     .sort((a, b) => a.name.localeCompare(b.name))
     .filter((location) => {
-      // 1. Text Search Matching
       const matchesSearch = !debouncedSearch || normalizeString(location.name).includes(normalizeString(debouncedSearch));
       
-      // 2. Multi-Filter Matching (Ensures location has EVERY selected resource)
+      // Multi-Filter handling (safeguarded against custom structural exceptions like MNAZ)
       const matchesMultiFilter = activeFilters.every((filter) => {
+        if (!location.resources) return false; 
         if (filter === "DADOS") return location.resources.dados.available;
         if (filter === "MODELOS") return location.resources.modelos3D.available;
         if (filter === "DEMOS") return location.resources.demos.available;
@@ -563,12 +595,9 @@ const ModelCatalog = () => {
 
         {/* BARRA DE FILTROS UPGRADED (MULTI-SELECÇÃO) */}
         <div className="mb-8 flex flex-col md:flex-row items-center justify-between gap-4 bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
-          
-          {/* Multi-Select Filter Buttons */}
           <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
             <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mr-2 hidden sm:block">Filtrar por:</span>
             
-            {/* "Todos" button clears the array selection */}
             <button 
               onClick={clearAllFilters} 
               className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${
@@ -614,7 +643,6 @@ const ModelCatalog = () => {
             </button>
           </div>
 
-          {/* Input de Pesquisa */}
           <div className="relative w-full md:w-72 shrink-0">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <MagnifyingGlassIcon className="h-4 w-4 text-gray-400" />
@@ -653,10 +681,13 @@ const ModelCatalog = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                     
-                    {/* Badge flutuante de contagem de recursos */}
+                    {/* Badge flutuante adaptado para contar subpastas dinâmicas ou estáticas */}
                     <div className="absolute bottom-3 right-3 bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-bold px-2 py-1 rounded-md flex items-center gap-1">
                       <FolderSolidIcon className="h-3 w-3" />
-                      {[location.resources.dados.available, location.resources.modelos3D.available, location.resources.demos.available].filter(Boolean).length}/3
+                      {location.customSubfolders 
+                        ? `${location.customSubfolders.filter(f => f.resource.available).length} Espaços`
+                        : `${[location.resources?.dados.available, location.resources?.modelos3D.available, location.resources?.demos.available].filter(Boolean).length}/3`
+                      }
                     </div>
                   </div>
 
@@ -668,15 +699,25 @@ const ModelCatalog = () => {
                     <div className="mt-auto flex flex-col gap-2 border-t border-gray-100 pt-3">
                       <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">Recursos</p>
                       <div className="flex gap-2">
-                        <div title="Dados" className={`p-1.5 rounded-md ${location.resources.dados.available ? 'bg-blue-50 text-blue-500' : 'bg-gray-50 text-gray-300'}`}>
-                          <CircleStackIcon className="h-4 w-4" />
-                        </div>
-                        <div title="Modelos 3D" className={`p-1.5 rounded-md ${location.resources.modelos3D.available ? 'bg-emerald-50 text-emerald-500' : 'bg-gray-50 text-gray-300'}`}>
-                          <CubeIcon className="h-4 w-4" />
-                        </div>
-                        <div title="Demos e Vídeos" className={`p-1.5 rounded-md ${location.resources.demos.available ? 'bg-purple-50 text-purple-500' : 'bg-gray-50 text-gray-300'}`}>
-                          <VideoCameraIcon className="h-4 w-4" />
-                        </div>
+                        {location.customSubfolders ? (
+                          <span className="text-[10px] px-2 py-1 bg-amber-50 text-amber-700 rounded-md font-bold uppercase">
+                            Múltiplas Áreas
+                          </span>
+                        ) : (
+                          location.resources && (
+                            <>
+                              <div title="Dados" className={`p-1.5 rounded-md ${location.resources.dados.available ? 'bg-blue-50 text-blue-500' : 'bg-gray-50 text-gray-300'}`}>
+                                <CircleStackIcon className="h-4 w-4" />
+                              </div>
+                              <div title="Modelos 3D" className={`p-1.5 rounded-md ${location.resources.modelos3D.available ? 'bg-emerald-50 text-emerald-500' : 'bg-gray-50 text-gray-300'}`}>
+                                <CubeIcon className="h-4 w-4" />
+                              </div>
+                              <div title="Demos e Vídeos" className={`p-1.5 rounded-md ${location.resources.demos.available ? 'bg-purple-50 text-purple-500' : 'bg-gray-50 text-gray-300'}`}>
+                                <VideoCameraIcon className="h-4 w-4" />
+                              </div>
+                            </>
+                          )
+                        )}
                       </div>
                     </div>
                   </div>
@@ -718,18 +759,18 @@ const ModelCatalog = () => {
               className="fixed inset-0 bg-gray-900/40 backdrop-blur-sm"
             />
             <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                transition={{ type: "spring", bounce: 0, duration: 0.4 }}
-                className="relative w-full max-w-2xl bg-[#FAF9F4] rounded-3xl shadow-2xl overflow-hidden z-10 border border-gray-100"
-                >
-                <button
-                    onClick={() => setSelectedLocation(null)}
-                    className="absolute top-4 right-4 z-20 p-2 bg-white/50 hover:bg-white text-gray-800 rounded-full backdrop-blur-md transition-all shadow-sm"
-                >
-                    <XMarkIcon className="h-5 w-5" />
-                </button>
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: "spring", bounce: 0, duration: 0.4 }}
+              className="relative w-full max-w-2xl bg-[#FAF9F4] rounded-3xl shadow-2xl overflow-hidden z-10 border border-gray-100"
+            >
+              <button
+                onClick={() => setSelectedLocation(null)}
+                className="absolute top-4 right-4 z-20 p-2 bg-white/50 hover:bg-white text-gray-800 rounded-full backdrop-blur-md transition-all shadow-sm"
+              >
+                <XMarkIcon className="h-5 w-5" />
+              </button>
               
               {/* Cabeçalho do Modal */}
               <div className="h-60 relative w-full border-b border-gray-100">
@@ -748,23 +789,72 @@ const ModelCatalog = () => {
                 </div>
               </div>
 
-              <div className="p-4 bg-[#FAF9F4]">
-                <div className="flex flex-col gap-4">
-                  <ResourceButton 
-                    title="Dados (Levantamentos)" 
-                    icon={<CircleStackIcon className="h-6 w-6" />} 
-                    resource={selectedLocation.resources.dados} 
-                  />
-                  <ResourceButton 
-                    title="Modelos 3D" 
-                    icon={<CubeIcon className="h-6 w-6" />} 
-                    resource={selectedLocation.resources.modelos3D} 
-                  />
-                  <ResourceButton 
-                    title="Demos & Vídeos" 
-                    icon={<VideoCameraIcon className="h-6 w-6" />} 
-                    resource={selectedLocation.resources.demos} 
-                  />
+              <div className="p-6 bg-[#FAF9F4] flex flex-col gap-5 max-h-[60vh] overflow-y-auto">
+                
+                {/* BOTÃO DA PASTA PRINCIPAL (Aparece para todos os modelos) */}
+                {selectedLocation.mainFolder && selectedLocation.mainFolder.available && (
+                  <div className="flex flex-col gap-2">
+                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Diretório Raiz</p>
+                    <a 
+                      href={selectedLocation.mainFolder.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center justify-between p-4 rounded-xl border-2 border-dashed border-primary-300 bg-primary-50/20 hover:bg-primary-500 hover:border-primary-500 hover:shadow-md transition-all duration-300 cursor-pointer"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="p-3 bg-primary-500 text-white rounded-lg group-hover:bg-white group-hover:text-primary-500 transition-colors">
+                          <FolderSolidIcon className="h-6 w-6" />
+                        </div>
+                        <div className="text-left">
+                          <h4 className="font-bold text-gray-900 group-hover:text-white transition-colors">Abrir Pasta Principal</h4>
+                          <p className="text-xs text-primary-600 group-hover:text-primary-100 transition-colors">Ver todos os arquivos e subdiretórios unificados</p>
+                        </div>
+                      </div>
+                      <ArrowRightIcon className="h-5 w-5 text-primary-500 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                    </a>
+                  </div>
+                )}
+
+                {/* CONTEÚDO DINÂMICO: EXCEÇÃO MNAZ vs PASTAS PADRÃO */}
+                <div className="flex flex-col gap-3">
+                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                    {selectedLocation.customSubfolders ? "Sub-localizações / Divisões" : "Subpastas de Recursos"}
+                  </p>
+
+                  {selectedLocation.customSubfolders ? (
+                    /* RENDERIZAÇÃO DA EXCEÇÃO (MNAZ - Locais internos do museu) */
+                    <div className="flex flex-col gap-3">
+                      {selectedLocation.customSubfolders.map((sub, idx) => (
+                        <ResourceButton 
+                          key={idx}
+                          title={sub.title} 
+                          icon={<CubeIcon className="h-6 w-6" />} 
+                          resource={sub.resource} 
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    /* RENDERIZAÇÃO PADRÃO (DADOS, MODELOS, DEMOS) */
+                    selectedLocation.resources && (
+                      <div className="flex flex-col gap-3">
+                        <ResourceButton 
+                          title="Dados (Levantamentos)" 
+                          icon={<CircleStackIcon className="h-6 w-6" />} 
+                          resource={selectedLocation.resources.dados} 
+                        />
+                        <ResourceButton 
+                          title="Modelos 3D" 
+                          icon={<CubeIcon className="h-6 w-6" />} 
+                          resource={selectedLocation.resources.modelos3D} 
+                        />
+                        <ResourceButton 
+                          title="Demos & Vídeos" 
+                          icon={<VideoCameraIcon className="h-6 w-6" />} 
+                          resource={selectedLocation.resources.demos} 
+                        />
+                      </div>
+                    )
+                  )}
                 </div>
               </div>
             </motion.div>
