@@ -67,6 +67,7 @@ import MNGV from "@/assets/locais_opt/mngv.jpeg";
 import MNRL from "@/assets/locais_opt/mnrl.jpg";
 import PN from "@/assets/locais_opt/pn.jpeg";
 import SL from "@/assets/locais_opt/sl.jpg";
+import MNCp from "@/assets/locais_opt/mnco.jpeg";
 
 /* ================= TYPES ================= */
 
@@ -79,13 +80,13 @@ export type LocationData = {
   id: string;
   name: string;
   image: string;
-  mainFolder: ResourceState; // Main directory access option
+  mainFolder: ResourceState;
   resources?: {
     dados: ResourceState;
     modelos3D: ResourceState;
     demos: ResourceState;
   };
-  customSubfolders?: { // Exception handling for MNAZ style structures
+  customSubfolders?: {
     title: string;
     resource: ResourceState;
   }[];
@@ -100,40 +101,40 @@ const locationsList: LocationData[] = [
     id: "convento-de-cristo", 
     name: "Convento de Cristo", 
     image: CC, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDWD_8joViSQIhbL_G1uCe7ATyd6g1gkalrs2QI7e1Qjho?e=pYNich" },
     resources: {
-      dados: { available: true, url: "#" },
-      modelos3D: { available: true, url: "#" },
-      demos: { available: true, url: "#" }
+      dados: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAEPhJr92lgQ54MWqogjK6EAeb8fVGjjrirkyWNNuL0j8Q?e=FgcDPr" },
+      modelos3D: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgCpBV5XikOzRb1eOCaQe9UxAfL6f358Ft9EdXTBIkg8Fag?e=h8Ug1v" },
+      demos: { available: false, url: "#" }
     }
   },
   { 
     id: "casa-corpo-santo", 
     name: "Casa do Corpo Santo", 
     image: CCS, 
-    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/..." },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgD5tYNgCj7_TrJuXTc1EvLrAVst6ZJybF5bkJhTyuDDORs?e=bOCUyw" },
     resources: {
-      dados: { available: true, url: "https://unlpt-my.sharepoint.com/..." },
-      modelos3D: { available: false, url: "" },
-      demos: { available: true, url: "https://unlpt-my.sharepoint.com/..." }
+      dados: { available: false, url: "#" },
+      modelos3D: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDk_Ur4mtiJRroIFzfrtiHeAR3gcyVuhgBIWn8hdVWtlU4?e=z2WMbc" },
+      demos: { available: false, url: "#" }
     }
   },
   { 
     id: "castelo-elvas", 
     name: "Castelo de Elvas", 
     image: CE, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgCRVYSKgko2T7UUB1NodfYPAYrBQpTF0XZmU57VujBIZiY?e=ECKGaC" },
     resources: {
-      dados: { available: true, url: "#" },
-      modelos3D: { available: true, url: "#" },
-      demos: { available: true, url: "#" }
+      dados: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgCcb4Nbd0L_S4m1Mk9-l16QAXdtgQU3o_gRmoVjqaE8Cn4?e=m2wGfm" },
+      modelos3D: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgD7ezS4RscQS4BXwtu7TdHQAU73Pw4RsMLhJNjONwgcgPI?e=opPks0" },
+      demos: { available: false, url: "#" }
     }
   },
   { 
     id: "convento-jesus", 
     name: "Convento de Jesus", 
     image: CJ, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBxc8PpK2NcRbROUmp1mgLIAYLHrJFMX0yJLCYiOB9idU4?e=nB8vs0" },
     resources: {
       dados: { available: false, url: "" },
       modelos3D: { available: true, url: "#" },
@@ -144,7 +145,7 @@ const locationsList: LocationData[] = [
     id: "casa-museu-anastacio-goncalves", 
     name: "Casa Museu Dr. Anastácio Gonçalves", 
     image: CMAG, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgCLvEquqjiURYaiP2QrwH8LAR38BOPFOeST39yzQv-4Jnw?e=OLwZc6" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: true, url: "#" },
@@ -155,7 +156,7 @@ const locationsList: LocationData[] = [
     id: "castelo-viana-alentejo", 
     name: "Castelo de Viana do Alentejo", 
     image: CVA, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAPcpVo945RRYMsjP90EwjeARifmIRcsCg1UOhNmZ-gNgs?e=Uy1Tvc" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -166,7 +167,7 @@ const locationsList: LocationData[] = [
     id: "convento-de-sao-bento-de-castris", 
     name: "Convento de São Bento de Cástris", 
     image: CBC, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgD2RsdhPMDtS5r77igREXrHAWRUNf0NBMERh0d3MI1BeWI?e=Yy86hl" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -177,7 +178,7 @@ const locationsList: LocationData[] = [
     id: "gruta-do-escoural", 
     name: "Gruta do Escoural", 
     image: GE, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDcuV2GXCulQbrGEYuZ64OUAU7fPZIn8c4NIhPBICmNX_E?e=eSJmEh" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -188,7 +189,7 @@ const locationsList: LocationData[] = [
     id: "mosteiro-de-alcobaca", 
     name: "Mosteiro de Alcobaça", 
     image: MA, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBwQhCgZHsFQpPmV4FdpYBTAUbm4znQUB_T2r5v9v-0e0g?e=Pnktgh" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -199,7 +200,7 @@ const locationsList: LocationData[] = [
     id: "museu-de-arqueologia-e-etnografia-do-distrito-de-setubal", 
     name: "Museu de Arqueologia e Etnografia do Distrito de Setúbal", 
     image: MAEDS, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBm4wAeoo-pQ7EfBZIVNfGMAQ_2Pr-cK0GIDaddnpMZ5vA?e=r9qxK0" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -210,7 +211,7 @@ const locationsList: LocationData[] = [
     id: "museu-arte-popular", 
     name: "Museu Arte Popular", 
     image: MAP, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDh4A8PtAzmSJbeOoRYXqBBAfI-jHCtnQDL_gGPO0vuA1g?e=0hGhZR" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -221,7 +222,7 @@ const locationsList: LocationData[] = [
     id: "museu-nacional-grao-vasco", 
     name: "Museu Nacional Grão Vasco", 
     image: MNGV, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBDbmG0yV6EQYKrjNSy8EeMAfpnBDKlgXo8uhTLVZLdQ3g?e=4y2fCN" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -232,7 +233,7 @@ const locationsList: LocationData[] = [
     id: "mosteiro-dos-jeronimos", 
     name: "Mosteiro dos Jerónimos", 
     image: MJ, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgD3_pQ7dl1-Sq0qu7pPhEKHAavAil_vpgpDqutGR7rUh2M?e=UeQb6s" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -243,7 +244,7 @@ const locationsList: LocationData[] = [
     id: "museu-nacional-arte-antiga", 
     name: "Museu Nacional de Arte Antiga", 
     image: MNAA, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgD9JzOL0b2oR55XibRdSza_AcEIwFpLf6sSO43GjDmnFmw?e=TnQlKX" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -254,7 +255,7 @@ const locationsList: LocationData[] = [
     id: "museu-nacional-azueljo", 
     name: "Museu Nacional do Azulejo", 
     image: MNAZ, 
-    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/MNAZ_Root" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBIyuarAm2nTK_dAZFDZCFyAUYdBwIh02BPfOSHtaaWy7A?e=Sv9AAO" },
     customSubfolders: [
       { title: "Claustro Maior", resource: { available: true, url: "#" } },
       { title: "Igreja da Madre de Deus", resource: { available: true, url: "#" } },
@@ -266,7 +267,18 @@ const locationsList: LocationData[] = [
     id: "museu-nacional-conimbriga", 
     name: "Museu Nacional de Conimbriga", 
     image: MNC, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgC6an2fM_QpQbjf2WJKtPsZAb0pkYqf2hCuHiAOfy2MkPY?e=NNDULq" },
+    resources: {
+      dados: { available: true, url: "#" },
+      modelos3D: { available: false, url: "" },
+      demos: { available: false, url: "" }
+    }
+  },
+  { 
+    id: "museu-nacional-dos-coches", 
+    name: "Museu Nacional dos Coches", 
+    image: MNCo, 
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBpWb9xAPeLQ6dkepgESDxWAUSjFEx0cdCqlceeYSsafkQ?e=9jtNKd" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -277,7 +289,7 @@ const locationsList: LocationData[] = [
     id: "museu-nacional-etnologia", 
     name: "Museu Nacional de Etnologia", 
     image: MNE, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAXbZZTefrRTrkmUKyIeG0WAR7lG7kfRlHahp74IS_uHis?e=ujatgR" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -288,7 +300,7 @@ const locationsList: LocationData[] = [
     id: "museu-nacional-etnologia-conimbriga", 
     name: "Museu Nacional de Etnologia de Conimbriga", 
     image: CVA, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgCYyEqr_n5nSawosTs81NdlAesmHoG9IljTamnnXiFYIck?e=bW21gj" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -299,7 +311,7 @@ const locationsList: LocationData[] = [
     id: "museu-nacional-frei-manuel-cenaculo", 
     name: "Museu Nacional Frei Manuel do Cenáculo", 
     image: MNFM, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgA9ptuyXwhpTLkL6mmBvCpfARNXRNPUn0LmMxWDf9C88Pc?e=Ikzuev" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -310,7 +322,7 @@ const locationsList: LocationData[] = [
     id: "museu-nacional-resistencia-liberdade", 
     name: "Museu Nacional Resistência e Liberdade", 
     image: MNRL, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBZ0o6ARER9S4tUNN22ycyoAcIpBBwMIBhCxRlaNExwZY4?e=6jJYFD" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -321,7 +333,7 @@ const locationsList: LocationData[] = [
     id: "museu-nacional-traje", 
     name: "Museu Nacional do Traje", 
     image: MNdT, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgALKWBN8y3ITbPWVtzltCwmAejlv5l1aHh09CYQxHxiEiw?e=idqNX9" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -332,7 +344,7 @@ const locationsList: LocationData[] = [
     id: "museu-nacional-teatro-danca", 
     name: "Museu Nacional do Teatro e da Dança", 
     image: MNTD, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgA1b_67iQtxSqSijiUS9cE6AeBp4TGdzkjC7LaRdvVGJ8Q?e=8ptJ9h" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -343,7 +355,7 @@ const locationsList: LocationData[] = [
     id: "mosteiro-santa-clara-velha", 
     name: "Mosteiro de Santa Clara-a-Velha", 
     image: MSCV, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgB7-bvth_wiQ5DlPhG7eQ5SAVw18DRPyku9t2Fkl6IM0RM?e=ebRyMi" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -354,7 +366,7 @@ const locationsList: LocationData[] = [
     id: "panteao-nacional", 
     name: "Panteão Nacional", 
     image: PN, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAFN6WW7FgSSofS7FXe_v-1AVQ9YaG6A_XRaOos3FPZV0I?e=xIHjVv" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -365,7 +377,7 @@ const locationsList: LocationData[] = [
     id: "ruinas-casa-rua-burgos", 
     name: "Ruínas da Casa na Rua de Burgos", 
     image: RCRB, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgA8SLrrkGwGR6KdZhaioInWAey_NOcjQyzE4iMDW_-j1L8?e=mvNeFH" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -376,7 +388,7 @@ const locationsList: LocationData[] = [
     id: "ruinas-romanas-milreu", 
     name: "Ruínas Romanas de Milreu", 
     image: RRM, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgCKRoxI0Ft3SKuyJl23VoSlAeyzKhqSrDYTXdaEyoJ2WL0?e=Rw7deU" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -387,7 +399,7 @@ const locationsList: LocationData[] = [
     id: "sitio-arqueologico-sao-cucufate", 
     name: "Sítio Arqueológico de São Cucufate", 
     image: SASC, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAY0VfdBO9eSYI3gC7Jr0abAadkUSUcCpvz_g0NLW344yY?e=bPW5d6" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -398,7 +410,7 @@ const locationsList: LocationData[] = [
     id: "sitio-arqueologico-torre-palma", 
     name: "Sítio Arqueológico de Torre de Palma", 
     image: VRRP, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBnH_lbdIeeRogcYXZ87yDfAbOlkiM84EiiJg2J3rbTB4s?e=8nU1mL" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -409,7 +421,7 @@ const locationsList: LocationData[] = [
     id: "se-braga", 
     name: "Sé de Braga", 
     image: SB, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDcNT1W2ZekSYmRBovdoHd9AXZBDmbED8vUYMh8OahiM_g?e=y5csw0" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -420,7 +432,7 @@ const locationsList: LocationData[] = [
     id: "se-evora", 
     name: "Sé de Évora", 
     image: SE, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAG_qyuEJe2RZKLe5BHf3zOARidmVsD9UUkiMGMrpDQJrs?e=GNPqfC" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -431,7 +443,7 @@ const locationsList: LocationData[] = [
     id: "se-lisboa", 
     name: "Sé de Lisboa", 
     image: SL, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgCwJH3t1m4TRIXkIvOt3WPlAdlw0weV58vp8iCF1H-g7A0?e=4gWNuG" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -442,7 +454,7 @@ const locationsList: LocationData[] = [
     id: "se-portalegre", 
     name: "Sé de Portalegre", 
     image: SP, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgCcwwrb0gGWQ6HCAWmF2yXVAcZdhzYwB12RDwLlTPSNgqA?e=ZigOUP" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -453,7 +465,7 @@ const locationsList: LocationData[] = [
     id: "torre-castelo-evoramonte", 
     name: "Torre do Castelo de Evoramonte", 
     image: TPCE, 
-    mainFolder: { available: true, url: "#" },
+    mainFolder: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgD3hpEtLL36QbaLktwp1le-AV8G0JxeoFJ4JjbdieffoK8?e=5fIWpK" },
     resources: {
       dados: { available: true, url: "#" },
       modelos3D: { available: false, url: "" },
@@ -794,7 +806,7 @@ const ModelCatalog = () => {
                 {/* BOTÃO DA PASTA PRINCIPAL (Aparece para todos os modelos) */}
                 {selectedLocation.mainFolder && selectedLocation.mainFolder.available && (
                   <div className="flex flex-col gap-2">
-                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Diretório Raiz</p>
+                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Diretoria Principal</p>
                     <a 
                       href={selectedLocation.mainFolder.url}
                       target="_blank"

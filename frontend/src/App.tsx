@@ -251,7 +251,7 @@ function App() {
             <Route path="/repository/plataforma_iot" element={<PlatformPage />} />
             <Route path="/repository/firmware_iot" element={<FirmwarePage />} />
             <Route path="/repository/fluxo_visitantes" element={<VisitorPage />} />
-            <Route path="/galeria-modelos" element={<ModelsGalleryPage />} />
+            <Route path="/repository/galeria-modelos" element={<ModelsGalleryPage />} />
           </Route>
 
           {/* SAFE FALLBACK */}

@@ -346,7 +346,7 @@ const PilotModelSlider = () => {
             </div>
 
             <button
-              onClick={() => navigate("/galeria-modelos")}
+              onClick={() => navigate("/repository/galeria-modelos")}
               className="flex items-center gap-2 rounded-xl bg-white px-5 py-4 text-sm font-bold text-[#77945D] shadow-lg transition-transform hover:scale-105"
             >
               Ver Galeria Completa
@@ -422,7 +422,7 @@ const PilotModelSlider = () => {
           ))}
 
           <motion.div
-            onClick={() => navigate("/galeria-modelos")}
+            onClick={() => navigate("/repository/galeria-modelos")}
             whileHover={{ y: -6 }}
             transition={{ duration: 0.25 }}
             className="group/card relative flex flex-shrink-0 snap-center cursor-pointer items-center justify-center"
