@@ -143,31 +143,31 @@ const projects: ProjectItem[] = [
 
 const pilotSites: PilotSite[] = [
   {
-    name: "Mosteiro dos Jerónimos", location: "Lisboa", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FMJ&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelos & Mesh",
+    name: "Mosteiro dos Jerónimos", location: "Lisboa", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBTrrlycyuVRLpPWt77Y_6TAYFeLm5XxokKdAAMMZO-WWA?e=DhlOts", type: "Modelos & Mesh",
     image: MJ
   },
   {
-    name: "Mosteiro de Alcobaça", location: "Alcobaça", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FMA&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelos & Mesh",
+    name: "Mosteiro de Alcobaça", location: "Alcobaça", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAp-F6eppVPRZwTnnSAZlmzAX6PpIOscGPPnE7MYjDF1hY", type: "Modelos & Mesh",
     image: MA
   },
   {
-    name: "Museu Nacional do Azulejo", location: "Lisboa", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FMNAz&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelos & Mesh",
+    name: "Museu Nacional do Azulejo", location: "Lisboa", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBIyuarAm2nTK_dAZFDZCFyAUYdBwIh02BPfOSHtaaWy7A", type: "Modelos & Mesh",
     image: MNAZ
   },
   {
-    name: "Ruínas Romanas de Milreu", location: "Faro", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FRRM&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelos & Mesh",
+    name: "Ruínas Romanas de Milreu", location: "Faro", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDOUkiOaWBJR6RRcSGXtf7HAd3lmtwDfaWnd38Ipp1vnW4", type: "Modelos & Mesh",
     image: RRM
   },
   {
-    name: "Gruta do Escoural", location: "Alentejo", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FGE&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelo Completo",
+    name: "Gruta do Escoural", location: "Alentejo", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgB3nXQ32-sSTIWLJYIN9HlVAZWRunljt6i1FKCsfC8fRiE", type: "Modelo Completo",
     image: GE
   },
   {
-    name: "Santa Clara-a-Velha (Modelo)", location: "Coimbra", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FModelos%203D%2FMSCV&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "Modelo Completo",
+    name: "Santa Clara-a-Velha (Modelo)", location: "Coimbra", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAyAdLMXoX6T7ZrIZZdqc4zAY_zknRcCju4RwjguraOC3A", type: "Modelo Completo",
     image: MSCV
   },
   {
-    name: "Santa Clara-a-Velha (HBIM)", location: "Coimbra", url: "https://unlpt-my.sharepoint.com/shared?id=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments%2FHedge%2FHedge%5FDrive%5FMGV%2FDT%2FCodeAndSpecifications%2FHBIM%20Santa%20Clara&listurl=%2Fpersonal%2Fmgv%5Ffct%5Funl%5Fpt%2FDocuments&viewid=eee1161c%2D99de%2D42d0%2D85c1%2D774f3c3d8ab7", type: "HBIM Data",
+    name: "Santa Clara-a-Velha (HBIM)", location: "Coimbra", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBUjqqYh10pR6blJsJBt3joAZUXZaO9zMO93PmRhKOFS3I", type: "HBIM Data",
     image: HBIM
   },
 ];
@@ -337,10 +337,10 @@ const PilotModelSlider = () => {
             <div className="flex items-center gap-6 rounded-xl border border-white/20 bg-white/10 px-10 py-2 backdrop-blur-md">
               <div className="text-center">
                 <p className="text-2xl font-black text-white">
-                  30+
+                  50+
                 </p>
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">
-                  Modelos
+                  Recursos
                 </p>
               </div>
             </div>
