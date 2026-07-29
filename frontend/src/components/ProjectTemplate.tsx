@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Navbar from "@/screens/navbar";
 import { SelectedPage } from "@/components/types";
 import { motion, AnimatePresence } from "framer-motion";
@@ -8,17 +8,47 @@ import {
   GlobeAltIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
-  ArrowTopRightOnSquareIcon,
-  ArrowRightIcon
+  ArrowRightIcon,
+  CubeIcon,
+  XMarkIcon,
+  InformationCircleIcon,
+  ArrowDownTrayIcon
 } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
+
+/* ================= CUSTOM ELEMENTS ================= */
+// Prevents TypeScript errors when using the <model-viewer> web component
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "model-viewer": React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement>,
+        HTMLElement
+      > & {
+        src?: string;
+        alt?: string;
+        loading?: "lazy" | "eager";
+        reveal?: "interaction" | "auto";
+        poster?: string;
+        "auto-rotate"?: boolean;
+        "camera-controls"?: boolean;
+        "interaction-prompt"?: string;
+        "tone-mapping"?: string;
+        "environment-image"?: string;
+        exposure?: string;
+        "shadow-intensity"?: string;
+      };
+    }
+  }
+}
 
 /* ================= TYPES ================= */
 
 type ProjectLink = {
   label: string;
-  url: string;
-  type: "document" | "external" | "web";
+  url: string; // Lightweight model used for fast web rendering
+  type: "document" | "external" | "web" | "3d-model";
+  fullModelUrl?: string; // High-res GLB download link (e.g. SharePoint / OneDrive link)
 };
 
 type MediaItem = {
@@ -35,6 +65,9 @@ type ProjectProps = {
   setSelectedPage: (value: SelectedPage) => void;
 };
 
+// Default SharePoint link for full model downloads if not specified in link props
+const DEFAULT_SHAREPOINT_MODEL_URL = "https://unlpt-my.sharepoint.com/:u:/g/personal/mgv_fct_unl_pt/IQCfd7wZtnJjRokPbEQP68ZZAcB9XDghQEhE5HVnnHRVc10";
+
 /* ================= COMPONENT ================= */
 
 const ProjectDetail = ({
@@ -47,6 +80,18 @@ const ProjectDetail = ({
 }: ProjectProps) => {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
+  
+  // State to manage the 3D model viewer modal
+  const [active3DModel, setActive3DModel] = useState<ProjectLink | null>(null);
+  const [modelLoading, setModelLoading] = useState(false);
+  const [modelLoaded, setModelLoaded] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+
+  // Cache already downloaded models
+  const cachedModels = useRef(new Set<string>());
+
+  // Ref for the model-viewer custom element
+  const modelViewerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (media.length === 0) return;
@@ -58,6 +103,40 @@ const ProjectDetail = ({
     });
   }, [currentIndex, media.length]);
 
+  // Manually attach load/error listeners to the model-viewer element
+  useEffect(() => {
+    const viewer = modelViewerRef.current;
+
+    if (!viewer) return;
+
+    const onLoad = () => {
+      setModelLoading(false);
+      setModelLoaded(true);
+    };
+
+    const onError = () => {
+      setModelLoading(false);
+    };
+
+    const onProgress = (event: any) => {
+      if (event.detail) {
+        setLoadingProgress(
+          Math.round(event.detail.totalProgress * 100)
+        );
+      }
+    };
+
+    viewer.addEventListener("load", onLoad);
+    viewer.addEventListener("error", onError);
+    viewer.addEventListener("progress", onProgress);
+
+    return () => {
+      viewer.removeEventListener("load", onLoad);
+      viewer.removeEventListener("error", onError);
+      viewer.removeEventListener("progress", onProgress);
+    };
+  }, [active3DModel]);
+
   const nextMedia = () =>
     setCurrentIndex((prev) => (prev + 1) % media.length);
 
@@ -67,6 +146,20 @@ const ProjectDetail = ({
   // MEDIA CONTENT
   const current = media.length > 0 ? media[currentIndex] : null;
 
+  const preloadModel = async (url: string) => {
+    if (cachedModels.current.has(url)) return;
+
+    try {
+      await fetch(url, {
+        cache: "force-cache",
+      });
+
+      cachedModels.current.add(url);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-20">
       <Navbar
@@ -74,7 +167,7 @@ const ProjectDetail = ({
         setSelectedPage={() => {}}
       />
 
-      <main className="pt-24 pb-20">
+      <main className="pt-24 pb-20 relative">
         <div className="max-w-6xl mx-auto px-6">
           
           {/* HEADER */}
@@ -156,7 +249,7 @@ const ProjectDetail = ({
                   </motion.div>
                 </AnimatePresence>
 
-                {/* CONTROLS - Só aparecem se houver mais de uma mídia */}
+                {/* CONTROLS */}
                 {media.length > 1 && (
                   <>
                     <button
@@ -224,25 +317,55 @@ const ProjectDetail = ({
                   </h3>
 
                   <div className="flex flex-col gap-4">
-                    {links.map((link, idx) => (
-                      <a
-                        key={idx}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 hover:bg-primary-500 hover:text-white transition-all duration-300 group"
-                      >
-                        <div className="p-2 rounded-xl bg-white text-primary-600 group-hover:bg-primary-400 group-hover:text-white transition-colors">
-                          {link.type === "document" && <DocumentTextIcon className="h-6 w-6" />}
-                          {link.type === "external" && <ArrowTopRightOnSquareIcon className="h-6 w-6" />}
-                          {link.type === "web" && <GlobeAltIcon className="h-6 w-6" />}
-                        </div>
+                    {links.map((link, idx) => {
+                      const Icon = 
+                        link.type === "document" ? DocumentTextIcon :
+                        link.type === "external" ? ArrowRightIcon :
+                        link.type === "3d-model" ? CubeIcon :
+                        GlobeAltIcon;
 
-                        <span className="font-bold text-sm tracking-wide">
-                          {link.label}
-                        </span>
-                      </a>
-                    ))}
+                      if (link.type === "3d-model") {
+                        return (
+                          <button
+                            key={idx}
+                            onMouseEnter={() => preloadModel(link.url)}
+                            onFocus={() => preloadModel(link.url)}
+                            onClick={() => {
+                              setLoadingProgress(0);
+                              setModelLoaded(false);
+                              setModelLoading(true);
+                              setActive3DModel(link);
+                            }}
+                            className="w-full flex items-center text-left gap-4 p-4 rounded-2xl bg-gray-50 hover:bg-primary-500 hover:text-white transition-all duration-300 group"
+                          >
+                            <div className="p-2 rounded-xl bg-white text-primary-600 group-hover:bg-primary-400 group-hover:text-white transition-colors">
+                              <Icon className="h-6 w-6" />
+                            </div>
+                            <span className="font-bold text-sm tracking-wide">
+                              {link.label}
+                            </span>
+                          </button>
+                        );
+                      }
+
+                      return (
+                        <a
+                          key={idx}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 hover:bg-primary-500 hover:text-white transition-all duration-300 group"
+                        >
+                          <div className="p-2 rounded-xl bg-white text-primary-600 group-hover:bg-primary-400 group-hover:text-white transition-colors">
+                            <Icon className="h-6 w-6" />
+                          </div>
+
+                          <span className="font-bold text-sm tracking-wide">
+                            {link.label}
+                          </span>
+                        </a>
+                      );
+                    })}
                   </div>
                 </div>
               </aside>
@@ -251,6 +374,96 @@ const ProjectDetail = ({
           </div>
         </div>
       </main>
+
+      {/* 3D MODEL VIEWER MODAL */}
+      <AnimatePresence>
+        {active3DModel && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 md:p-12"
+          >
+            <div className="relative w-full max-w-5xl aspect-video bg-gray-900 rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center border border-gray-700">
+
+              {/* MODEL OPTIMIZATION DISCLAIMER */}
+              <div className="absolute top-4 left-4 z-30 flex items-center gap-2 bg-gray-900/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-gray-700/60 text-gray-300 text-xs">
+                <InformationCircleIcon className="h-4 w-4 text-primary-500 shrink-0" />
+                <span>Modelo otimizado para navegação web rápida, pode conter pequenas falhas. Versão oficial na OneDrive.</span>
+              </div>
+
+              {/* CLOSE BUTTON */}
+              <button
+                onClick={() => {
+                  setActive3DModel(null);
+                  setModelLoading(false);
+                }}
+                className="absolute top-4 right-4 z-30 p-2 bg-black/50 hover:bg-white/20 rounded-full text-white transition-colors"
+              >
+                <XMarkIcon className="h-7 w-7" />
+              </button>
+
+              {/* DOWNLOAD FULL MODEL BUTTON (BOTTOM RIGHT) */}
+              <div className="absolute bottom-4 right-4 z-30">
+                <a
+                  href={active3DModel.fullModelUrl || DEFAULT_SHAREPOINT_MODEL_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-primary-500 hover:bg-primary-600 text-white font-semibold text-sm shadow-lg backdrop-blur-md border border-primary-400/30 transition-all duration-300 hover:scale-105 active:scale-95"
+                >
+                  <ArrowDownTrayIcon className="h-5 w-5 shrink-0" />
+                  <span>Descarregar Modelo Completo</span>
+                </a>
+              </div>
+
+              {/* LOADER */}
+              <div
+                className={`absolute inset-0 z-20 flex flex-col items-center justify-center bg-gray-900 transition-opacity duration-500 ${
+                  modelLoading
+                    ? "opacity-100"
+                    : "opacity-0 pointer-events-none"
+                }`}
+              >
+                <div className="text-center">
+                  <div className="w-16 h-16 border-4 border-white/20 border-t-primary-500 rounded-full animate-spin mx-auto"/>
+                  <p className="mt-6 text-white">
+                      Loading {loadingProgress}%
+                  </p>
+                  <div className="w-64 h-2 bg-white/20 rounded-full mt-4 overflow-hidden">
+                      <div
+                          className="h-full bg-primary-500 transition-all duration-300"
+                          style={{
+                              width: `${loadingProgress}%`
+                          }}
+                      />
+                  </div>
+                </div>
+              </div>
+
+              {/* MODEL VIEWER */}
+              <model-viewer
+                key={active3DModel.url}
+                ref={modelViewerRef}
+                src={active3DModel.url}
+                alt="3D Model"
+                loading="lazy"
+                camera-controls
+                auto-rotate={modelLoaded}
+                interaction-prompt="none"
+                tone-mapping="neutral"
+                exposure="1"
+                shadow-intensity="0"
+                environment-image="neutral"
+                style={{
+                    width: "100%",
+                    height: "100%",
+                    background: "#111827"
+                }}
+            />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

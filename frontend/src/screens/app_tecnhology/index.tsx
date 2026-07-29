@@ -20,6 +20,7 @@ import {
   CpuChipIcon,
   GlobeAltIcon,
   UsersIcon,
+  HomeModernIcon,
 } from "@heroicons/react/24/outline";
 
 type ProjectLink = {
@@ -79,6 +80,14 @@ const projects: ProjectItem[] = [
     link: "/tech-hbim-pesquisa",
     tag: "Processamento de Dados",
     accent: "from-orange-500 to-amber-500",
+  },
+  {
+    icon: <HomeModernIcon className="h-6 w-6" />,
+    title: "Desenvolvimento de HBIMs",
+    description: "Modelação tridimensional IFC e mapeamento semântico de patologias a partir de nuvens de pontos e arquivos históricos.",
+    link: "/tech-hbim",
+    tag: "Processamento de Dados",
+    accent: "from-red-500 to-rose-500",
   },
   {
     icon: <BuildingLibraryIcon className="h-6 w-6" />,

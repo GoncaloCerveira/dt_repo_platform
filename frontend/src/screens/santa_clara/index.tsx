@@ -22,7 +22,7 @@ const SantaClara = () => {
       links={[
         { 
           label: "Drive com Projeto", 
-          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgCz7yVk_fSLS6ihc9ugyR8ZAbhhmfvsuoImpT-q6l6jLRQ", 
+          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgCz7yVk_fSLS6ihc9ugyR8ZATZBxGUd_qE1H-4_jY9okps?e=EG5zU0", 
           type: "web" 
         }
       ]}

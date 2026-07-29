@@ -70,7 +70,7 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
           <div className={`${flexBetween} w-full gap-16`}>
             
             <motion.button
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/repository")}
               initial="hidden"
               animate="visible"
               transition={{ duration: 0.5 }}

@@ -20,7 +20,8 @@ import {
   CpuChipIcon,
   GlobeAltIcon,
   UsersIcon,
-  CubeIcon
+  CubeIcon,
+  HomeModernIcon
 } from "@heroicons/react/24/outline";
 
 import MJ from "@/assets/pilot_models/mj.jpeg";
@@ -104,6 +105,15 @@ const projects: ProjectItem[] = [
     status: "Em Desenvolvimento"
   },
   {
+    icon: <HomeModernIcon className="h-6 w-6" />,
+    title: "Desenvolvimento de HBIMs",
+    description: "Modelação tridimensional IFC e mapeamento semântico de patologias a partir de nuvens de pontos e arquivos históricos.",
+    link: "/repository/hbim-criacao",
+    tag: "Processamento de Dados",
+    accent: "from-red-500 to-rose-500",
+    status: "Em Desenvolvimento"
+  },
+  {
     icon: <BuildingLibraryIcon className="h-6 w-6" />,
     title: "Simulador do Mosteiro de Santa Clara-a-Velha",
     description: "Simulação interativa em Unity para visualização e análise comparativa de cheias históricas no Mosteiro de Santa Clara-a-Velha.",
@@ -143,32 +153,28 @@ const projects: ProjectItem[] = [
 
 const pilotSites: PilotSite[] = [
   {
-    name: "Mosteiro dos Jerónimos", location: "Lisboa", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBTrrlycyuVRLpPWt77Y_6TAYFeLm5XxokKdAAMMZO-WWA?e=DhlOts", type: "Modelos & Mesh",
-    image: MJ
+    name: "P1 - Mosteiro de Santa Clara-a-Velha", location: "Coimbra", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBX015awvslQ6kn1nsJhJQWAcgYE05cClD2KeLAX7my7vQ", type: "Modelos & Mesh",
+    image: HBIM
   },
   {
-    name: "Mosteiro de Alcobaça", location: "Alcobaça", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAp-F6eppVPRZwTnnSAZlmzAX6PpIOscGPPnE7MYjDF1hY", type: "Modelos & Mesh",
-    image: MA
-  },
-  {
-    name: "Museu Nacional do Azulejo", location: "Lisboa", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBIyuarAm2nTK_dAZFDZCFyAUYdBwIh02BPfOSHtaaWy7A", type: "Modelos & Mesh",
-    image: MNAZ
-  },
-  {
-    name: "Ruínas Romanas de Milreu", location: "Faro", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDOUkiOaWBJR6RRcSGXtf7HAd3lmtwDfaWnd38Ipp1vnW4", type: "Modelos & Mesh",
+    name: "P2 - Ruínas Romanas de Milreu", location: "Faro", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDIdAUCOtcSTqdqta1ZVcoLAT5kjnnqNm8y-Jff0BBqoKY", type: "Modelos & Mesh",
     image: RRM
   },
   {
-    name: "Gruta do Escoural", location: "Alentejo", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgB3nXQ32-sSTIWLJYIN9HlVAZWRunljt6i1FKCsfC8fRiE", type: "Modelo Completo",
+    name: "P3 - Mosteiro dos Jerónimos", location: "Lisboa", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAbVzE51VFZSYedaaEHEOWYARkPW_Gw_QByNgQgUQUsYpg", type: "Modelos & Mesh",
+    image: MJ
+  },
+  {
+    name: "P4 - Mosteiro de Alcobaça", location: "Alcobaça", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAXn_MLZSX4R6gs3KbYCj6zARvyEYACR6e2yDN-Bl_F5j0", type: "Modelos & Mesh",
+    image: MA
+  },
+  {
+    name: "P5 - Museu Nacional do Azulejo", location: "Lisboa", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDU7u5kynUaT4ey0JwlAf9IAciIKJ1F5Ze09FAiHwd1sv0", type: "Modelos & Mesh",
+    image: MNAZ
+  },
+  {
+    name: "P6 - Gruta do Escoural", location: "Alentejo", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAwWl8_sXl_R7NhXdsdOSY-AaDIg9v0e9AvsFkxo9d7hdc", type: "Modelos & Mesh",
     image: GE
-  },
-  {
-    name: "Santa Clara-a-Velha (Modelo)", location: "Coimbra", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAyAdLMXoX6T7ZrIZZdqc4zAY_zknRcCju4RwjguraOC3A", type: "Modelo Completo",
-    image: MSCV
-  },
-  {
-    name: "Santa Clara-a-Velha (HBIM)", location: "Coimbra", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBUjqqYh10pR6blJsJBt3joAZUXZaO9zMO93PmRhKOFS3I", type: "HBIM Data",
-    image: HBIM
   },
 ];
 
@@ -548,7 +554,7 @@ const OurProjectSection = ({ setSelectedPage }: Props) => {
             </div>
           </div>
           <a
-            href="https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgD7xRB94gRHQKceNf9VDkHDAVPLFImG0NFLkQPDxrLZWW4"
+            href="https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgD7xRB94gRHQKceNf9VDkHDASCeK7VU_mqj2AOLrSFC9d0?e=xErJb2"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block w-full md:w-auto px-6 py-3 bg-gray-900 text-white rounded-xl font-bold text-sm hover:bg-gray-800 transition-colors text-center"

@@ -18,6 +18,7 @@ import Firmware from "./screens/firmaware";
 import VisitorFlow from "./screens/visitors_flow";
 import Model from "./screens/model";
 import OurTecnhologySection from "@/screens/app_tecnhology";
+import HBIM from "./screens/hbim_creation";
 
 // Authentication Imports
 import Login from "@/screens/login_page";
@@ -41,6 +42,7 @@ import DeploymentTech from "@/screens/app_tecnhology/tech_deployment";
 import FirmwareTech from "./screens/app_tecnhology/tech_firmware";
 import EscouralTech from "./screens/app_tecnhology/tech_gruta";
 import MilreuTech from "./screens/app_tecnhology/tech_milreu";
+import HBIMTech from "./screens/app_tecnhology/tech_hbim";
 import AzulejoDetailFullTech from "./screens/app_tecnhology/tech_vr_ar";
 import SantaClaraTech from "./screens/app_tecnhology/tech_santa_clara";
 import SearchTech from "./screens/app_tecnhology/tech-search";
@@ -124,6 +126,7 @@ const AzulejoPagePub = ({ setSelectedPage }: { setSelectedPage?: (value: any) =>
 const GrutaEscouralPagePub = () => <PageWrapperPublic><EscouralTech /></PageWrapperPublic>;
 const SearchPagePub = () => <PageWrapperPublic><SearchTech /></PageWrapperPublic>;
 const SegmentationPagePub = () => <PageWrapperPublic><SegmentationTech /></PageWrapperPublic>;
+const HBIMPagePub = () => <PageWrapperPublic><HBIMTech /></PageWrapperPublic>;
 const MireuPagePub = () => <PageWrapperPublic><MilreuTech /></PageWrapperPublic>;
 const PlatformPagePub = () => <PageWrapperPublic><DeploymentTech /></PageWrapperPublic>;
 const FirmwarePagePub = () => <PageWrapperPublic><FirmwareTech /></PageWrapperPublic>;
@@ -192,7 +195,7 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
-{/* PUBLIC ROUTES for Pilots */}
+{/* PROTECTED ROUTES for Pilots */}
 const SantaClaraPage = () => <PageWrapper><SantaClara /></PageWrapper>;
 const AzulejoPage = ({ setSelectedPage }: { setSelectedPage?: (value: any) => void }) => (
   <PageWrapper>
@@ -207,6 +210,7 @@ const PlatformPage = () => <PageWrapper><Deployment /></PageWrapper>;
 const FirmwarePage = () => <PageWrapper><Firmware /></PageWrapper>;
 const VisitorPage = () => <PageWrapper><VisitorFlow /></PageWrapper>;
 const ModelsGalleryPage = () => <PageWrapper><ModelGallery /></PageWrapper>;
+const HBIMCreation = () => <PageWrapper>< HBIM/></PageWrapper>;
 
 /* ROUTING CONFIGURATION */
 function App() {
@@ -234,6 +238,7 @@ function App() {
           <Route path="/tech-milreu" element={<MireuPagePub />} />
           <Route path="/tech-plataforma-iot" element={<PlatformPagePub />} />
           <Route path="/tech-firmware-iot" element={<FirmwarePagePub />} />
+          <Route path="/tech-HBIM" element={<HBIMPagePub />} />
           <Route path="/tech-fluxo_visitantes" element={<VisitorPagePub />} />
           <Route path="/sobre-nos" element={<AboutUsPage />} />
           <Route path="/activation" element={<ActivateAccount />} />
@@ -247,6 +252,7 @@ function App() {
             <Route path="/repository/gruta-escoural" element={<GrutaEscouralPage />} />
             <Route path="/repository/hbim-pesquisa" element={<SearchPage />} />
             <Route path="/repository/hbim-segmentacao" element={<SegmentationPage />} />
+            <Route path="/repository/hbim-criacao" element={<HBIMCreation />} />
             <Route path="/repository/app-milreu" element={<MireuPage />} />
             <Route path="/repository/plataforma_iot" element={<PlatformPage />} />
             <Route path="/repository/firmware_iot" element={<FirmwarePage />} />

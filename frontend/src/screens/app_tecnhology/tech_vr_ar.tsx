@@ -97,7 +97,7 @@ const AzulejoDetailFullTech = ({ setSelectedPage }: { setSelectedPage: (v: Selec
             </motion.div>
 
             <button
-              onClick={() => navigate("/repository")}
+              onClick={() => navigate("/")}
               className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white border-2 border-gray-100 text-gray-700 hover:border-primary-500 hover:text-primary-500 transition-all group shrink-0"
             >
               <ArrowRightIcon className="h-5 w-5 rotate-180 group-hover:-translate-x-1 transition-transform" />
