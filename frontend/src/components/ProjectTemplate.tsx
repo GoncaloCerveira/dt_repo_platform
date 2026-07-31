@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import Navbar from "@/screens/navbar";
 import { SelectedPage } from "@/components/types";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  LinkIcon, 
-  DocumentTextIcon, 
+import {
+  LinkIcon,
+  DocumentTextIcon,
   GlobeAltIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -12,12 +12,11 @@ import {
   CubeIcon,
   XMarkIcon,
   InformationCircleIcon,
-  ArrowDownTrayIcon
+  ArrowDownTrayIcon,
 } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
 
 /* ================= CUSTOM ELEMENTS ================= */
-// Prevents TypeScript errors when using the <model-viewer> web component
 declare global {
   namespace JSX {
     interface IntrinsicElements {
@@ -25,7 +24,7 @@ declare global {
         React.HTMLAttributes<HTMLElement>,
         HTMLElement
       > & {
-        src?: string;
+        src?: string | null;
         alt?: string;
         loading?: "lazy" | "eager";
         reveal?: "interaction" | "auto";
@@ -44,11 +43,18 @@ declare global {
 
 /* ================= TYPES ================= */
 
+type ModelVersion = {
+  label: string;
+  url: string;
+  fullModelUrl?: string;
+};
+
 type ProjectLink = {
   label: string;
   url: string; // Lightweight model used for fast web rendering
   type: "document" | "external" | "web" | "3d-model";
   fullModelUrl?: string; // High-res GLB download link (e.g. SharePoint / OneDrive link)
+  versions?: ModelVersion[]; // Optional array for alternative model versions
 };
 
 type MediaItem = {
@@ -60,13 +66,13 @@ type ProjectProps = {
   title: string;
   subtitle: string;
   description: string[];
-  media?: MediaItem[]; 
-  links?: ProjectLink[]; 
+  media?: MediaItem[];
+  links?: ProjectLink[];
   setSelectedPage: (value: SelectedPage) => void;
 };
 
-// Default SharePoint link for full model downloads if not specified in link props
-const DEFAULT_SHAREPOINT_MODEL_URL = "https://unlpt-my.sharepoint.com/:u:/g/personal/mgv_fct_unl_pt/IQCfd7wZtnJjRokPbEQP68ZZAcB9XDghQEhE5HVnnHRVc10";
+const DEFAULT_SHAREPOINT_MODEL_URL =
+  "https://unlpt-my.sharepoint.com/:u:/g/personal/mgv_fct_unl_pt/IQCfd7wZtnJjRokPbEQP68ZZAcB9XDghQEhE5HVnnHRVc10";
 
 /* ================= COMPONENT ================= */
 
@@ -75,20 +81,18 @@ const ProjectDetail = ({
   subtitle,
   description,
   media = [],
-  links = [], 
+  links = [],
   setSelectedPage,
 }: ProjectProps) => {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
-  
+
   // State to manage the 3D model viewer modal
   const [active3DModel, setActive3DModel] = useState<ProjectLink | null>(null);
+  const [activeVersionIndex, setActiveVersionIndex] = useState<number>(0);
   const [modelLoading, setModelLoading] = useState(false);
   const [modelLoaded, setModelLoaded] = useState(false);
   const [loadingProgress, setLoadingProgress] = useState(0);
-
-  // Cache already downloaded models
-  const cachedModels = useRef(new Set<string>());
 
   // Ref for the model-viewer custom element
   const modelViewerRef = useRef<HTMLElement | null>(null);
@@ -120,9 +124,7 @@ const ProjectDetail = ({
 
     const onProgress = (event: any) => {
       if (event.detail) {
-        setLoadingProgress(
-          Math.round(event.detail.totalProgress * 100)
-        );
+        setLoadingProgress(Math.round(event.detail.totalProgress * 100));
       }
     };
 
@@ -135,7 +137,7 @@ const ProjectDetail = ({
       viewer.removeEventListener("error", onError);
       viewer.removeEventListener("progress", onProgress);
     };
-  }, [active3DModel]);
+  }, [active3DModel, activeVersionIndex]);
 
   const nextMedia = () =>
     setCurrentIndex((prev) => (prev + 1) % media.length);
@@ -143,33 +145,31 @@ const ProjectDetail = ({
   const prevMedia = () =>
     setCurrentIndex((prev) => (prev - 1 + media.length) % media.length);
 
-  // MEDIA CONTENT
   const current = media.length > 0 ? media[currentIndex] : null;
 
-  const preloadModel = async (url: string) => {
-    if (cachedModels.current.has(url)) return;
+  // Determine current active URL and Download link based on selected version
+  const currentModelUrl =
+    active3DModel?.versions?.[activeVersionIndex]?.url || active3DModel?.url;
+  const currentDownloadUrl =
+    active3DModel?.versions?.[activeVersionIndex]?.fullModelUrl ||
+    active3DModel?.fullModelUrl ||
+    DEFAULT_SHAREPOINT_MODEL_URL;
 
-    try {
-      await fetch(url, {
-        cache: "force-cache",
-      });
-
-      cachedModels.current.add(url);
-    } catch (err) {
-      console.error(err);
-    }
+  // Cleanup function for closing modal to free memory
+  const handleCloseModal = () => {
+    setActive3DModel(null);
+    setModelLoading(false);
+    setModelLoaded(false);
+    setLoadingProgress(0);
+    setActiveVersionIndex(0);
   };
 
   return (
     <div className="min-h-screen bg-gray-20">
-      <Navbar
-        selectedPage={SelectedPage.OurProject}
-        setSelectedPage={() => {}}
-      />
+      <Navbar selectedPage={SelectedPage.OurProject} setSelectedPage={() => {}} />
 
       <main className="pt-24 pb-20 relative">
         <div className="max-w-6xl mx-auto px-6">
-          
           {/* HEADER */}
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
             <motion.div
@@ -202,7 +202,6 @@ const ProjectDetail = ({
           {media.length > 0 && current && (
             <div className="relative mb-9 group">
               <div className="relative w-full aspect-[23/9] overflow-hidden rounded-3xl shadow-xl">
-                
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentIndex}
@@ -288,9 +287,12 @@ const ProjectDetail = ({
 
           {/* CONTENT GRID */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-            
             {/* TEXT DESCRIPTION */}
-            <div className={`space-y-8 ${links.length === 0 ? "lg:col-span-3" : "lg:col-span-2"}`}>
+            <div
+              className={`space-y-8 ${
+                links.length === 0 ? "lg:col-span-3" : "lg:col-span-2"
+              }`}
+            >
               <div className="inline-flex items-center gap-3">
                 <div className="h-1 w-10 bg-primary-500 rounded-full" />
                 <h3 className="text-2xl font-bold text-gray-800">
@@ -318,22 +320,24 @@ const ProjectDetail = ({
 
                   <div className="flex flex-col gap-4">
                     {links.map((link, idx) => {
-                      const Icon = 
-                        link.type === "document" ? DocumentTextIcon :
-                        link.type === "external" ? ArrowRightIcon :
-                        link.type === "3d-model" ? CubeIcon :
-                        GlobeAltIcon;
+                      const Icon =
+                        link.type === "document"
+                          ? DocumentTextIcon
+                          : link.type === "external"
+                          ? ArrowRightIcon
+                          : link.type === "3d-model"
+                          ? CubeIcon
+                          : GlobeAltIcon;
 
                       if (link.type === "3d-model") {
                         return (
                           <button
                             key={idx}
-                            onMouseEnter={() => preloadModel(link.url)}
-                            onFocus={() => preloadModel(link.url)}
                             onClick={() => {
                               setLoadingProgress(0);
                               setModelLoaded(false);
                               setModelLoading(true);
+                              setActiveVersionIndex(0);
                               setActive3DModel(link);
                             }}
                             className="w-full flex items-center text-left gap-4 p-4 rounded-2xl bg-gray-50 hover:bg-primary-500 hover:text-white transition-all duration-300 group"
@@ -370,14 +374,13 @@ const ProjectDetail = ({
                 </div>
               </aside>
             )}
-
           </div>
         </div>
       </main>
 
       {/* 3D MODEL VIEWER MODAL */}
       <AnimatePresence>
-        {active3DModel && (
+        {active3DModel && currentModelUrl && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -385,28 +388,51 @@ const ProjectDetail = ({
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 md:p-12"
           >
             <div className="relative w-full max-w-5xl aspect-video bg-gray-900 rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center border border-gray-700">
-
               {/* MODEL OPTIMIZATION DISCLAIMER */}
               <div className="absolute top-4 left-4 z-30 flex items-center gap-2 bg-gray-900/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-gray-700/60 text-gray-300 text-xs">
                 <InformationCircleIcon className="h-4 w-4 text-primary-500 shrink-0" />
-                <span>Modelo otimizado para navegação web rápida, pode conter pequenas falhas. Versão oficial na OneDrive.</span>
+                <span>
+                  Modelo otimizado para navegação web rápida. Versão oficial na OneDrive.
+                </span>
               </div>
 
               {/* CLOSE BUTTON */}
               <button
-                onClick={() => {
-                  setActive3DModel(null);
-                  setModelLoading(false);
-                }}
+                onClick={handleCloseModal}
                 className="absolute top-4 right-4 z-30 p-2 bg-black/50 hover:bg-white/20 rounded-full text-white transition-colors"
               >
                 <XMarkIcon className="h-7 w-7" />
               </button>
 
+              {/* VERSIONS MENU (If multiple exist) */}
+              {active3DModel.versions && active3DModel.versions.length > 1 && (
+                <div className="absolute top-16 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 bg-gray-900/80 backdrop-blur-md p-1.5 rounded-2xl border border-gray-700/60 shadow-lg">
+                  {active3DModel.versions.map((version, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => {
+                        if (activeVersionIndex === idx) return;
+                        setLoadingProgress(0);
+                        setModelLoaded(false);
+                        setModelLoading(true);
+                        setActiveVersionIndex(idx);
+                      }}
+                      className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                        activeVersionIndex === idx
+                          ? "bg-primary-500 text-white shadow-md"
+                          : "text-gray-400 hover:text-white hover:bg-white/10"
+                      }`}
+                    >
+                      {version.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+
               {/* DOWNLOAD FULL MODEL BUTTON (BOTTOM RIGHT) */}
               <div className="absolute bottom-4 right-4 z-30">
                 <a
-                  href={active3DModel.fullModelUrl || DEFAULT_SHAREPOINT_MODEL_URL}
+                  href={currentDownloadUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-primary-500 hover:bg-primary-600 text-white font-semibold text-sm shadow-lg backdrop-blur-md border border-primary-400/30 transition-all duration-300 hover:scale-105 active:scale-95"
@@ -425,26 +451,24 @@ const ProjectDetail = ({
                 }`}
               >
                 <div className="text-center">
-                  <div className="w-16 h-16 border-4 border-white/20 border-t-primary-500 rounded-full animate-spin mx-auto"/>
-                  <p className="mt-6 text-white">
-                      Loading {loadingProgress}%
-                  </p>
+                  <div className="w-16 h-16 border-4 border-white/20 border-t-primary-500 rounded-full animate-spin mx-auto" />
+                  <p className="mt-6 text-white">A carregar {loadingProgress}%</p>
                   <div className="w-64 h-2 bg-white/20 rounded-full mt-4 overflow-hidden">
-                      <div
-                          className="h-full bg-primary-500 transition-all duration-300"
-                          style={{
-                              width: `${loadingProgress}%`
-                          }}
-                      />
+                    <div
+                      className="h-full bg-primary-500 transition-all duration-300"
+                      style={{
+                        width: `${loadingProgress}%`,
+                      }}
+                    />
                   </div>
                 </div>
               </div>
 
-              {/* MODEL VIEWER */}
+              {/* MODEL VIEWER - Using currentModelUrl as key forces re-mount and proper loading states on switch */}
               <model-viewer
-                key={active3DModel.url}
+                key={currentModelUrl}
                 ref={modelViewerRef}
-                src={active3DModel.url}
+                src={currentModelUrl}
                 alt="3D Model"
                 loading="lazy"
                 camera-controls
@@ -455,11 +479,11 @@ const ProjectDetail = ({
                 shadow-intensity="0"
                 environment-image="neutral"
                 style={{
-                    width: "100%",
-                    height: "100%",
-                    background: "#111827"
+                  width: "100%",
+                  height: "100%",
+                  background: "#111827",
                 }}
-            />
+              />
             </div>
           </motion.div>
         )}

@@ -259,7 +259,7 @@ const locationsList: LocationData[] = [
     resources: {
       dados: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDTmINm5Gu5S7dq_6Qq3MnkAbo8ijG1Liru9OFYTVnRd6w?e=MmuTg0" },
       modelos3D: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBTrrlycyuVRLpPWt77Y_6TAYFeLm5XxokKdAAMMZO-WWA?e=DhlOts" },
-      demos: { available: false, url: "" }
+      demos: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgADp7sAFpJESZMWWZuUOib-ATRQMqJ6nt42rhFCjx74FR8?e=ZzrWV8" }
     }
   },
   { 
@@ -420,7 +420,7 @@ const locationsList: LocationData[] = [
     resources: {
       dados: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgCQaf8Bhkp-T4Ofx9WFM-vkAXa_8qaty-WsaNjZxm7tIfc?e=SObohZ" },
       modelos3D: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDOUkiOaWBJR6RRcSGXtf7HAd3lmtwDfaWnd38Ipp1vnW4?e=YzdM6C" },
-      demos: { available: false, url: "" }
+      demos: { available: true, url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBkg7KsfSGsS46fojISCEyDAb2BQr3kMgIhirJuWOIA3ao?e=YDWYF4" }
     }
   },
   { 

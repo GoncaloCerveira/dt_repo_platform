@@ -39,7 +39,7 @@ const PROJECT_DATA = {
       { url: VR5, type: "video" as const }
     ],
     links: [
-      { label: "Código do Projeto/Documentação (OneDrive)", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAm8OPF-GcPSLT7hJ1NHiZNAZUpUDNf3ZOd8-lj2Bs5bkg?e=dTBjWT", type: "web" as const },
+      { label: "Código do Projeto/Documentação (OneDrive)", url: "https://unlpt-my.sharepoint.com/:u:/g/personal/mgv_fct_unl_pt/IQAFMdm0975TQYAvTkBGTQ2LATcO1Hf1ePzBCXsIz8iFiJM?e=VT24rM", type: "web" as const },
     ]
   },
   AR: {
@@ -55,7 +55,7 @@ const PROJECT_DATA = {
       { url: AR3, type: "video" as const }
     ],
     links: [
-      { label: "Código do Projeto/Documentação (OneDrive)", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgB7N-P39dXwTLhpU6CxIXvcAUCYfXdRZMUR0473_8hDo7U?e=YkA8We", type: "web" as const },
+      { label: "Código do Projeto/Documentação (OneDrive)", url: "https://unlpt-my.sharepoint.com/:u:/g/personal/mgv_fct_unl_pt/IQBF8hnIJXjQSatzsCy37LU9AQrqV7uoupR9Zazl-A4LR8I?e=ayFtV5", type: "web" as const },
     ]
   }
 };
