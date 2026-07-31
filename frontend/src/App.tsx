@@ -19,6 +19,7 @@ import VisitorFlow from "./screens/visitors_flow";
 import Model from "./screens/model";
 import OurTecnhologySection from "@/screens/app_tecnhology";
 import HBIM from "./screens/hbim_creation";
+import UxUi from "./screens/uxui_project";
 
 // Authentication Imports
 import Login from "@/screens/login_page";
@@ -48,6 +49,7 @@ import SantaClaraTech from "./screens/app_tecnhology/tech_santa_clara";
 import SearchTech from "./screens/app_tecnhology/tech-search";
 import SegmentationTech from "./screens/app_tecnhology/tech_segmentation";
 import VisitorFlowTech from "./screens/app_tecnhology/tech_visitors_flow";
+import UxUiTech from "./screens/app_tecnhology/tech_ux_ui";
 import ModelGallery from "./screens/model_gallery/";
 
 const ScrollToTop = () => {
@@ -131,6 +133,7 @@ const MireuPagePub = () => <PageWrapperPublic><MilreuTech /></PageWrapperPublic>
 const PlatformPagePub = () => <PageWrapperPublic><DeploymentTech /></PageWrapperPublic>;
 const FirmwarePagePub = () => <PageWrapperPublic><FirmwareTech /></PageWrapperPublic>;
 const VisitorPagePub = () => <PageWrapperPublic><VisitorFlowTech /></PageWrapperPublic>;
+const UxUiPagePub = () => <PageWrapperPublic><UxUiTech /></PageWrapperPublic>;
 
 /* APP MAIN (Repository Page) */
 function AppMain() {
@@ -211,6 +214,7 @@ const FirmwarePage = () => <PageWrapper><Firmware /></PageWrapper>;
 const VisitorPage = () => <PageWrapper><VisitorFlow /></PageWrapper>;
 const ModelsGalleryPage = () => <PageWrapper><ModelGallery /></PageWrapper>;
 const HBIMCreation = () => <PageWrapper>< HBIM/></PageWrapper>;
+const UxUiCreation = () => <PageWrapper>< UxUi/></PageWrapper>;
 
 /* ROUTING CONFIGURATION */
 function App() {
@@ -239,6 +243,7 @@ function App() {
           <Route path="/tech-plataforma-iot" element={<PlatformPagePub />} />
           <Route path="/tech-firmware-iot" element={<FirmwarePagePub />} />
           <Route path="/tech-HBIM" element={<HBIMPagePub />} />
+          <Route path="/projetos-ux-ui" element={<UxUiPagePub />} />
           <Route path="/tech-fluxo_visitantes" element={<VisitorPagePub />} />
           <Route path="/sobre-nos" element={<AboutUsPage />} />
           <Route path="/activation" element={<ActivateAccount />} />
@@ -258,6 +263,7 @@ function App() {
             <Route path="/repository/firmware_iot" element={<FirmwarePage />} />
             <Route path="/repository/fluxo_visitantes" element={<VisitorPage />} />
             <Route path="/repository/galeria-modelos" element={<ModelsGalleryPage />} />
+            <Route path="/repository/projetos-ux-ui" element={<UxUiCreation />} />
           </Route>
 
           {/* SAFE FALLBACK */}

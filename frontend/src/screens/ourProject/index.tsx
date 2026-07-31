@@ -21,7 +21,8 @@ import {
   GlobeAltIcon,
   UsersIcon,
   CubeIcon,
-  HomeModernIcon
+  HomeModernIcon,
+  QrCodeIcon
 } from "@heroicons/react/24/outline";
 
 import MJ from "@/assets/pilot_models/mj.jpeg";
@@ -147,6 +148,15 @@ const projects: ProjectItem[] = [
     link: "/repository/app-milreu",
     tag: "Experiências Imersivas",
     accent: "from-violet-500 to-fuchsia-500",
+    status: "Em Desenvolvimento"
+  },
+  {
+    icon: <QrCodeIcon className="h-6 w-6" />,
+    title: "Desenvolvimento de UX e UI para os projetos do Digital Twins",
+    description: "Processo e desenvolvimento de UX e UI para os projetos do Digital Twins.",
+    link: "/repository/projetos-ux-ui",
+    tag: "Experiências Imersivas",
+    accent: "from-sky-500 to-blue-600",
     status: "Em Desenvolvimento"
   },
 ];
