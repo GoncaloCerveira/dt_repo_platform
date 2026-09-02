@@ -44,8 +44,13 @@ const NavbarRepository = ({ selectedPage, setSelectedPage }: Props) => {
 
   const navbarBackground = "bg-primary-100 drop-shadow";
 
+  // Use resolvedLanguage to get the active fallback language ('pt' or 'en')
+  const currentLang = i18n.resolvedLanguage || i18n.language;
+  const isPortuguese = currentLang.startsWith("pt");
+
   const toggleLanguage = () => {
-    const nextLanguage = i18n.language.startsWith("pt") ? "en" : "pt";
+    // Toggles between 'pt' and 'en'
+    const nextLanguage = isPortuguese ? "en" : "pt";
     i18n.changeLanguage(nextLanguage);
   };
 
@@ -59,9 +64,10 @@ const NavbarRepository = ({ selectedPage, setSelectedPage }: Props) => {
   const renderLanguageToggle = () => (
     <button
       onClick={toggleLanguage}
-      className="rounded-lg bg-secondary-500 px-3 py-1 text-xs font-bold uppercase text-white hover:bg-opacity-80 transition"
+      className="rounded-lg bg-secondary-500 px-3 py-1 text-xs font-bold uppercase text-white hover:bg-opacity-80 transition cursor-pointer"
     >
-      {i18n.language.startsWith("pt") ? "EN" : "PT"}
+      {/* Shows EN button when site is in PT, and PT button when site is in EN */}
+      {isPortuguese ? "EN" : "PT"}
     </button>
   );
 

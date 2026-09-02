@@ -26,13 +26,16 @@ const NavbarPublic = ({ selectedPage, setSelectedPage }: Props) => {
 
   const navbarBackground = "bg-primary-100 drop-shadow";
 
+  // Use resolvedLanguage to handle regional variations like pt-BR or pt-PT correctly
+  const currentLang = i18n.resolvedLanguage || i18n.language;
+  const isPortuguese = currentLang.startsWith("pt");
+
   const projectsList = [
     { name: t("navbar.repository"), path: "/repository" },
   ];
 
   const toggleLanguage = () => {
-    const currentLang = i18n.language;
-    const nextLang = currentLang.startsWith("pt") ? "en" : "pt";
+    const nextLang = isPortuguese ? "en" : "pt";
     i18n.changeLanguage(nextLang);
   };
 
@@ -79,9 +82,9 @@ const NavbarPublic = ({ selectedPage, setSelectedPage }: Props) => {
   const renderLanguageToggle = () => (
     <button
       onClick={toggleLanguage}
-      className="rounded-lg bg-secondary-500 px-3 py-1 text-xs font-bold uppercase text-white hover:bg-opacity-80 transition"
+      className="rounded-lg bg-secondary-500 px-3 py-1 text-xs font-bold uppercase text-white hover:bg-opacity-80 transition cursor-pointer"
     >
-      {i18n.language.startsWith("pt") ? "EN" : "PT"}
+      {isPortuguese ? "EN" : "PT"}
     </button>
   );
 

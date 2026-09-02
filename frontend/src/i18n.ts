@@ -1,5 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
 
 const resources = {
   pt: {
@@ -2037,11 +2038,21 @@ const resources = {
 };
 
 i18n
+  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'pt', // Default language
-    fallbackLng: 'pt',
+    // Default non-Portuguese languages to English
+    fallbackLng: 'en',
+    // Only support pt and en
+    supportedLngs: ['pt', 'en'],
+    // Maps variations like pt-BR or pt-PT automatically to 'pt'
+    nonExplicitSupportedLngs: true,
+    detection: {
+      // Prioritize browser settings, then localStorage saved preferences
+      order: ['localStorage', 'navigator'],
+      caches: ['localStorage'],
+    },
     interpolation: {
       escapeValue: false,
     },
