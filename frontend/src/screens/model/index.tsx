@@ -12,6 +12,7 @@ import { SelectedPage } from "@/components/types";
 import { UserGroupIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 type PartnerCardProps = {
   img: string;
@@ -62,13 +63,6 @@ const PartnerCard = ({ img, bgImg, name, subName, isCoordinator }: PartnerCardPr
   </motion.div>
 );
 
-const partners = [
-  { img: NOVAWHITE, bgImg: CAMPUS, name: "Universidade Nova de Lisboa", isCoordinator: true },
-  { img: EVORA, bgImg: CAMPUSEV, name: "Universidade de Évora" },
-  { img: IP, bgImg: CAMPUSIP, name: "Património Cultural, I.P." },
-  { img: MMP, bgImg: CAMPUSMMP, name: "Museus e Monumentos", subName: "de Portugal, E.P.E." },
-];
-
 const container = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.2 } },
@@ -80,6 +74,14 @@ type Props = {
 
 const Model = ({ setSelectedPage }: Props) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  const partners = [
+    { img: NOVAWHITE, bgImg: CAMPUS, name: "Universidade Nova de Lisboa", isCoordinator: true },
+    { img: EVORA, bgImg: CAMPUSEV, name: "Universidade de Évora" },
+    { img: IP, bgImg: CAMPUSIP, name: "Património Cultural, I.P." },
+    { img: MMP, bgImg: CAMPUSMMP, name: "Museus e Monumentos", subName: "de Portugal, E.P.E." },
+  ];
 
   const handleAboutUsClick = () => {
     window.scrollTo(0, 0);
@@ -107,22 +109,24 @@ const Model = ({ setSelectedPage }: Props) => {
           <div className="mb-3 flex items-center gap-2">
             <span className="h-px w-6 bg-primary-500" />
             <p className="text-xs font-bold uppercase tracking-widest text-primary-500">
-              O DESAFIO DO TERRITÓRIOS INTELIGENTES
+              {t("model.challengeSubheading")}
             </p>
           </div>
-          <HText>O Projeto</HText>
+          <HText>{t("model.title")}</HText>
           <p className="mt-8 text-lg md:text-xl font-medium leading-relaxed text-gray-800">
-            O projeto <span className="font-bold text-primary-500">DT4SST-CH.PT</span> propõe novos métodos de gestão e valorização do património cultural português através da criação de gémeos digitais de 65 museus e monumentos nacionais. Combinando digitalização 3D, sensores IoT, inteligência artificial e realidade aumentada, o projeto promove a preservação do património cultural, experiências turísticas imersivas e estratégias de gestão sustentável.
+            {t("model.paragraph1Before")}{" "}
+            <span className="font-bold text-primary-500">{t("model.projectName")}</span>{" "}
+            {t("model.paragraph1After")}
           </p>
           <p className="mt-6 text-lg md:text-xl font-medium leading-relaxed text-gray-800">
-            O projeto contempla seis locais-piloto, que serão palco de demonstrações inovadoras que integram monitorização ambiental e narrativas interativas em ambientes de realidade mista. Culmina com a produção de um Livro Branco, que reunirá recomendações para políticas públicas e servirá de guia para a criação e adoção de gémeos digitais no setor cultural, posicionando Portugal como referência internacional em turismo inteligente e preservação patrimonial.
+            {t("model.paragraph2")}
           </p>
         </motion.div>
 
         <div className="w-full">
           <div className="flex items-center gap-5 mb-8 md:mb-10 pb-5 border-b border-gray-300">
             <UserGroupIcon className="h-12 w-12 text-primary-500 flex-shrink-0" />
-            <HText>Quem somos</HText>
+            <HText>{t("model.whoWeAreTitle")}</HText>
           </div>
 
           <motion.div 
@@ -144,10 +148,10 @@ const Model = ({ setSelectedPage }: Props) => {
           >
             <button
               onClick={handleAboutUsClick}
-              aria-label="Ver mais informações sobre a equipa do projeto"
+              aria-label={t("model.moreInfoButton")}
               className="group flex items-center justify-center gap-2 w-full sm:w-auto py-3 px-8 bg-gray-900 text-white rounded-lg font-semibold hover:bg-primary-500 transition-all duration-300 shadow-md text-sm font-montserrat"
             >
-              Mais Informações Sobre a Equipa
+              {t("model.moreInfoButton")}
               <ArrowRightIcon className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </button>
           </motion.div>

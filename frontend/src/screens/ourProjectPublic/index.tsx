@@ -7,6 +7,7 @@ import {
 } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Board from "./Board";
 
 import MJ from "@/assets/pilot_models/mj.jpeg";
@@ -16,65 +17,69 @@ import RRM from "@/assets/pilot_models/rrm.jpg";
 import GE from "@/assets/pilot_models/gruta_do_escoural.jpg";
 import MSCV from "@/assets/pilot_models/mosteiro-santa-clara-a-velha.jpg";
 
-const boards = [
+type BoardConfig = {
+  icon: JSX.Element;
+  image: string;
+  titleKey: string;
+  descriptionKey: string;
+  link: string;
+  tagKey: string;
+  accent: string;
+};
+
+const boards: BoardConfig[] = [
   {
     icon: <BuildingLibraryIcon className="h-5 w-5" />,
     image: MSCV,
-    title: "Mosteiro de Santa Clara-a-Velha",
-    description:
-      "Representa um momento de experimentação do estilo gótico no país.",
+    titleKey: "ourProjectPublic.boards.mscv.title",
+    descriptionKey: "ourProjectPublic.boards.mscv.description",
     link: "/santa-clara",
-    tag: "Piloto 01",
+    tagKey: "ourProjectPublic.boards.tags.p1",
     accent: "from-blue-500 to-cyan-400",
   },
   {
     icon: <PhotoIcon className="h-5 w-5" />,
     image: MNAZ,
-    title: "Museu Nacional do Azulejo",
-    description:
-      "O Museu Nacional do Azulejo, em Lisboa, é um dos mais importantes museums de Portugal, pela sua colecção singular, dedicada ao azulejo.",
+    titleKey: "ourProjectPublic.boards.mnaz.title",
+    descriptionKey: "ourProjectPublic.boards.mnaz.description",
     link: "/azulejo",
-    tag: "Piloto 02",
+    tagKey: "ourProjectPublic.boards.tags.p2",
     accent: "from-indigo-500 to-purple-500",
   },
   {
     icon: <BuildingLibraryIcon className="h-5 w-5" />,
     image: MA,
-    title: "Real Mosteiro de Santa Maria de Alcobaça",
-    description:
-      "É a primeira obra plenamente gótica erguida em solo português, tendo sido começada a sua construção em 1178 pelos monges da Ordem de Cister.",
+    titleKey: "ourProjectPublic.boards.ma.title",
+    descriptionKey: "ourProjectPublic.boards.ma.description",
     link: "/alcobaca",
-    tag: "Piloto 03",
+    tagKey: "ourProjectPublic.boards.tags.p3",
     accent: "from-emerald-500 to-teal-500",
   },
   {
     icon: <PhotoIcon className="h-5 w-5" />,
     image: RRM,
-    title: "Ruínas Romanas de Milreu",
-    description:
-      "As Ruínas romanas de Milreu ou Ruínas de Estói são um importante conjunto arqueológico em Estói, no município de Faro, em Portugal.",
+    titleKey: "ourProjectPublic.boards.rrm.title",
+    descriptionKey: "ourProjectPublic.boards.rrm.description",
     link: "/ruinas_milreu",
-    tag: "Piloto 04",
+    tagKey: "ourProjectPublic.boards.tags.p4",
     accent: "from-orange-500 to-amber-500",
   },
   {
     icon: <BuildingLibraryIcon className="h-5 w-5" />,
     image: MJ,
-    title: "Mosteiro dos Jerónimos",
-    description:
-      "Situa-se na freguesia de Belém, na cidade e concelho de Lisboa.",
+    titleKey: "ourProjectPublic.boards.mj.title",
+    descriptionKey: "ourProjectPublic.boards.mj.description",
     link: "/mosteiro_jeronimos",
-    tag: "Piloto 05",
+    tagKey: "ourProjectPublic.boards.tags.p5",
     accent: "from-rose-500 to-pink-500",
   },
   {
     icon: <PhotoIcon className="h-5 w-5" />,
     image: GE,
-    title: "Gruta do Escoural",
-    description:
-      "Está classificada como Monumento Nacional desde 1963.",
+    titleKey: "ourProjectPublic.boards.ge.title",
+    descriptionKey: "ourProjectPublic.boards.ge.description",
     link: "/gruta_escoural",
-    tag: "Piloto 06",
+    tagKey: "ourProjectPublic.boards.tags.p6",
     accent: "from-violet-500 to-fuchsia-500",
   },
 ];
@@ -92,6 +97,7 @@ type Props = {
 
 const OurProjectSectionPublic = ({ setSelectedPage }: Props) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleAllLocationsClick = () => {
     window.scrollTo(0, 0);
@@ -124,19 +130,14 @@ const OurProjectSectionPublic = ({ setSelectedPage }: Props) => {
           <div className="mb-3 flex items-center gap-2">
             <span className="h-px w-6 bg-primary-500" />
             <p className="text-xs font-bold uppercase tracking-widest text-primary-500">
-              Projetos Piloto e Mais
+              {t("ourProjectPublic.sectionTag")}
             </p>
           </div>
 
-          <HText>MAIS DO QUE APENAS UM PROJETO</HText>
+          <HText>{t("ourProjectPublic.title")}</HText>
 
           <p className="mt-8 text-lg md:text-xl font-medium leading-relaxed text-gray-800">
-            Os seis locais emblemáticos escolhidos como locais-piloto são
-            Santa Clara-a-Velha, as Ruínas Romanas de Milreu, o Mosteiro dos
-            Jerónimos, o Mosteiro de Alcobaça, o Museu Nacional do Azulejo e
-            a Gruta do Escoural. Mas não ficámos por aqui. O projeto continua
-            a expandir-se, mapeando e integrando uma rede de património muito
-            mais vasta.
+            {t("ourProjectPublic.description")}
           </p>
         </motion.div>
 
@@ -150,9 +151,15 @@ const OurProjectSectionPublic = ({ setSelectedPage }: Props) => {
         >
           {boards.map((board, index) => (
             <Board
-              key={`${board.title}-${index}`}
+              key={`${board.titleKey}-${index}`}
               index={index + 1}
-              {...board}
+              icon={board.icon}
+              image={board.image}
+              title={t(board.titleKey)}
+              description={t(board.descriptionKey)}
+              link={board.link}
+              tag={t(board.tagKey)}
+              accent={board.accent}
               setSelectedPage={setSelectedPage}
             />
           ))}
@@ -172,18 +179,18 @@ const OurProjectSectionPublic = ({ setSelectedPage }: Props) => {
             className="w-full md:w-1/3 bg-white p-8 rounded-2xl border border-gray-200 shadow-md text-center hover:border-primary-500 transition-colors"
           >
             <h3 className="text-xl font-bold text-gray-900 mb-2">
-              Descubra Todos os Locais do Territórios Inteligentes
+              {t("ourProjectPublic.ctaTitle")}
             </h3>
 
             <p className="text-gray-600 mb-6">
-              Explore o nosso catálogo completo de gémeos digitais de monumentos e museus.
+              {t("ourProjectPublic.ctaDescription")}
             </p>
 
             <button
               onClick={handleAllLocationsClick}
               className="group flex items-center justify-center gap-2 w-full py-3 px-6 bg-gray-900 text-white rounded-lg font-semibold hover:bg-primary-500 transition-all duration-300"
             >
-              Ver todos os locais
+              {t("ourProjectPublic.ctaButton")}
 
               <ArrowRightIcon className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </button>

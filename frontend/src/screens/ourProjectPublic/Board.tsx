@@ -2,6 +2,7 @@ import { SelectedPage } from "@/components/types";
 import { motion } from "framer-motion";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const childVariant = {
   hidden: { opacity: 0, y: 24 },
@@ -36,6 +37,7 @@ const Board = ({
   setSelectedPage,
 }: Props) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleClick = () => {
     if (link.startsWith("/")) {
@@ -86,7 +88,7 @@ const Board = ({
         </div>
 
         <p className="mb-3 flex-grow text-xs text-gray-500 leading-relaxed line-clamp-3">
-          {/* description */}
+          {description}
         </p>
 
         {/* Action Button */}
@@ -98,7 +100,7 @@ const Board = ({
               rel="noopener noreferrer"
               className={`inline-flex items-center gap-1.5 rounded-lg bg-gradient-to-r ${accent} px-3.5 py-1.5 text-xs font-bold text-white shadow-sm transition-opacity hover:opacity-90`}
             >
-              Saber Mais
+              {t("board.knowMore")}
               <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5" />
             </a>
           ) : (
@@ -106,7 +108,7 @@ const Board = ({
               onClick={handleClick}
               className={`inline-flex items-center gap-1.5 rounded-lg bg-gradient-to-r ${accent} px-3.5 py-1.5 text-xs font-bold text-white shadow-sm transition-opacity hover:opacity-90`}
             >
-              Saber Mais
+              {t("board.knowMore")}
               <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5" />
             </button>
           )}

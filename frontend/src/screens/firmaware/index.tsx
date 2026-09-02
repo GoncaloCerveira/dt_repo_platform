@@ -1,33 +1,34 @@
+import { useTranslation } from "react-i18next";
 import ProjectDetail from "@/components/ProjectTemplate";
 import { SelectedPage } from "@/components/types";
 import FW1 from "@/assets/evora/caixas+sensores/sensor.jpeg";
 import FW2 from "@/assets/evora/caixas+sensores/animation_sensor.mp4";
 
 const Firmware = () => {
+  const { t } = useTranslation();
+
   return (
     <ProjectDetail
-      title="Firmware para a Plataforma de Monitorização"
-      subtitle="Firmware e Infraestrutura IoT"
+      title={t("projects.firmware.title")}
+      subtitle={t("projects.firmware.subtitle")}
       media={[
         { url: FW1, type: "image" },
         { url: FW2, type: "video" },
       ]}
-      description={[
-        "O projeto Metrozero Firmware reúne o conjunto de firmwares utilizados na infraestrutura IoT do sistema Metrozero, incluindo sensores ambientais baseados em STM32WB55 e gateways ESP32-S3 responsáveis pela recolha e sincronização dos dados ambientais.",
-
-        "O sistema suporta atualizações OTA (Over-The-Air), comunicação BLE entre sensores e gateway, armazenamento local em cartão SD e sincronização cloud através de MQTT e HTTPS. A arquitetura foi desenvolvida para cenários de monitorização contínua em património cultural e espaços museológicos.",
-
-        "Para além do firmware principal, o projeto inclui procedimentos completos de flashing, bootloaders, stacks BLE, configuração de memória e documentação de deployment em ambiente real. O sistema foi implementado em campanhas de monitorização nos Jerónimos, suportando múltiplos sensores em simultâneo com gestão remota e atualizações automáticas."
-      ]}
+      description={
+        t("projects.firmware.description", {
+          returnObjects: true,
+        }) as string[]
+      }
       links={[
         {
-          label: "Repositório Principal (Código e Documentação)",
+          label: t("projects.firmware.mainRepoLabel"),
           url: "https://github.com/nmc-fct/DT4SST-CH.PT/tree/main/firmware/Sources/bin_files",
           type: "web",
         },
         {
-          label: "HW-FW-SW Development",
-          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgA6lrxKrQesR4FLLw7lnaSuAebrr8d1Zh5hRwcjXVgGVKQ?e=uMTxrv",
+          label: t("projects.firmware.devSharepointLabel"),
+          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgA6lrxKrQesR4FLLw7lnaSuAZFK6JtkOeBhpyimpISGHDk?e=cuSeN4",
           type: "external",
         },
       ]}

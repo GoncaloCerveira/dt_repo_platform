@@ -1,8 +1,11 @@
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { SelectedPage } from "@/components/types";
+import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+
 import NOVA from "@/assets/NOVA.png";
-import UEVORA from "@/assets/logotipos/UEvora cor.png"
-import PCultural from "@/assets/logotipos/PCultural_L250px.png"
+import UEVORA from "@/assets/logotipos/UEvora cor.png";
+import PCultural from "@/assets/logotipos/PCultural_L250px.png";
 import MMP from "@/assets/logotipos/Museus_monumentos_250px.png";
 import PRR from "@/assets/logotipos/prr_L250px.png";
 import Republica from "@/assets/logotipos/Republica_L250px.png";
@@ -10,13 +13,14 @@ import EU from "@/assets/logotipos/EU_L250px.png";
 import ARTE from "@/assets/arte.png";
 import ICON from "@/assets/digitaltwins_icone.png";
 import BackgroundImage from "@/assets/background.jpg";
-import { motion } from "framer-motion";
 
 type Props = {
   setSelectedPage: (value: SelectedPage) => void;
 };
 
 const Home = ({ setSelectedPage }: Props) => {
+  const { t } = useTranslation();
+
   const partners = [
     { src: NOVA, alt: "NOVA FCT" },
     { src: UEVORA, alt: "UEVORA" },
@@ -42,17 +46,23 @@ const Home = ({ setSelectedPage }: Props) => {
         <div className="flex-grow flex items-center justify-start">
           <motion.div
             onViewportEnter={() => setSelectedPage(SelectedPage.Home)}
-            initial="hidden" animate="visible" transition={{ duration: 0.5, delay: 0.2 }}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.5, delay: 0.2 }}
             variants={{ hidden: { opacity: 0, x: -50 }, visible: { opacity: 1, x: 0 } }}
           >
             <div className="relative">
-              <span className="absolute -top-12 -left-1 z-[-1] hidden md:block font-montserrat text-7xl font-bold text-gray-100 opacity-10 uppercase">Gémeos Digitais</span>
+              <span className="absolute -top-12 -left-1 z-[-1] hidden md:block font-montserrat text-7xl font-bold text-gray-100 opacity-10 uppercase">
+                {t("home.title")}
+              </span>
               <h1 className="flex flex-col gap-2 font-montserrat font-bold text-white">
-                <span className="text-4xl sm:text-5xl md:text-7xl uppercase">Gémeos Digitais</span>
+                <span className="text-4xl sm:text-5xl md:text-7xl uppercase">
+                  {t("home.title")}
+                </span>
                 <span 
                   className="text-lg sm:text-xl md:text-3xl font-medium text-gray-200 leading-snug max-w-2xl [text-wrap:balance]"
                 >
-                  Para Turismo Inteligente, Sustentável e Preservação do Património Cultural
+                  {t("home.subtitle")}
                 </span>
               </h1>
             </div>

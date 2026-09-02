@@ -6,17 +6,15 @@ import Logo_navbar from "@/assets/digitaltwins_icone.png";
 import { SelectedPage } from "@/components/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   selectedPage: SelectedPage;
   setSelectedPage: (value: SelectedPage) => void;
 };
 
-const projectsList = [
-  { name: "Repositório", path: "/repository" },
-];
-
 const NavbarPublic = ({ selectedPage, setSelectedPage }: Props) => {
+  const { t, i18n } = useTranslation();
   const flexBetween = "flex items-center justify-between";
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
   const [isProjectsOpen, setIsProjectsOpen] = useState<boolean>(false);
@@ -27,6 +25,16 @@ const NavbarPublic = ({ selectedPage, setSelectedPage }: Props) => {
   const isHomePage = location.pathname === "/";
 
   const navbarBackground = "bg-primary-100 drop-shadow";
+
+  const projectsList = [
+    { name: t("navbar.repository"), path: "/repository" },
+  ];
+
+  const toggleLanguage = () => {
+    const currentLang = i18n.language;
+    const nextLang = currentLang.startsWith("pt") ? "en" : "pt";
+    i18n.changeLanguage(nextLang);
+  };
 
   const handleProjectNavigation = (path: string) => {
     setSelectedPage(SelectedPage.OurProject);
@@ -42,30 +50,39 @@ const NavbarPublic = ({ selectedPage, setSelectedPage }: Props) => {
         href={`#${SelectedPage.Home}`}
         onClick={() => setSelectedPage(SelectedPage.Home)}
       >
-        Início
+        {t("navbar.home")}
       </AnchorLink>
       <AnchorLink
         className={`${selectedPage === SelectedPage.OurProject ? "text-primary-500" : ""} hover:text-primary-500 transition`}
         href={`#${SelectedPage.OurProject}`}
         onClick={() => setSelectedPage(SelectedPage.OurProject)}
       >
-        Sobre
+        {t("navbar.about")}
       </AnchorLink>
       <AnchorLink
         className={`${selectedPage === SelectedPage.OUrProjectPublic ? "text-primary-500" : ""} hover:text-primary-500 transition`}
         href={`#${SelectedPage.OUrProjectPublic}`}
         onClick={() => setSelectedPage(SelectedPage.OUrProjectPublic)}
       >
-        Projetos Piloto
+        {t("navbar.pilotProjects")}
       </AnchorLink>
       <AnchorLink
         className={`${selectedPage === SelectedPage.OurTechonology ? "text-primary-500" : ""} hover:text-primary-500 transition`}
         href={`#${SelectedPage.OurTechonology}`}
         onClick={() => setSelectedPage(SelectedPage.OurTechonology)}
       >
-        Tecnologia
+        {t("navbar.technology")}
       </AnchorLink>
     </>
+  );
+
+  const renderLanguageToggle = () => (
+    <button
+      onClick={toggleLanguage}
+      className="rounded-lg bg-secondary-500 px-3 py-1 text-xs font-bold uppercase text-white hover:bg-opacity-80 transition"
+    >
+      {i18n.language.startsWith("pt") ? "EN" : "PT"}
+    </button>
   );
 
   return (
@@ -99,34 +116,41 @@ const NavbarPublic = ({ selectedPage, setSelectedPage }: Props) => {
                   {isHomePage ? renderLinks() : null}
                 </div>
                 
-                <div className="relative">
-                  <AnimatePresence>
-                    {isProjectsOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        onMouseLeave={() => setIsProjectsOpen(false)}
-                        className="absolute right-0 mt-2 w-56 rounded-xl bg-white p-2 shadow-xl ring-1 ring-black ring-opacity-5"
-                      >
-                        {projectsList.map((project) => (
-                          <button
-                            key={project.path}
-                            onClick={() => handleProjectNavigation(project.path)}
-                            className="w-full rounded-lg px-4 py-3 text-left text-sm font-medium text-gray-700 hover:bg-primary-100 hover:text-primary-500 transition"
-                          >
-                            {project.name}
-                          </button>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                <div className="flex items-center gap-4">
+                  {renderLanguageToggle()}
+
+                  <div className="relative">
+                    <AnimatePresence>
+                      {isProjectsOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          onMouseLeave={() => setIsProjectsOpen(false)}
+                          className="absolute right-0 mt-2 w-56 rounded-xl bg-white p-2 shadow-xl ring-1 ring-black ring-opacity-5"
+                        >
+                          {projectsList.map((project) => (
+                            <button
+                              key={project.path}
+                              onClick={() => handleProjectNavigation(project.path)}
+                              className="w-full rounded-lg px-4 py-3 text-left text-sm font-medium text-gray-700 hover:bg-primary-100 hover:text-primary-500 transition"
+                            >
+                              {project.name}
+                            </button>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </div>
               </div>
             ) : (
-              <button className="rounded-full bg-secondary-500 p-2" onClick={() => setIsMenuToggled(!isMenuToggled)}>
-                <Bars3Icon className="h-6 w-6 text-white" />
-              </button>
+              <div className="flex items-center gap-3">
+                {renderLanguageToggle()}
+                <button className="rounded-full bg-secondary-500 p-2" onClick={() => setIsMenuToggled(!isMenuToggled)}>
+                  <Bars3Icon className="h-6 w-6 text-white" />
+                </button>
+              </div>
             )}
           </div>
         </div>

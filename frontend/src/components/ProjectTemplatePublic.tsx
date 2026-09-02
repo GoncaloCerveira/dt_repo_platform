@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import Navbar from "@/screens/navbar";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { SelectedPage } from "@/components/types";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
@@ -33,6 +33,7 @@ const ProjectDetailPublic = ({
   media = [],
   setSelectedPage,
 }: ProjectProps) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -83,7 +84,7 @@ const ProjectDetailPublic = ({
             >
               <ArrowRightIcon className="h-5 w-5 rotate-180 group-hover:translate-x-1 transition-transform" />
               <span className="font-bold text-sm uppercase tracking-wider">
-                Voltar
+                {t("projectDetail.back")}
               </span>
             </motion.button>
           </div>
@@ -125,7 +126,7 @@ const ProjectDetailPublic = ({
                       {current.type === "image" ? (
                         <img
                           src={current.url}
-                          alt="project media"
+                          alt={t("projectDetail.mediaAlt")}
                           className="max-w-full max-h-full object-contain rounded-xl shadow-2xl"
                         />
                       ) : (
@@ -139,7 +140,7 @@ const ProjectDetailPublic = ({
                   </motion.div>
                 </AnimatePresence>
 
-                {/* CONTROLS - Só aparecem se houver mais de uma mídia */}
+                {/* CONTROLS */}
                 {media.length > 1 && (
                   <>
                     <button
@@ -180,11 +181,11 @@ const ProjectDetailPublic = ({
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             
             {/* TEXT DESCRIPTION */}
-            <div className={`space-y-8`}>
+            <div className="space-y-8 lg:col-span-3">
               <div className="inline-flex items-center gap-3">
                 <div className="h-1 w-10 bg-primary-500 rounded-full" />
                 <h3 className="text-2xl font-bold text-gray-800">
-                  Sobre o Projeto
+                  {t("projectDetail.aboutProject")}
                 </h3>
               </div>
 

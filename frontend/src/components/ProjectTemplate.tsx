@@ -15,6 +15,7 @@ import {
   ArrowDownTrayIcon,
 } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 /* ================= CUSTOM ELEMENTS ================= */
 declare global {
@@ -51,10 +52,10 @@ type ModelVersion = {
 
 type ProjectLink = {
   label: string;
-  url: string; // Lightweight model used for fast web rendering
+  url: string; 
   type: "document" | "external" | "web" | "3d-model";
-  fullModelUrl?: string; // High-res GLB download link (e.g. SharePoint / OneDrive link)
-  versions?: ModelVersion[]; // Optional array for alternative model versions
+  fullModelUrl?: string; 
+  versions?: ModelVersion[]; 
 };
 
 type MediaItem = {
@@ -84,6 +85,7 @@ const ProjectDetail = ({
   links = [],
   setSelectedPage,
 }: ProjectProps) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -193,7 +195,7 @@ const ProjectDetail = ({
             >
               <ArrowRightIcon className="h-5 w-5 rotate-180 group-hover:translate-x-1 transition-transform" />
               <span className="font-bold text-sm uppercase tracking-wider">
-                Voltar
+                {t("projectDetail2.backButton")}
               </span>
             </motion.button>
           </div>
@@ -296,7 +298,7 @@ const ProjectDetail = ({
               <div className="inline-flex items-center gap-3">
                 <div className="h-1 w-10 bg-primary-500 rounded-full" />
                 <h3 className="text-2xl font-bold text-gray-800">
-                  Sobre o Projeto
+                  {t("projectDetail2.aboutSectionTitle")}
                 </h3>
               </div>
 
@@ -315,7 +317,7 @@ const ProjectDetail = ({
                 <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
                   <h3 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-3">
                     <LinkIcon className="h-6 w-6 text-primary-500" />
-                    Documentação/Links
+                    {t("projectDetail2.linksSectionTitle")}
                   </h3>
 
                   <div className="flex flex-col gap-4">
@@ -392,7 +394,7 @@ const ProjectDetail = ({
               <div className="absolute top-4 left-4 z-30 flex items-center gap-2 bg-gray-900/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-gray-700/60 text-gray-300 text-xs">
                 <InformationCircleIcon className="h-4 w-4 text-primary-500 shrink-0" />
                 <span>
-                  Modelo otimizado para navegação web rápida. Versão oficial na OneDrive.
+                  {t("projectDetail2.modalDisclaimer")}
                 </span>
               </div>
 
@@ -438,7 +440,7 @@ const ProjectDetail = ({
                   className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-primary-500 hover:bg-primary-600 text-white font-semibold text-sm shadow-lg backdrop-blur-md border border-primary-400/30 transition-all duration-300 hover:scale-105 active:scale-95"
                 >
                   <ArrowDownTrayIcon className="h-5 w-5 shrink-0" />
-                  <span>Descarregar Modelo Completo</span>
+                  <span>{t("projectDetail2.downloadModelButton")}</span>
                 </a>
               </div>
 
@@ -452,7 +454,9 @@ const ProjectDetail = ({
               >
                 <div className="text-center">
                   <div className="w-16 h-16 border-4 border-white/20 border-t-primary-500 rounded-full animate-spin mx-auto" />
-                  <p className="mt-6 text-white">A carregar {loadingProgress}%</p>
+                  <p className="mt-6 text-white">
+                    {t("projectDetail2.loadingText", { progress: loadingProgress })}
+                  </p>
                   <div className="w-64 h-2 bg-white/20 rounded-full mt-4 overflow-hidden">
                     <div
                       className="h-full bg-primary-500 transition-all duration-300"
@@ -464,7 +468,7 @@ const ProjectDetail = ({
                 </div>
               </div>
 
-              {/* MODEL VIEWER - Using currentModelUrl as key forces re-mount and proper loading states on switch */}
+              {/* MODEL VIEWER */}
               <model-viewer
                 key={currentModelUrl}
                 ref={modelViewerRef}

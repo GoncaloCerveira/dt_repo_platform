@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import HText from "@/components/HText";
 import { SelectedPage } from "@/components/types";
 import {
@@ -41,149 +42,149 @@ type ProjectLink = {
 
 type ProjectItem = {
   icon: JSX.Element;
-  title: string;
-  description: string; 
+  titleKey: string;
+  descriptionKey: string; 
   detailedDescription?: string[]; 
   link?: string; 
   externalLinks?: ProjectLink[];
   tag: string;
   accent: string;
-  status: "Finalizado" | "Em Desenvolvimento" | "Pesquisa";
+  statusKey: string;
 };
 
 type PilotSite = {
-  name: string;
-  location: string;
+  nameKey: string;
+  locationKey: string;
   url: string;
-  type: string;
+  typeKey: string;
   image: string;
 };
 
-const projects: ProjectItem[] = [
+const projectConfigs: ProjectItem[] = [
   {
     icon: <CloudIcon className="h-6 w-6" />,
-    title: "Plataforma de Monitorização Ambiental para preservação Cultural",
-    description: "Plataforma cloud para monitorização ambiental de património cultural, integrando dashboards em tempo real, IoT, MQTT e análise preditiva com IA.",
+    titleKey: "ourProject.items.p1.title",
+    descriptionKey: "ourProject.items.p1.description",
     link: "/repository/plataforma_iot",
     tag: "Plataforma IoT",
     accent: "from-sky-500 to-blue-600",
-    status: "Em Desenvolvimento"
+    statusKey: "ourProject.status.inDevelopment"
   },
   {
     icon: <CpuChipIcon className="h-6 w-6" />,
-    title: "Firmware para a Plataforma de Monitorização",
-    description: "Infraestrutura firmware para sensores STM32WB55 e gateways ESP32-S3 com suporte OTA, BLE, MQTT e gestão remota de dispositivos IoT.",
+    titleKey: "ourProject.items.p2.title",
+    descriptionKey: "ourProject.items.p2.description",
     link: "/repository/firmware_iot",
     tag: "Firmware & Sensores",
     accent: "from-lime-500 to-green-600",
-    status: "Em Desenvolvimento"
+    statusKey: "ourProject.status.inDevelopment"
   },
   {
     icon: <UsersIcon className="h-6 w-6" />,
-    title: "Monitorização de Fluxo e Ocupação - Jerónimos",
-    description: "Sistema de contagem de visitantes e mapas de calor anónimos utilizando sensores ToF e mmWave com arquitetura IoT distribuída (STM32/ESP32).",
+    titleKey: "ourProject.items.p3.title",
+    descriptionKey: "ourProject.items.p3.description",
     link: "/repository/fluxo_visitantes",
     tag: "IoT & Edge Computing",
     accent: "from-orange-500 to-red-500",
-    status: "Em Desenvolvimento"
+    statusKey: "ourProject.status.inDevelopment"
   },
   {
     icon: <Square3Stack3DIcon className="h-6 w-6" />,
-    title: "Segmentação de modelos 3D para HBIM",
-    description: "Pipeline de segmentação automática de elementos arquitetónicos em nuvens de pontos 3D.",
+    titleKey: "ourProject.items.p4.title",
+    descriptionKey: "ourProject.items.p4.description",
     link: "/repository/hbim-segmentacao",
     tag: "Processamento de Dados",
     accent: "from-rose-500 to-pink-500",
-    status: "Em Desenvolvimento"
+    statusKey: "ourProject.status.inDevelopment"
   },
   {
     icon: <MagnifyingGlassIcon className="h-6 w-6" />,
-    title: "HBIM Pesquisa",
-    description: "Metodologias de pesquisa avançada em Heritage Building Information Modeling.",
+    titleKey: "ourProject.items.p5.title",
+    descriptionKey: "ourProject.items.p5.description",
     link: "/repository/hbim-pesquisa",
     tag: "Processamento de Dados",
     accent: "from-orange-500 to-amber-500",
-    status: "Em Desenvolvimento"
+    statusKey: "ourProject.status.inDevelopment"
   },
   {
     icon: <HomeModernIcon className="h-6 w-6" />,
-    title: "Desenvolvimento de HBIMs",
-    description: "Modelação tridimensional IFC e mapeamento semântico de patologias a partir de nuvens de pontos e arquivos históricos.",
+    titleKey: "ourProject.items.p6.title",
+    descriptionKey: "ourProject.items.p6.description",
     link: "/repository/hbim-criacao",
     tag: "Processamento de Dados",
     accent: "from-red-500 to-rose-500",
-    status: "Em Desenvolvimento"
+    statusKey: "ourProject.status.inDevelopment"
   },
   {
     icon: <BuildingLibraryIcon className="h-6 w-6" />,
-    title: "Simulador do Mosteiro de Santa Clara-a-Velha",
-    description: "Simulação interativa em Unity para visualização e análise comparativa de cheias históricas no Mosteiro de Santa Clara-a-Velha.",
+    titleKey: "ourProject.items.p7.title",
+    descriptionKey: "ourProject.items.p7.description",
     link: "/repository/santa-clara",
     tag: "Experiências Imersivas",
     accent: "from-blue-500 to-cyan-400",
-    status: "Em Desenvolvimento"
+    statusKey: "ourProject.status.inDevelopment"
   },
   {
     icon: <PhotoIcon className="h-6 w-6" />,
-    title: "Aplicações AR e VR para o Museu do Azulejo",
-    description: "Plataformas interativas com AR para reconhecimento de monumentos e VR para exploração imersiva de ambientes históricos através de portais.",
+    titleKey: "ourProject.items.p8.title",
+    descriptionKey: "ourProject.items.p8.description",
     link: "/repository/azulejo",
     tag: "XR Imersivo",
     accent: "from-indigo-500 to-purple-500",
-    status: "Em Desenvolvimento"
+    statusKey: "ourProject.status.inDevelopment"
   },
   {
     icon: <GlobeAltIcon className="h-6 w-6" />,
-    title: "Visita em realidade virtual à Gruta do Escoural",
-    description: "Visualização da Gruta do Escoural baseada em captação 3D, navegável em tempo real.",
+    titleKey: "ourProject.items.p9.title",
+    descriptionKey: "ourProject.items.p9.description",
     link: "/repository/gruta-escoural",
     tag: "Experiências Imersivas",
     accent: "from-emerald-500 to-teal-500",
-    status: "Em Desenvolvimento"
+    statusKey: "ourProject.status.inDevelopment"
   },
   {
     icon: <DevicePhoneMobileIcon className="h-6 w-6" />,
-    title: "Reconstrução virtual das Ruínas Romanas de Milreu",
-    description: "Reconstrução virtual das Ruínas Romanas de Milreu em 3D, desenvolvida no Blender a partir de referências históricas e arqueológicas.",
+    titleKey: "ourProject.items.p10.title",
+    descriptionKey: "ourProject.items.p10.description",
     link: "/repository/app-milreu",
     tag: "Experiências Imersivas",
     accent: "from-violet-500 to-fuchsia-500",
-    status: "Em Desenvolvimento"
+    statusKey: "ourProject.status.inDevelopment"
   },
   {
     icon: <QrCodeIcon className="h-6 w-6" />,
-    title: "Desenvolvimento de UX e UI para os projetos do Digital Twins",
-    description: "Processo e desenvolvimento de UX e UI para os projetos do Digital Twins.",
+    titleKey: "ourProject.items.p11.title",
+    descriptionKey: "ourProject.items.p11.description",
     link: "/repository/projetos-ux-ui",
     tag: "Experiências Imersivas",
     accent: "from-sky-500 to-blue-600",
-    status: "Em Desenvolvimento"
+    statusKey: "ourProject.status.inDevelopment"
   },
 ];
 
 const pilotSites: PilotSite[] = [
   {
-    name: "P1 - Mosteiro de Santa Clara-a-Velha", location: "Coimbra", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBX015awvslQ6kn1nsJhJQWAcgYE05cClD2KeLAX7my7vQ", type: "Modelos & Mesh",
+    nameKey: "ourProject.pilots.p1.name", locationKey: "ourProject.pilots.p1.location", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBX015awvslQ6kn1nsJhJQWAQ1KPIUfEDSgbF5khSLH0KM?e=g62dtN", typeKey: "ourProject.pilots.type",
     image: HBIM
   },
   {
-    name: "P2 - Ruínas Romanas de Milreu", location: "Faro", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDIdAUCOtcSTqdqta1ZVcoLAT5kjnnqNm8y-Jff0BBqoKY", type: "Modelos & Mesh",
+    nameKey: "ourProject.pilots.p2.name", locationKey: "ourProject.pilots.p2.location", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDIdAUCOtcSTqdqta1ZVcoLATnlJkmgA6EBBYy3ey_YeUQ?e=nqxPap", typeKey: "ourProject.pilots.type",
     image: RRM
   },
   {
-    name: "P3 - Mosteiro dos Jerónimos", location: "Lisboa", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAbVzE51VFZSYedaaEHEOWYARkPW_Gw_QByNgQgUQUsYpg", type: "Modelos & Mesh",
+    nameKey: "ourProject.pilots.p3.name", locationKey: "ourProject.pilots.p3.location", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAbVzE51VFZSYedaaEHEOWYARQ2aNmNa1DSirSHDra9Oi8?e=CWTWhQ", typeKey: "ourProject.pilots.type",
     image: MJ
   },
   {
-    name: "P4 - Mosteiro de Alcobaça", location: "Alcobaça", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAXn_MLZSX4R6gs3KbYCj6zARvyEYACR6e2yDN-Bl_F5j0", type: "Modelos & Mesh",
+    nameKey: "ourProject.pilots.p4.name", locationKey: "ourProject.pilots.p4.location", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAXn_MLZSX4R6gs3KbYCj6zASmR3Rr9wCgjKwDvK0oZCcA?e=FheGbA", typeKey: "ourProject.pilots.type",
     image: MA
   },
   {
-    name: "P5 - Museu Nacional do Azulejo", location: "Lisboa", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDU7u5kynUaT4ey0JwlAf9IAciIKJ1F5Ze09FAiHwd1sv0", type: "Modelos & Mesh",
+    nameKey: "ourProject.pilots.p5.name", locationKey: "ourProject.pilots.p5.location", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDU7u5kynUaT4ey0JwlAf9IASnmzHAiABgPfl0SCmAQR2I?e=Ov1kzA", typeKey: "ourProject.pilots.type",
     image: MNAZ
   },
   {
-    name: "P6 - Gruta do Escoural", location: "Alentejo", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAwWl8_sXl_R7NhXdsdOSY-AaDIg9v0e9AvsFkxo9d7hdc", type: "Modelos & Mesh",
+    nameKey: "ourProject.pilots.p6.name", locationKey: "ourProject.pilots.p6.location", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAwWl8_sXl_R7NhXdsdOSY-Ab5fOeSVGEe3Rm2U1hxjKHw?e=ifsExS", typeKey: "ourProject.pilots.type",
     image: GE
   },
 ];
@@ -192,6 +193,7 @@ const pilotSites: PilotSite[] = [
 
 const ProjectRow = ({ item }: { item: ProjectItem }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
   const hasInternalPage = !!item.link;
 
@@ -214,21 +216,21 @@ const ProjectRow = ({ item }: { item: ProjectItem }) => {
           <div>
             <div className="flex items-center gap-3 mb-1">
               <h3 className="font-bold text-gray-900 group-hover:text-primary-500 transition-colors">
-                {item.title}
+                {t(item.titleKey)}
               </h3>
               <span className="hidden sm:block px-2 py-0.5 text-[10px] font-bold uppercase tracking-tighter border border-gray-200 text-gray-400 rounded">
-                Public
+                {t("ourProject.publicBadge")}
               </span>
             </div>
-            <p className="text-sm text-gray-500 line-clamp-1">{item.description}</p>
+            <p className="text-sm text-gray-500 line-clamp-1">{t(item.descriptionKey)}</p>
           </div>
         </div>
 
         <div className="flex items-center justify-between w-full md:w-auto gap-6 mt-4 md:mt-0">
           <div className="flex flex-col items-end">
-            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Status</span>
-            <span className={`text-xs font-bold ${item.status === "Finalizado" ? "text-emerald-500" : "text-amber-500"}`}>
-              {item.status}
+            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{t("ourProject.statusLabel")}</span>
+            <span className="text-xs font-bold text-amber-500">
+              {t(item.statusKey)}
             </span>
           </div>
 
@@ -238,7 +240,7 @@ const ProjectRow = ({ item }: { item: ProjectItem }) => {
               className="flex items-center gap-2 px-5 py-2.5 bg-gray-900 text-white rounded-lg font-bold text-xs uppercase tracking-wider hover:bg-primary-500 transition-all shadow-sm"
             >
               <DocumentTextIcon className="h-4 w-4" />
-              SABER MAIS
+              {t("ourProject.knowMore")}
               <ChevronRightIcon className="h-3 w-3" />
             </button>
           ) : (
@@ -251,7 +253,7 @@ const ProjectRow = ({ item }: { item: ProjectItem }) => {
               }`}
             >
               <CommandLineIcon className="h-4 w-4" />
-              {isExpanded ? "Fechar" : "Detalhes"}
+              {isExpanded ? t("ourProject.close") : t("ourProject.details")}
               <ChevronDownIcon className={`h-3 w-3 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} />
             </button>
           )}
@@ -273,7 +275,7 @@ const ProjectRow = ({ item }: { item: ProjectItem }) => {
                 <div className="md:col-span-2 space-y-5">
                   <div className="flex items-center gap-2">
                     <CodeBracketSquareIcon className="h-5 w-5 text-primary-500" />
-                    <h4 className="text-[11px] font-black text-gray-400 uppercase tracking-[0.2em]">Resumo do Projeto</h4>
+                    <h4 className="text-[11px] font-black text-gray-400 uppercase tracking-[0.2em]">{t("ourProject.projectSummary")}</h4>
                   </div>
                   <div className="space-y-4">
                     {item.detailedDescription?.map((paragraph, idx) => (
@@ -288,7 +290,7 @@ const ProjectRow = ({ item }: { item: ProjectItem }) => {
                 <div className="space-y-5">
                   <div className="flex items-center gap-2">
                     <LinkIcon className="h-5 w-5 text-primary-500" />
-                    <h4 className="text-[11px] font-black text-gray-400 uppercase tracking-[0.2em]">Recursos Externos</h4>
+                    <h4 className="text-[11px] font-black text-gray-400 uppercase tracking-[0.2em]">{t("ourProject.externalResources")}</h4>
                   </div>
                   <div className="flex flex-col gap-3">
                     {item.externalLinks?.map((ext, idx) => (
@@ -318,37 +320,33 @@ const ProjectRow = ({ item }: { item: ProjectItem }) => {
 
 const PilotModelSlider = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <div className="group mt-20 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl">
       {/* HEADER */}
       <div className="relative overflow-hidden border-b border-[#77945D]/20 bg-gradient-to-r from-[#77945D] via-[#88a36f] to-[#77945D] p-8">
-        {/* glow accents */}
         <div className="absolute top-0 right-0 h-52 w-52 rounded-full bg-white/10 blur-3xl" />
         <div className="absolute bottom-0 left-0 h-32 w-32 rounded-full bg-black/10 blur-2xl" />
 
         <div className="relative flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-          {/* LEFT */}
           <div>
             <div className="mb-3 flex items-center gap-2 text-white/90">
               <CubeIcon className="h-5 w-5" />
               <span className="text-[10px] font-black uppercase tracking-[0.3em]">
-                Digital Twin Showcase
+                {t("ourProject.showcaseSub")}
               </span>
             </div>
 
             <h3 className="text-3xl font-black tracking-tight text-white">
-              Sítios-Piloto: Modelos 3D & HBIM
+              {t("ourProject.showcaseTitle")}
             </h3>
 
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/80">
-              Levantamentos geométricos, malhas tridimensionais e dados HBIM
-              produzidos para preservação, análise e exploração digital do
-              património cultural.
+              {t("ourProject.showcaseDesc")}
             </p>
           </div>
 
-          {/* RIGHT */}
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <div className="flex items-center gap-6 rounded-xl border border-white/20 bg-white/10 px-10 py-2 backdrop-blur-md">
               <div className="text-center">
@@ -356,7 +354,7 @@ const PilotModelSlider = () => {
                   50+
                 </p>
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">
-                  Recursos
+                  {t("ourProject.resourcesCount")}
                 </p>
               </div>
             </div>
@@ -365,7 +363,7 @@ const PilotModelSlider = () => {
               onClick={() => navigate("/repository/galeria-modelos")}
               className="flex items-center gap-2 rounded-xl bg-white px-5 py-4 text-sm font-bold text-[#77945D] shadow-lg transition-transform hover:scale-105"
             >
-              Ver Galeria Completa
+              {t("ourProject.viewFullGallery")}
               <ArrowTopRightOnSquareIcon className="h-4 w-4" />
             </button>
           </div>
@@ -386,18 +384,15 @@ const PilotModelSlider = () => {
               className="group/card relative flex-shrink-0 snap-center"
             >
               <div className="relative aspect-[3/4] w-72 overflow-hidden rounded-2xl shadow-md transition-all duration-300 group-hover/card:shadow-xl">
-                {/* IMAGE */}
                 <img
                   src={site.image}
-                  alt={site.name}
+                  alt={t(site.nameKey)}
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover/card:scale-105"
                 />
 
-                {/* overlays */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/10" />
                 <div className="absolute inset-0 bg-[#77945D]/10 opacity-0 transition-opacity duration-500 group-hover/card:opacity-100" />
 
-                {/* TOP */}
                 <div className="absolute left-0 right-0 top-0 flex items-start justify-between p-6">
                   <div className="rounded-xl border border-white/20 bg-white/10 p-3 backdrop-blur-md">
                     <Square3Stack3DIcon className="h-6 w-6 text-white" />
@@ -408,27 +403,26 @@ const PilotModelSlider = () => {
                   </div>
                 </div>
 
-                {/* CONTENT */}
                 <div className="absolute bottom-0 left-0 right-0 p-7">
                   <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[9px] font-black uppercase tracking-[0.2em] text-white backdrop-blur-sm">
-                    {site.type}
+                    {t(site.typeKey)}
                   </span>
 
                   <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.25em] text-white/60">
-                    {site.location}
+                    {t(site.locationKey)}
                   </p>
 
                   <h4 className="mt-2 text-2xl font-black leading-tight text-white">
-                    {site.name}
+                    {t(site.nameKey)}
                   </h4>
 
                   <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-5">
                     <span className="text-[10px] font-black uppercase tracking-[0.25em] text-white/60 transition-colors duration-300 group-hover/card:text-white">
-                      Explorar Modelo
+                      {t("ourProject.exploreModel")}
                     </span>
 
                     <div className="flex items-center gap-2 text-white">
-                      <span className="text-xs font-bold">Open</span>
+                      <span className="text-xs font-bold">{t("ourProject.openLabel")}</span>
                       <ChevronRightIcon className="h-4 w-4 transition-transform duration-300 group-hover/card:translate-x-1" />
                     </div>
                   </div>
@@ -449,16 +443,16 @@ const PilotModelSlider = () => {
               </div>
               
               <h4 className="text-center text-xl font-black text-gray-800">
-                Explorar Galeria Completa
+                {t("ourProject.exploreFullGalleryCardTitle")}
               </h4>
               
               <p className="mt-3 text-center text-xs font-medium leading-relaxed text-gray-500">
-                Descubra a nossa coleção completa de modelos 3D, gémeos digitais e levantamentos geométricos na galeria dedicada.
+                {t("ourProject.exploreFullGalleryCardDesc")}
               </p>
               
               <div className="mt-8 flex items-center gap-2 rounded-lg bg-[#77945D] px-5 py-3 text-white shadow-md transition-colors hover:bg-[#637d4d]">
                 <span className="text-[10px] font-bold uppercase tracking-widest">
-                  Ver Mais Modelos
+                  {t("ourProject.seeMoreModels")}
                 </span>
                 <ChevronRightIcon className="h-4 w-4" />
               </div>
@@ -478,6 +472,8 @@ type Props = {
 };
 
 const OurProjectSection = ({ setSelectedPage }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <section id="ourproject" className="mx-auto bg-gray-20 py-12">
       <motion.div
@@ -501,25 +497,24 @@ const OurProjectSection = ({ setSelectedPage }: Props) => {
             <div className="mb-3 flex items-center gap-2 text-primary-500">
               <CommandLineIcon className="h-6 w-6" />
               <p className="text-xs font-bold uppercase tracking-widest">
-                Sistema de Repositórios
+                {t("ourProject.repositorySystem")}
               </p>
             </div>
-            <HText>CENTRO DE DOCUMENTAÇÃO</HText>
+            <HText>{t("ourProject.documentationCenter")}</HText>
             <p className="mt-4 text-lg font-medium text-gray-600">
-              Repositório centralizado de aplicações, gémeos digitais e pipelines 
-              de processamento desenvolvidos no âmbito do projeto.
+              {t("ourProject.headerSubtitle")}
             </p>
           </motion.div>
 
           <div className="mt-8 md:mt-0 flex items-center gap-6 bg-white p-4 rounded-2xl border border-gray-200 shadow-sm">
             <div className="text-center">
-              <p className="text-2xl font-black text-gray-900">{projects.length}</p>
-              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Projetos</p>
+              <p className="text-2xl font-black text-gray-900">{projectConfigs.length}</p>
+              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">{t("ourProject.projectsCount")}</p>
             </div>
             <div className="h-8 w-px bg-gray-200" />
             <div className="text-center">
                <ArrowTopRightOnSquareIcon className="h-6 w-6 text-gray-400 mx-auto mb-1" />
-               <p className="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Open Access</p>
+               <p className="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">{t("ourProject.openAccess")}</p>
             </div>
           </div>
         </div>
@@ -536,11 +531,11 @@ const OurProjectSection = ({ setSelectedPage }: Props) => {
         >
           <div className="flex items-center gap-2 mb-4 px-2">
             <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[11px] font-bold text-gray-500 uppercase tracking-widest">Aplicações Ativas</span>
+            <span className="text-[11px] font-bold text-gray-500 uppercase tracking-widest">{t("ourProject.activeApplications")}</span>
           </div>
 
           <div className="space-y-1">
-            {projects.map((item, index) => (
+            {projectConfigs.map((item, index) => (
               <ProjectRow key={index} item={item} />
             ))}
           </div>
@@ -559,17 +554,17 @@ const OurProjectSection = ({ setSelectedPage }: Props) => {
               <CommandLineIcon className="h-6 w-6 text-gray-600" />
             </div>
             <div>
-              <p className="font-bold text-gray-900">Acesso ao Código/Modelos/Documentação</p>
-              <p className="text-sm text-gray-500">Todos os repositórios técnicos de GitHub estão disponíveis via documentação individual.</p>
+              <p className="font-bold text-gray-900">{t("ourProject.footerAccessTitle")}</p>
+              <p className="text-sm text-gray-500">{t("ourProject.footerAccessDesc")}</p>
             </div>
           </div>
           <a
-            href="https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgD7xRB94gRHQKceNf9VDkHDASCeK7VU_mqj2AOLrSFC9d0?e=xErJb2"
+            href="https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgD7xRB94gRHQKceNf9VDkHDAbdYhJGqYRe3mAgwwKUhHcM?e=NkK7u0"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block w-full md:w-auto px-6 py-3 bg-gray-900 text-white rounded-xl font-bold text-sm hover:bg-gray-800 transition-colors text-center"
           >
-            Ver Todos os Projetos no OneDrive
+            {t("ourProject.viewOneDriveButton")}
           </a>
         </motion.div>
       </motion.div>

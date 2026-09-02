@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import ProjectDetail from "@/components/ProjectTemplate";
 import { SelectedPage } from "@/components/types";
 import GRUTA1 from "@/assets/escoural/GE - Gruta do Escoural - Preview 2026.05.07 - 02.jpg";
@@ -6,29 +7,34 @@ import GRUTA3 from "@/assets/escoural/GE - Gruta do Escoural - Preview 2026.05.0
 import GRUTA4 from "@/assets/escoural/GE - Gruta do Escoural - Preview 2026.05.07.mp4";
 
 const Escoural = () => {
+  const { t } = useTranslation();
+
   return (
     <ProjectDetail 
-      title="Visita em realidade virtual à Gruta do Escoural"
-      subtitle="Experiências Imersivas"
+      title={t("projects.escoural.title")}
+      subtitle={t("projects.escoural.subtitle")}
       media={[
         { url: GRUTA1, type: "image" },
         { url: GRUTA2, type: "image" },
         { url: GRUTA3, type: "image" },
         { url: GRUTA4, type: "video" },
       ]}
-      description={[
-        "Visualização imersiva da Gruta do Escoural, baseada num modelo captado com recurso a fotogrametria e laser-scanning. Com recurso a um motor de jogo, o modelo da gruta é iluminado em tempo real de forma foto-realística e os utilizadores podem explorar as diferentes áreas de forma interativa numa perspetiva de primeira pessoa."  
-      ]}
+      description={
+        t("projects.escoural.description", {
+          returnObjects: true,
+        }) as string[]
+      }
       links={[
         { 
-          label: "Modelo e aplicação da Visita Virtual", 
-          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgD7KqeBYiQ0TKihm3lxHXBUAawBdzLQD56VMQvqUv3j180?e=bvzFdF", 
+          label: t("projects.escoural.modelAppLinkLabel"), 
+          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgD7KqeBYiQ0TKihm3lxHXBUAY-GBmXx4LGYwcEuMeRsgfA?e=ar78es", 
           type: "web" 
         }
       ]}
       setSelectedPage={function (value: SelectedPage): void {
         throw new Error("Function implemented.");
-      } }    />
+      }}    
+    />
   );
 };
 

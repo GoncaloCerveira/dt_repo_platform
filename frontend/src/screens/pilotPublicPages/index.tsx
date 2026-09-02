@@ -1,28 +1,41 @@
 import { motion } from "framer-motion";
 import HText from "@/components/HText";
-import { 
-  ArrowRightIcon
-} from "@heroicons/react/24/solid";
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 type PilotDetailProps = {
   title: string;
-  description: string;
+  description?: string;
+  descriptionKey?: string;
   image: any;
-  tag: string;
+  tag?: string;
+  tagKey?: string;
   results?: string[];
+  resultsKey?: string;
   setSelectedPage?: (value: any) => void;
 };
 
 const PilotDetailPage = ({
   title,
   description,
+  descriptionKey,
   image,
   tag,
+  tagKey,
   results,
+  resultsKey,
 }: PilotDetailProps) => {
-  const imageSrc = image?.src || image;
+  const { t } = useTranslation();
   const navigate = useNavigate();
+  const imageSrc = image?.src || image;
+
+  // Resolve localized text or fallback to passed literal values
+  const displayTag = tagKey ? t(tagKey) : tag;
+  const displayDescription = descriptionKey ? t(descriptionKey) : description;
+  const displayResults: string[] = resultsKey 
+    ? (t(resultsKey, { returnObjects: true }) as string[]) 
+    : results || [];
 
   return (
     <section className="w-full bg-gray-20 py-8 md:py-16">
@@ -35,30 +48,28 @@ const PilotDetailPage = ({
         >
           {/* HEADER */}
           <div className="space-y-6">
-            {tag && (
+            {displayTag && (
               <div className="flex items-center gap-3">
                 <span className="h-px w-8 bg-primary-500" />
                 <p className="text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.22em] text-primary-500">
-                  {tag}
+                  {displayTag}
                 </p>
               </div>
             )}
 
-            {/* Flex container: Column on mobile, Row on medium screens and up */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="max-w-3xl">
                 <HText>{title}</HText>
               </div>
 
-              {/* Added 'w-fit' and 'self-start' to ensure it only takes the width of its content on mobile */}
               <motion.button
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 onClick={() => navigate("/")}
-                className="flex items-center justify-center gap-2 px-6 py-3 border border-gray-200 rounded-xl bg-white shadow-sm text-gray-700 font-bold text-sm uppercase tracking-wider hover:border-primary-500 hover:text-primary-500 hover:shadow-md transition-all duration-300 group shrink-0 w-fit self-start md:self-auto"
+                className="flex items-center justify-center gap-2 px-6 py-3 border border-gray-200 rounded-xl bg-white shadow-sm text-gray-700 font-bold text-sm uppercase tracking-wider hover:border-primary-500 hover:text-primary-500 hover:shadow-md transition-all duration-300 group shrink-0 w-fit self-start md:self-auto cursor-pointer"
               >
-                <ArrowRightIcon className="h-5 w-5 rotate-180 group-hover:translate-x-1 transition-transform" />
-                Voltar
+                <ArrowRightIcon className="h-5 w-5 rotate-180 group-hover:-translate-x-1 transition-transform" />
+                {t("pilotDetail.backButton")}
               </motion.button>
             </div>
           </div>
@@ -78,27 +89,28 @@ const PilotDetailPage = ({
           </motion.div>
 
           {/* DESCRIPTION */}
-          <div className="max-w-4xl space-y-4 px-2 md:px-6">
-            <div className="h-1 w-12 rounded-full bg-primary-500" />
+          {displayDescription && (
+            <div className="max-w-4xl space-y-4 px-2 md:px-6">
+              <div className="h-1 w-12 rounded-full bg-primary-500" />
 
-            <p className="text-base md:text-lg leading-relaxed text-gray-700 whitespace-pre-line text-left md:text-justify">
-              {description}
-            </p>
-          </div>
+              <p className="text-base md:text-lg leading-relaxed text-gray-700 whitespace-pre-line text-left md:text-justify">
+                {displayDescription}
+              </p>
+            </div>
+          )}
 
           {/* RESULTS */}
-          {results && results.length > 0 && (
+          {Array.isArray(displayResults) && displayResults.length > 0 && (
             <div className="space-y-6 border-t border-gray-300 pt-6 px-2 md:px-6">
               <div className="flex items-center gap-4">
                 <div className="h-1 w-12 rounded-full bg-primary-500" />
                 <h3 className="text-lg md:text-xl font-bold text-gray-900">
-                  Resultados do Projeto
+                  {t("pilotDetail.resultsHeading")}
                 </h3>
               </div>
 
-              {/* Grid layout that is 1 column on mobile, but adds an indent on desktop */}
               <div className="grid gap-3 md:ml-16 max-w-3xl">
-                {results.map((result, index) => (
+                {displayResults.map((result, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 8 }}

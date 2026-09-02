@@ -9,6 +9,7 @@ import {
   ArrowTopRightOnSquareIcon
 } from "@heroicons/react/24/outline"; 
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 // LOGOs
 import NOVA from "@/assets/NOVA.png";
@@ -29,27 +30,6 @@ import ARTERIA from "@/assets/outros/logo-completo-preto.svg";
 import ICT from "@/assets/outros/ICT_Pt-300x131.png";
 import CREATE from "@/assets/outros/createcor1-1024x349.jpg";
 import DATA01 from "@/assets/outros/DATA 01-1.png";
-
-// DATA STRUCTURES
-const novaTeam = [
-  { name: "Nuno Correia", role: "Coordenação do Projeto" },
-  { name: "Márcia Vilarigues", role: "" },
-  { name: "Carla Machado", role: "" },
-  { name: "Ricardo Castro", role: "" }
-];
-
-const uevoraTeam = [
-  { name: "António Candeias", role: "" },
-  { name: "Teresa Reis", role: "" }
-];
-
-const pcTeam = [
-  { name: "Luís Sebastian", role: "" },
-];
-
-const mmpTeam = [
-  { name: "Matthias Tissot", role: "" },
-];
 
 const partnerLogos = [
   { id: 1, name: "Universidade NOVA de Lisboa", img: NOVA, link: "https://www.unl.pt/" },
@@ -89,19 +69,21 @@ const itemVariant = {
 const MemberCard = ({ name, role }: { name: string; role: string }) => (
   <motion.div 
     variants={itemVariant}
-    className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-primary-500/30 transition-all duration-300 flex items-center gap-4 group relative overflow-hidden"
+    className="bg-white px-4 py-3.5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-primary-500/30 transition-all duration-300 flex items-center gap-3.5 group relative overflow-hidden h-full min-h-[72px]"
   >
     <div className="absolute top-0 left-0 w-full h-[3px] bg-primary-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-    <div className="bg-gray-50 p-3 rounded-xl text-gray-600 group-hover:bg-primary-50 group-hover:text-primary-500 transition-colors duration-300 flex-shrink-0">
+    <div className="bg-gray-50 p-2.5 rounded-xl text-gray-600 group-hover:bg-primary-50 group-hover:text-primary-500 transition-colors duration-300 flex-shrink-0">
       <UserIcon className="h-5 w-5" />
     </div>
-    <div className="flex flex-col justify-center min-w-0">
-      <p className="text-sm md:text-base font-bold text-gray-800 font-montserrat truncate group-hover:text-primary-500 transition-colors duration-200">{name}</p>
+    <div className="flex flex-col justify-center min-w-0 flex-1 my-auto">
+      <p className="text-sm md:text-base font-bold text-gray-800 font-montserrat group-hover:text-primary-500 transition-colors duration-200 leading-tight">
+        {name}
+      </p>
       {role ? (
-        <p className="text-[10px] md:text-xs font-bold uppercase text-primary-500 mt-1 tracking-wider bg-primary-50 px-2 py-0.5 rounded-md w-max">{role}</p>
-      ) : (
-        <p className="text-xs text-gray-400 mt-0.5"></p>
-      )}
+        <p className="text-[10px] md:text-xs font-bold uppercase text-primary-500 mt-1.5 tracking-wider bg-primary-50 px-2 py-0.5 rounded-md w-fit max-w-full leading-snug break-words">
+          {role}
+        </p>
+      ) : null}
     </div>
   </motion.div>
 );
@@ -155,6 +137,28 @@ type Props = {
 };
 
 const AboutDetailed = ({ setSelectedPage }: Props) => {
+  const { t } = useTranslation();
+
+  const novaTeam = [
+    { name: "Nuno Correia", role: t("aboutDetailed.roles.pi") },
+    { name: "Márcia Vilarigues", role: "" },
+    { name: "Carla Machado", role: "" },
+    { name: "Ricardo Castro", role: "" }
+  ];
+
+  const uevoraTeam = [
+    { name: "António Candeias", role: "" },
+    { name: "Teresa Reis", role: "" }
+  ];
+
+  const pcTeam = [
+    { name: "Luís Sebastian", role: "" },
+  ];
+
+  const mmpTeam = [
+    { name: "Matthias Tissot", role: "" },
+  ];
+
   return (
     <section id="about-detailed" className="w-full bg-gradient-to-b from-gray-20 to-gray-20 pt-16 md:pt-24 px-4 sm:px-6 lg:px-8">
       <motion.div
@@ -177,45 +181,44 @@ const AboutDetailed = ({ setSelectedPage }: Props) => {
           <div className="mb-4 flex items-center gap-3">
             <span className="h-[2px] w-8 bg-primary-500 rounded-full" />
             <p className="text-xs md:text-sm font-bold uppercase tracking-widest text-primary-500">
-              Sobre o Projeto
+              {t("aboutDetailed.subheading")}
             </p>
           </div>
-          <HText>Quem Somos</HText>
+          <HText>{t("aboutDetailed.title")}</HText>
           
           <div className="mt-8 space-y-6 text-base md:text-lg leading-relaxed text-gray-600 font-normal">
             <p className="text-lg md:text-xl text-gray-800 font-medium border-l-4 border-primary-500 pl-4 md:pl-6 my-6">
-                O projeto DT4SST-CH.PT procura afirmar-se como um modelo inovador para a gestão e valorização do património cultural português. Financiado pelo Plano de Recuperação e Resiliência (PRR, medida C19-i08 "Smart Territories"), o consórcio é liderado pela NOVA FCT e integra a NOVA FCSH, a Universidade de Évora, a Museus e Monumentos de Portugal, E.P.E. e a Património Cultural, I.P. (PC).
+              {t("aboutDetailed.heroText")}
             </p>
             
             <p className="text-gray-600 pl-1">
-                O objetivo central do projeto passa por desenvolver réplicas virtuais precisas (Gémeos Digitais) através da convergência de técnicas avançadas de digitalização 3D de alta resolução (LiDAR e fotogrametria), Heritage Building Information Modeling (HBIM), Internet das Coisas (IoT) e Inteligência Artificial (IA).
+              {t("aboutDetailed.objectiveText")}
             </p>
 
             <div className="space-y-4 pt-4">
-                <h3 className="text-xl font-semibold text-gray-800">Conservação Preditiva e Monitorização</h3>
-                <p>
-                Uma das componentes mais inovadoras deste projeto é a integração de IoT e IA com vista à conservação preditiva. Através da instalação física de redes de sensores ligados a uma dashboard de visualização em tempo real, torna-se possível efetuar uma monitorização contínua da integridade estrutural, do ambiente e fluxo de visitantes.
-                </p>
-                <p>
-                Os dados recolhidos são analisados através de técnicas de machine learning, viabilizando processos de manutenção preditiva. Esta matriz confere ao património edificado uma maior resiliência face aos diversos riscos, incluindo ambientais, inundações, deterioração biológica e desgaste por microvibrações.
-                </p>
+              <h3 className="text-xl font-semibold text-gray-800">{t("aboutDetailed.conservationTitle")}</h3>
+              <p>{t("aboutDetailed.conservationParagraph1")}</p>
+              <p>{t("aboutDetailed.conservationParagraph2")}</p>
             </div>
 
             <div className="space-y-4 pt-4">
-                <h3 className="text-xl font-semibold text-gray-800">Aplicação a Todo o Património</h3>
-                <p>
-                A metodologia foi desenhada para atuar sob um modelo modular e escalável, desdobrando-se em duas vertentes táticas:
-                </p>
-                <ul className="list-disc pl-6 space-y-2">
-                <li><strong>Âmbito Geral:</strong> Focado na criação do invólucro digital coerente e consolidação dos modelos 3D que servem de base aos Gémeos Digitais dos 65 museus e monumentos abrangidos no projeto nacional Património Cultural 360.</li>
-                <li><strong>Experimentação Avançada:</strong> Integração de redes de sensores e desenvolvimento de experiências imersivas (RA/RV/RM e gamificação) em seis sítios-piloto que refletem uma multiplicidade de tipologias arquitetónicas e desafios de conservação (Mosteiro de Alcobaça, Mosteiro de Santa Clara-a-Velha, Mosteiro dos Jerónimos, Gruta do Escoural, Ruínas Romanas de Milreu e Museu Nacional do Azulejo).</li>
-                </ul>
-                <p>
-                Adicionalmente, as conclusões deste piloto nacional irão materializar-se na elaboração de um "Livro Branco". Este documento agregará recomendações estratégicas para orientar a adoção sustentável de Gémeos Digitais nas políticas públicas de gestão do património cultural.
-                </p>
-                <p className="italic border-l-2 border-gray-300 pl-4 mt-4">
-                O ecossistema desenhado vai além da esfera cultural, beneficiando de uma capacidade de integração transversal a todo o contexto dos Territórios Inteligentes.
-                </p>
+              <h3 className="text-xl font-semibold text-gray-800">{t("aboutDetailed.applicationTitle")}</h3>
+              <p>{t("aboutDetailed.applicationIntro")}</p>
+              
+              <ul className="list-disc pl-6 space-y-2">
+                <li>
+                  <strong>{t("aboutDetailed.generalScopeLabel")}:</strong> {t("aboutDetailed.generalScopeText")}
+                </li>
+                <li>
+                  <strong>{t("aboutDetailed.advancedScopeLabel")}:</strong> {t("aboutDetailed.advancedScopeText")}
+                </li>
+              </ul>
+
+              <p>{t("aboutDetailed.whitePaperText")}</p>
+              
+              <p className="italic border-l-2 border-gray-300 pl-4 mt-4">
+                {t("aboutDetailed.ecosystemQuote")}
+              </p>
             </div>
           </div>
         </motion.div>
@@ -224,14 +227,18 @@ const AboutDetailed = ({ setSelectedPage }: Props) => {
         <div className="w-full space-y-20 md:space-y-24">
           <div className="space-y-12">
             <div className="border-b border-gray-200 pb-2">
-              <span className="text-xs font-bold text-primary-500 uppercase tracking-widest">Consórcio</span>
+              <span className="text-xs font-bold text-primary-500 uppercase tracking-widest">
+                {t("aboutDetailed.consortiumTitle")}
+              </span>
             </div>
 
             {/* NOVA */}
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <AcademicCapIcon className="h-6 w-6 text-primary-500" />
-                <h3 className="text-lg md:text-xl font-bold font-montserrat text-gray-800 tracking-tight">Universidade NOVA de Lisboa</h3>
+                <h3 className="text-lg md:text-xl font-bold font-montserrat text-gray-800 tracking-tight">
+                  Universidade NOVA de Lisboa
+                </h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {novaTeam.map((member, idx) => <MemberCard key={idx} name={member.name} role={member.role} />)}
@@ -242,7 +249,9 @@ const AboutDetailed = ({ setSelectedPage }: Props) => {
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <AcademicCapIcon className="h-6 w-6 text-primary-500" />
-                <h3 className="text-lg md:text-xl font-bold font-montserrat text-gray-800 tracking-tight">Universidade de Évora</h3>
+                <h3 className="text-lg md:text-xl font-bold font-montserrat text-gray-800 tracking-tight">
+                  Universidade de Évora
+                </h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {uevoraTeam.map((member, idx) => <MemberCard key={idx} name={member.name} role={member.role} />)}
@@ -253,7 +262,9 @@ const AboutDetailed = ({ setSelectedPage }: Props) => {
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <BuildingLibraryIcon className="h-6 w-6 text-primary-500" />
-                <h3 className="text-lg md:text-xl font-bold font-montserrat text-gray-800 tracking-tight">Património Cultural, I.P.</h3>
+                <h3 className="text-lg md:text-xl font-bold font-montserrat text-gray-800 tracking-tight">
+                  Património Cultural, I.P.
+                </h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {pcTeam.map((member, idx) => <MemberCard key={idx} name={member.name} role={member.role} />)}
@@ -264,7 +275,9 @@ const AboutDetailed = ({ setSelectedPage }: Props) => {
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <BuildingLibraryIcon className="h-6 w-6 text-primary-500" />
-                <h3 className="text-lg md:text-xl font-bold font-montserrat text-gray-800 tracking-tight">Museus e Monumentos de Portugal, E.P.E.</h3>
+                <h3 className="text-lg md:text-xl font-bold font-montserrat text-gray-800 tracking-tight">
+                  Museus e Monumentos de Portugal, E.P.E.
+                </h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {mmpTeam.map((member, idx) => <MemberCard key={idx} name={member.name} role={member.role} />)}
@@ -278,7 +291,9 @@ const AboutDetailed = ({ setSelectedPage }: Props) => {
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <SparklesIcon className="h-6 w-6 text-primary-500" />
-                <h3 className="text-lg md:text-xl font-bold font-montserrat text-gray-800 tracking-tight">Instituições</h3>
+                <h3 className="text-lg md:text-xl font-bold font-montserrat text-gray-800 tracking-tight">
+                  {t("aboutDetailed.institutionsTitle")}
+                </h3>
               </div>
               <motion.div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4" variants={container}>
                 {partnerLogos.map((partner) => <LogoCard key={partner.id} name={partner.name} img={partner.img} link={partner.link} />)}
@@ -289,7 +304,9 @@ const AboutDetailed = ({ setSelectedPage }: Props) => {
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <BeakerIcon className="h-6 w-6 text-primary-500" />
-                <h3 className="text-lg md:text-xl font-bold font-montserrat text-gray-800 tracking-tight">Unidades de Investigação e Outros Parceiros</h3>
+                <h3 className="text-lg md:text-xl font-bold font-montserrat text-gray-800 tracking-tight">
+                  {t("aboutDetailed.researchUnitsTitle")}
+                </h3>
               </div>
               
               {/* Lab Logos */}

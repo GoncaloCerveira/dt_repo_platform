@@ -1,28 +1,31 @@
-import ProjectDetail from "@/components/ProjectTemplate";
+import { useTranslation } from "react-i18next";
 import { SelectedPage } from "@/components/types";
 import FW1 from "@/assets/evora/caixas+sensores/sensor.jpeg";
 import FW2 from "@/assets/evora/caixas+sensores/animation_sensor.mp4";
 import ProjectDetailPublic from "@/components/ProjectTemplatePublic";
 
-const FirmwareTech = () => {
+type Props = {
+  setSelectedPage?: (value: SelectedPage) => void;
+};
+
+const FirmwareTech = ({ setSelectedPage }: Props) => {
+  const { t } = useTranslation();
+
+  const title = t("technologyPages.firmware.title");
+  const subtitle = t("technologyPages.firmware.subtitle");
+  const rawDescription = t("technologyPages.firmware.paragraphs", { returnObjects: true });
+  const description = Array.isArray(rawDescription) ? (rawDescription as string[]) : [];
+
   return (
     <ProjectDetailPublic
-      title="Firmware para a Plataforma de Monitorização"
-      subtitle="Firmware e Infraestrutura IoT"
+      title={title}
+      subtitle={subtitle}
       media={[
         { url: FW1, type: "image" },
         { url: FW2, type: "video" },
       ]}
-      description={[
-        "O projeto Metrozero Firmware reúne o conjunto de firmwares utilizados na infraestrutura IoT do sistema Metrozero, incluindo sensores ambientais baseados em STM32WB55 e gateways ESP32-S3 responsáveis pela recolha e sincronização dos dados ambientais.",
-
-        "O sistema suporta atualizações OTA (Over-The-Air), comunicação BLE entre sensores e gateway, armazenamento local em cartão SD e sincronização cloud através de MQTT e HTTPS. A arquitetura foi desenvolvida para cenários de monitorização contínua em património cultural e espaços museológicos.",
-
-        "Para além do firmware principal, o projeto inclui procedimentos completos de flashing, bootloaders, stacks BLE, configuração de memória e documentação de deployment em ambiente real. O sistema foi implementado em campanhas de monitorização nos Jerónimos, suportando múltiplos sensores em simultâneo com gestão remota e atualizações automáticas."
-      ]}
-      setSelectedPage={function (value: SelectedPage): void {
-        throw new Error("Function implemented.");
-      }}
+      description={description}
+      setSelectedPage={setSelectedPage || (() => {})}
     />
   );
 };
