@@ -25,7 +25,7 @@ const VisitorFlow = () => {
       links={[
         { 
           label: t("projects.visitorFlow.docsLinkLabel"), 
-          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgC664mC9qJbTacGcUzEM2XDAawOA1luYwjvwcYJAeykfvY", 
+          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgC664mC9qJbTacGcUzEM2XDAbrKBvZ7bj5GcRDbLs8Dyc8?e=lDFQ1C", 
           type: "external" 
         },
       ]}

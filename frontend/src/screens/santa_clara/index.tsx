@@ -25,7 +25,7 @@ const SantaClara = () => {
       links={[
         { 
           label: t("projects.santaClara.driveLinkLabel"), 
-          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgCz7yVk_fSLS6ihc9ugyR8ZAVyMpluk41JK4Ren8JPnc7U?e=EfNtbl", 
+          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgCz7yVk_fSLS6ihc9ugyR8ZAVBRc28pueOkgPqwDu0chos?e=ZuvL5g", 
           type: "web" 
         }
       ]}

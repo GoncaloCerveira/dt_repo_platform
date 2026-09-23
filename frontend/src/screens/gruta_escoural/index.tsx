@@ -27,7 +27,7 @@ const Escoural = () => {
       links={[
         { 
           label: t("projects.escoural.modelAppLinkLabel"), 
-          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgD7KqeBYiQ0TKihm3lxHXBUAY-GBmXx4LGYwcEuMeRsgfA?e=ar78es", 
+          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgD7KqeBYiQ0TKihm3lxHXBUAbzRVTpdNDyiPs5JQPu8heM?e=Vgggel", 
           type: "web" 
         }
       ]}

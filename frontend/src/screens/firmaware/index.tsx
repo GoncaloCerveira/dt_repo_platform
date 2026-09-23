@@ -28,7 +28,7 @@ const Firmware = () => {
         },
         {
           label: t("projects.firmware.devSharepointLabel"),
-          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgA6lrxKrQesR4FLLw7lnaSuAZFK6JtkOeBhpyimpISGHDk?e=cuSeN4",
+          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgA6lrxKrQesR4FLLw7lnaSuAXK3UqOr7d-3-3YDi-YW3Wg?e=Lriepv",
           type: "external",
         },
       ]}

@@ -41,7 +41,7 @@ const HBIM = () => {
         },
         {
           label: t("projects.hbim.ifcDocsLabel"),
-          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgCW_ig7UOhsQ454OWk-0uEAAbxyyEYQ6LdvOeCZllebBJA?e=L6Fa3H",
+          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgCW_ig7UOhsQ454OWk-0uEAAf6Bz_88Wsg9NoKgr3PqjDE?e=rQQ9o8",
           type: "external"
         }
       ]}

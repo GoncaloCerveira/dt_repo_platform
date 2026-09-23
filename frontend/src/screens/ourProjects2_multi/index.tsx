@@ -40,7 +40,7 @@ const AzulejoDetailFull = ({ setSelectedPage }: { setSelectedPage: (v: SelectedP
         { url: VR5, type: "video" as const }
       ],
       links: [
-        { label: t("projects.azulejo.vr.linkLabel"), url: "https://unlpt-my.sharepoint.com/:u:/g/personal/mgv_fct_unl_pt/IQAFMdm0975TQYAvTkBGTQ2LATcO1Hf1ePzBCXsIz8iFiJM?e=VT24rM", type: "web" as const },
+        { label: t("projects.azulejo.vr.linkLabel"), url: "https://unlpt-my.sharepoint.com/:u:/g/personal/mgv_fct_unl_pt/IQAFMdm0975TQYAvTkBGTQ2LAcHytvxhZpWgLqtOw5EGZag?e=o2cuki", type: "web" as const },
       ]
     },
     AR: {
@@ -52,7 +52,7 @@ const AzulejoDetailFull = ({ setSelectedPage }: { setSelectedPage: (v: SelectedP
         { url: AR3, type: "video" as const }
       ],
       links: [
-        { label: t("projects.azulejo.ar.linkLabel"), url: "https://unlpt-my.sharepoint.com/:u:/g/personal/mgv_fct_unl_pt/IQBF8hnIJXjQSatzsCy37LU9AQrqV7uoupR9Zazl-A4LR8I?e=ayFtV5", type: "web" as const },
+        { label: t("projects.azulejo.ar.linkLabel"), url: "https://unlpt-my.sharepoint.com/:u:/g/personal/mgv_fct_unl_pt/IQBF8hnIJXjQSatzsCy37LU9AQIbHc_QmjqUonQBX1oDXII?e=vRjdwY", type: "web" as const },
       ]
     }
   };

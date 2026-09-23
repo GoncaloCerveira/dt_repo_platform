@@ -164,27 +164,27 @@ const projectConfigs: ProjectItem[] = [
 
 const pilotSites: PilotSite[] = [
   {
-    nameKey: "ourProject.pilots.p1.name", locationKey: "ourProject.pilots.p1.location", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBX015awvslQ6kn1nsJhJQWAQ1KPIUfEDSgbF5khSLH0KM?e=g62dtN", typeKey: "ourProject.pilots.type",
+    nameKey: "ourProject.pilots.p1.name", locationKey: "ourProject.pilots.p1.location", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgBX015awvslQ6kn1nsJhJQWARmTv9FQBIsr_z0q_xYmu-o?e=CJqvaD", typeKey: "ourProject.pilots.type",
     image: HBIM
   },
   {
-    nameKey: "ourProject.pilots.p2.name", locationKey: "ourProject.pilots.p2.location", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDIdAUCOtcSTqdqta1ZVcoLATnlJkmgA6EBBYy3ey_YeUQ?e=nqxPap", typeKey: "ourProject.pilots.type",
+    nameKey: "ourProject.pilots.p2.name", locationKey: "ourProject.pilots.p2.location", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDIdAUCOtcSTqdqta1ZVcoLAUce6HadJ2uu3MgCTYyEo8A?e=SoQhdH", typeKey: "ourProject.pilots.type",
     image: RRM
   },
   {
-    nameKey: "ourProject.pilots.p3.name", locationKey: "ourProject.pilots.p3.location", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAbVzE51VFZSYedaaEHEOWYARQ2aNmNa1DSirSHDra9Oi8?e=CWTWhQ", typeKey: "ourProject.pilots.type",
+    nameKey: "ourProject.pilots.p3.name", locationKey: "ourProject.pilots.p3.location", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAbVzE51VFZSYedaaEHEOWYAVjbqFIiZF1SyLuNFBVpDdQ?e=Q2OWrD", typeKey: "ourProject.pilots.type",
     image: MJ
   },
   {
-    nameKey: "ourProject.pilots.p4.name", locationKey: "ourProject.pilots.p4.location", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAXn_MLZSX4R6gs3KbYCj6zASmR3Rr9wCgjKwDvK0oZCcA?e=FheGbA", typeKey: "ourProject.pilots.type",
+    nameKey: "ourProject.pilots.p4.name", locationKey: "ourProject.pilots.p4.location", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAXn_MLZSX4R6gs3KbYCj6zAfUZxmghVcP-3RGkmjwyT1E?e=Zkab9p", typeKey: "ourProject.pilots.type",
     image: MA
   },
   {
-    nameKey: "ourProject.pilots.p5.name", locationKey: "ourProject.pilots.p5.location", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDU7u5kynUaT4ey0JwlAf9IASnmzHAiABgPfl0SCmAQR2I?e=Ov1kzA", typeKey: "ourProject.pilots.type",
+    nameKey: "ourProject.pilots.p5.name", locationKey: "ourProject.pilots.p5.location", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDU7u5kynUaT4ey0JwlAf9IAedeytcryKM7XeyX05zfHYA?e=mn2NYM", typeKey: "ourProject.pilots.type",
     image: MNAZ
   },
   {
-    nameKey: "ourProject.pilots.p6.name", locationKey: "ourProject.pilots.p6.location", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAwWl8_sXl_R7NhXdsdOSY-Ab5fOeSVGEe3Rm2U1hxjKHw?e=ifsExS", typeKey: "ourProject.pilots.type",
+    nameKey: "ourProject.pilots.p6.name", locationKey: "ourProject.pilots.p6.location", url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgAwWl8_sXl_R7NhXdsdOSY-AV7HvNiLHl3t8Mpnp0s7_QM?e=TSrgph", typeKey: "ourProject.pilots.type",
     image: GE
   },
 ];
@@ -559,7 +559,7 @@ const OurProjectSection = ({ setSelectedPage }: Props) => {
             </div>
           </div>
           <a
-            href="https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgD7xRB94gRHQKceNf9VDkHDAbdYhJGqYRe3mAgwwKUhHcM?e=NkK7u0"
+            href="https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgD7xRB94gRHQKceNf9VDkHDAUuxDK8BJN0WUFOWfrhZOF4"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block w-full md:w-auto px-6 py-3 bg-gray-900 text-white rounded-xl font-bold text-sm hover:bg-gray-800 transition-colors text-center"

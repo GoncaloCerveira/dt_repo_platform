@@ -30,7 +30,7 @@ const Segmentation = () => {
         },
         { 
           label: t("projects.segmentation.resultsLabel"), 
-          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDpx7kL6GJ0TZkiiPa4d-m_AY2gzVUEzYNQr7pPSvVpkq0?e=t93AzV", 
+          url: "https://unlpt-my.sharepoint.com/:f:/g/personal/mgv_fct_unl_pt/IgDpx7kL6GJ0TZkiiPa4d-m_AXjQ72AT3Aba-WPKbfRRrSY?e=Lrorxw", 
           type: "web" 
         }
       ]}
